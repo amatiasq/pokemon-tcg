@@ -1,0 +1,85 @@
+{
+  "id": "swsh8-226",
+  "name": "Bug Catcher",
+  "supertype": "Trainer",
+  "subtypes": [
+    "Supporter"
+  ],
+  "rules": [
+    "Draw 2 cards. Flip a coin. If heads, draw 2 more cards.",
+    "You may play only 1 Supporter card during your turn."
+  ],
+  "set": {
+    "id": "swsh8",
+    "name": "Fusion Strike",
+    "series": "Sword & Shield",
+    "printedTotal": 264,
+    "total": 284,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "FST",
+    "releaseDate": "2021/11/12",
+    "updatedAt": "2021/11/12 07:32:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/swsh8/symbol.png",
+      "logo": "https://images.pokemontcg.io/swsh8/logo.png"
+    }
+  },
+  "number": "226",
+  "artist": "Yuu Nishida",
+  "rarity": "Uncommon",
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "E",
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh8/226.png",
+    "large": "https://images.pokemontcg.io/swsh8/226_hires.png"
+  },
+  "tcgplayer": {
+    "url": "https://prices.pokemontcg.io/tcgplayer/swsh8-226",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "normal": {
+        "low": 0.01,
+        "mid": 0.1,
+        "high": 2,
+        "market": 0.03,
+        "directLow": null
+      },
+      "reverseHolofoil": {
+        "low": 0.02,
+        "mid": 0.18,
+        "high": 2,
+        "market": 0.17,
+        "directLow": 0.12
+      }
+    }
+  },
+  "cardmarket": {
+    "url": "https://prices.pokemontcg.io/cardmarket/swsh8-226",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "averageSellPrice": 0.05,
+      "lowPrice": 0.01,
+      "trendPrice": 0.05,
+      "germanProLow": 0,
+      "suggestedPrice": 0,
+      "reverseHoloSell": 0.25,
+      "reverseHoloLow": 0.02,
+      "reverseHoloTrend": 0.22,
+      "lowPriceExPlus": 0.01,
+      "avg1": 0.03,
+      "avg7": 0.04,
+      "avg30": 0.05,
+      "reverseHoloAvg1": 0.25,
+      "reverseHoloAvg7": 0.25,
+      "reverseHoloAvg30": 0.19
+    }
+  }
+}

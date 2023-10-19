@@ -1,0 +1,111 @@
+{
+  "id": "swsh8-102",
+  "name": "Zeraora",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Basic"
+  ],
+  "hp": "120",
+  "types": [
+    "Lightning"
+  ],
+  "attacks": [
+    {
+      "name": "Wild Charge",
+      "cost": [
+        "Lightning",
+        "Colorless"
+      ],
+      "convertedEnergyCost": 2,
+      "damage": "70",
+      "text": "This Pokémon also does 20 damage to itself."
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Fighting",
+      "value": "×2"
+    }
+  ],
+  "retreatCost": [
+    "Colorless"
+  ],
+  "convertedRetreatCost": 1,
+  "set": {
+    "id": "swsh8",
+    "name": "Fusion Strike",
+    "series": "Sword & Shield",
+    "printedTotal": 264,
+    "total": 284,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "FST",
+    "releaseDate": "2021/11/12",
+    "updatedAt": "2021/11/12 07:32:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/swsh8/symbol.png",
+      "logo": "https://images.pokemontcg.io/swsh8/logo.png"
+    }
+  },
+  "number": "102",
+  "artist": "Teeziro",
+  "rarity": "Rare",
+  "flavorText": "It approaches its enemies at the speed of lightning, then tears them limb from limb with its sharp claws.",
+  "nationalPokedexNumbers": [
+    807
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "E",
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh8/102.png",
+    "large": "https://images.pokemontcg.io/swsh8/102_hires.png"
+  },
+  "tcgplayer": {
+    "url": "https://prices.pokemontcg.io/tcgplayer/swsh8-102",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "normal": {
+        "low": 0.01,
+        "mid": 0.15,
+        "high": 1.01,
+        "market": 0.06,
+        "directLow": 0.06
+      },
+      "reverseHolofoil": {
+        "low": 0.01,
+        "mid": 0.22,
+        "high": 2.73,
+        "market": 0.19,
+        "directLow": 0.18
+      }
+    }
+  },
+  "cardmarket": {
+    "url": "https://prices.pokemontcg.io/cardmarket/swsh8-102",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "averageSellPrice": 0.11,
+      "lowPrice": 0.02,
+      "trendPrice": 0.09,
+      "germanProLow": 0,
+      "suggestedPrice": 0,
+      "reverseHoloSell": 0.29,
+      "reverseHoloLow": 0.03,
+      "reverseHoloTrend": 0.37,
+      "lowPriceExPlus": 0.02,
+      "avg1": 0.13,
+      "avg7": 0.09,
+      "avg30": 0.11,
+      "reverseHoloAvg1": 0.4,
+      "reverseHoloAvg7": 0.33,
+      "reverseHoloAvg30": 0.29
+    }
+  }
+}

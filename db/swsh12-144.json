@@ -1,0 +1,113 @@
+{
+  "id": "swsh12-144",
+  "name": "Buneary",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Basic"
+  ],
+  "hp": "60",
+  "types": [
+    "Colorless"
+  ],
+  "evolvesTo": [
+    "Lopunny"
+  ],
+  "attacks": [
+    {
+      "name": "Try Bouncing",
+      "cost": [
+        "Colorless"
+      ],
+      "convertedEnergyCost": 1,
+      "damage": "30",
+      "text": "Flip a coin. If tails, this attack does nothing."
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Fighting",
+      "value": "×2"
+    }
+  ],
+  "retreatCost": [
+    "Colorless"
+  ],
+  "convertedRetreatCost": 1,
+  "set": {
+    "id": "swsh12",
+    "name": "Silver Tempest",
+    "series": "Sword & Shield",
+    "printedTotal": 195,
+    "total": 215,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "SIT",
+    "releaseDate": "2022/11/11",
+    "updatedAt": "2022/09/09 11:45:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/swsh12/symbol.png",
+      "logo": "https://images.pokemontcg.io/swsh12/logo.png"
+    }
+  },
+  "number": "144",
+  "artist": "saino misaki",
+  "rarity": "Common",
+  "flavorText": "If both of Buneary's ears are rolled up, something is wrong with its body or mind. It's a sure sign the Pokémon is in need of care.",
+  "nationalPokedexNumbers": [
+    427
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "F",
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh12/144.png",
+    "large": "https://images.pokemontcg.io/swsh12/144_hires.png"
+  },
+  "tcgplayer": {
+    "url": "https://prices.pokemontcg.io/tcgplayer/swsh12-144",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "normal": {
+        "low": 0.01,
+        "mid": 0.06,
+        "high": 0.99,
+        "market": 0.04,
+        "directLow": 0.03
+      },
+      "reverseHolofoil": {
+        "low": 0.01,
+        "mid": 0.15,
+        "high": 2.49,
+        "market": 0.1,
+        "directLow": 0.09
+      }
+    }
+  },
+  "cardmarket": {
+    "url": "https://prices.pokemontcg.io/cardmarket/swsh12-144",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "averageSellPrice": 0.02,
+      "lowPrice": 0.02,
+      "trendPrice": 0.02,
+      "germanProLow": 0,
+      "suggestedPrice": 0,
+      "reverseHoloSell": 0.11,
+      "reverseHoloLow": 0.02,
+      "reverseHoloTrend": 0.14,
+      "lowPriceExPlus": 0.02,
+      "avg1": 0.02,
+      "avg7": 0.03,
+      "avg30": 0.02,
+      "reverseHoloAvg1": 0.08,
+      "reverseHoloAvg7": 0.14,
+      "reverseHoloAvg30": 0.12
+    }
+  }
+}

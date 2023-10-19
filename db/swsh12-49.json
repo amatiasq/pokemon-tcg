@@ -1,0 +1,113 @@
+{
+  "id": "swsh12-49",
+  "name": "Pikachu",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Basic"
+  ],
+  "hp": "70",
+  "types": [
+    "Lightning"
+  ],
+  "evolvesTo": [
+    "Raichu"
+  ],
+  "attacks": [
+    {
+      "name": "Pika Strike",
+      "cost": [
+        "Lightning"
+      ],
+      "convertedEnergyCost": 1,
+      "damage": "20+",
+      "text": "If 1 of your Dedenne used Dede-Short during your last turn, this attack does 180 more damage."
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Fighting",
+      "value": "×2"
+    }
+  ],
+  "retreatCost": [
+    "Colorless"
+  ],
+  "convertedRetreatCost": 1,
+  "set": {
+    "id": "swsh12",
+    "name": "Silver Tempest",
+    "series": "Sword & Shield",
+    "printedTotal": 195,
+    "total": 215,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "SIT",
+    "releaseDate": "2022/11/11",
+    "updatedAt": "2022/09/09 11:45:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/swsh12/symbol.png",
+      "logo": "https://images.pokemontcg.io/swsh12/logo.png"
+    }
+  },
+  "number": "49",
+  "artist": "Souichirou Gunjima",
+  "rarity": "Common",
+  "flavorText": "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy.",
+  "nationalPokedexNumbers": [
+    25
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "F",
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh12/49.png",
+    "large": "https://images.pokemontcg.io/swsh12/49_hires.png"
+  },
+  "tcgplayer": {
+    "url": "https://prices.pokemontcg.io/tcgplayer/swsh12-49",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "reverseHolofoil": {
+        "low": 0.01,
+        "mid": 0.26,
+        "high": 5,
+        "market": 0.24,
+        "directLow": 0.2
+      },
+      "normal": {
+        "low": 0.01,
+        "mid": 0.1,
+        "high": 5.09,
+        "market": 0.08,
+        "directLow": 0.05
+      }
+    }
+  },
+  "cardmarket": {
+    "url": "https://prices.pokemontcg.io/cardmarket/swsh12-49",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "averageSellPrice": 0.11,
+      "lowPrice": 0.01,
+      "trendPrice": 0.11,
+      "germanProLow": 0,
+      "suggestedPrice": 0,
+      "reverseHoloSell": 0.34,
+      "reverseHoloLow": 0.03,
+      "reverseHoloTrend": 0.18,
+      "lowPriceExPlus": 0.01,
+      "avg1": 0.04,
+      "avg7": 0.14,
+      "avg30": 0.11,
+      "reverseHoloAvg1": 0.21,
+      "reverseHoloAvg7": 0.23,
+      "reverseHoloAvg30": 0.33
+    }
+  }
+}

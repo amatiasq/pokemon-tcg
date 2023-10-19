@@ -1,0 +1,125 @@
+{
+  "id": "sv1-162",
+  "name": "Squawkabilly",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Basic"
+  ],
+  "hp": "70",
+  "types": [
+    "Colorless"
+  ],
+  "attacks": [
+    {
+      "cost": [
+        "Colorless"
+      ],
+      "name": "Call for Family",
+      "damage": "",
+      "text": "Search your deck for up to 2 Basic Pokémon and put them onto your Bench. Then, shuffle your deck.",
+      "convertedEnergyCost": 1
+    },
+    {
+      "cost": [
+        "Colorless",
+        "Colorless"
+      ],
+      "name": "Fly",
+      "damage": "60",
+      "text": "Flip a coin. If tails, this attack does nothing. If heads, during your opponent's next turn, prevent all damage from and effects of attacks done to this Pokémon.",
+      "convertedEnergyCost": 2
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Lightning",
+      "value": "×2"
+    }
+  ],
+  "resistances": [
+    {
+      "type": "Fighting",
+      "value": "-30"
+    }
+  ],
+  "retreatCost": [
+    "Colorless"
+  ],
+  "convertedRetreatCost": 1,
+  "set": {
+    "id": "sv1",
+    "name": "Scarlet & Violet",
+    "series": "Scarlet & Violet",
+    "printedTotal": 198,
+    "total": 258,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "releaseDate": "2023/03/31",
+    "updatedAt": "2023/03/31 15:45:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/sv1/symbol.png",
+      "logo": "https://images.pokemontcg.io/sv1/logo.png"
+    }
+  },
+  "number": "162",
+  "artist": "Oswaldo KATO",
+  "rarity": "Common",
+  "flavorText": "Green-feathered flocks hold the most sway. When they’re out searching for food in the mornings and evenings, it gets very noisy.",
+  "nationalPokedexNumbers": [
+    931
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "G",
+  "images": {
+    "small": "https://images.pokemontcg.io/sv1/162.png",
+    "large": "https://images.pokemontcg.io/sv1/162_hires.png"
+  },
+  "tcgplayer": {
+    "url": "https://prices.pokemontcg.io/tcgplayer/sv1-162",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "reverseHolofoil": {
+        "low": 0.01,
+        "mid": 0.14,
+        "high": 5.95,
+        "market": 0.09,
+        "directLow": 0.03
+      },
+      "normal": {
+        "low": 0.01,
+        "mid": 0.1,
+        "high": 1.25,
+        "market": 0.04,
+        "directLow": 0.04
+      }
+    }
+  },
+  "cardmarket": {
+    "url": "https://prices.pokemontcg.io/cardmarket/sv1-162",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "averageSellPrice": 0.04,
+      "lowPrice": 0.02,
+      "trendPrice": 0.04,
+      "germanProLow": 0,
+      "suggestedPrice": 0,
+      "reverseHoloSell": 0.12,
+      "reverseHoloLow": 0.02,
+      "reverseHoloTrend": 0.12,
+      "lowPriceExPlus": 0.02,
+      "avg1": 0.04,
+      "avg7": 0.04,
+      "avg30": 0.04,
+      "reverseHoloAvg1": 0.15,
+      "reverseHoloAvg7": 0.12,
+      "reverseHoloAvg30": 0.11
+    }
+  }
+}

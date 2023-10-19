@@ -1,0 +1,84 @@
+{
+  "id": "swsh2-163",
+  "name": "Oleana",
+  "supertype": "Trainer",
+  "subtypes": [
+    "Supporter"
+  ],
+  "rules": [
+    "You can play this card only if you discard 2 other cards from your hand.",
+    "Your opponent reveals their hand. Put a Trainer card you find there on the bottom of their deck.",
+    "You may play only 1 Supporter card during your turn."
+  ],
+  "set": {
+    "id": "swsh2",
+    "name": "Rebel Clash",
+    "series": "Sword & Shield",
+    "printedTotal": 192,
+    "total": 209,
+    "legalities": {
+      "unlimited": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "RCL",
+    "releaseDate": "2020/05/01",
+    "updatedAt": "2020/09/25 10:09:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/swsh2/symbol.png",
+      "logo": "https://images.pokemontcg.io/swsh2/logo.png"
+    }
+  },
+  "number": "163",
+  "artist": "Yusuke Ohmura",
+  "rarity": "Uncommon",
+  "legalities": {
+    "unlimited": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "D",
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh2/163.png",
+    "large": "https://images.pokemontcg.io/swsh2/163_hires.png"
+  },
+  "tcgplayer": {
+    "url": "https://prices.pokemontcg.io/tcgplayer/swsh2-163",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "reverseHolofoil": {
+        "low": 0.06,
+        "mid": 0.25,
+        "high": 2,
+        "market": 0.17,
+        "directLow": 0.11
+      },
+      "normal": {
+        "low": 0.01,
+        "mid": 0.13,
+        "high": 9.99,
+        "market": 0.07,
+        "directLow": 0.03
+      }
+    }
+  },
+  "cardmarket": {
+    "url": "https://prices.pokemontcg.io/cardmarket/swsh2-163",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "averageSellPrice": 0.07,
+      "lowPrice": 0.02,
+      "trendPrice": 0.06,
+      "germanProLow": 0,
+      "suggestedPrice": 0,
+      "reverseHoloSell": 0.14,
+      "reverseHoloLow": 0.02,
+      "reverseHoloTrend": 0.14,
+      "lowPriceExPlus": 0.02,
+      "avg1": 0.03,
+      "avg7": 0.06,
+      "avg30": 0.07,
+      "reverseHoloAvg1": 0.13,
+      "reverseHoloAvg7": 0.15,
+      "reverseHoloAvg30": 0.17
+    }
+  }
+}

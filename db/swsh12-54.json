@@ -1,0 +1,116 @@
+{
+  "id": "swsh12-54",
+  "name": "Emolga",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Basic"
+  ],
+  "hp": "70",
+  "types": [
+    "Lightning"
+  ],
+  "attacks": [
+    {
+      "name": "Lucky Find",
+      "cost": [
+        "Colorless"
+      ],
+      "convertedEnergyCost": 1,
+      "damage": "",
+      "text": "Search your deck for an Item card, reveal it, and put it into your hand. Then, shuffle your deck."
+    },
+    {
+      "name": "Static Shock",
+      "cost": [
+        "Lightning",
+        "Colorless"
+      ],
+      "convertedEnergyCost": 2,
+      "damage": "40",
+      "text": ""
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Fighting",
+      "value": "×2"
+    }
+  ],
+  "set": {
+    "id": "swsh12",
+    "name": "Silver Tempest",
+    "series": "Sword & Shield",
+    "printedTotal": 195,
+    "total": 215,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "SIT",
+    "releaseDate": "2022/11/11",
+    "updatedAt": "2022/09/09 11:45:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/swsh12/symbol.png",
+      "logo": "https://images.pokemontcg.io/swsh12/logo.png"
+    }
+  },
+  "number": "54",
+  "artist": "sowsow",
+  "rarity": "Common",
+  "flavorText": "As Emolga flutters through the air, it crackles with electricity. This Pokémon is cute, but it can cause a lot of trouble.",
+  "nationalPokedexNumbers": [
+    587
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "F",
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh12/54.png",
+    "large": "https://images.pokemontcg.io/swsh12/54_hires.png"
+  },
+  "tcgplayer": {
+    "url": "https://prices.pokemontcg.io/tcgplayer/swsh12-54",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "reverseHolofoil": {
+        "low": 0.05,
+        "mid": 0.15,
+        "high": 2,
+        "market": 0.12,
+        "directLow": 0.05
+      },
+      "normal": {
+        "low": 0.01,
+        "mid": 0.05,
+        "high": 1.03,
+        "market": 0.02,
+        "directLow": 0.01
+      }
+    }
+  },
+  "cardmarket": {
+    "url": "https://prices.pokemontcg.io/cardmarket/swsh12-54",
+    "updatedAt": "2023/10/19",
+    "prices": {
+      "averageSellPrice": 0.02,
+      "lowPrice": 0.01,
+      "trendPrice": 0.03,
+      "germanProLow": 0,
+      "suggestedPrice": 0,
+      "reverseHoloSell": 0.13,
+      "reverseHoloLow": 0.02,
+      "reverseHoloTrend": 0.1,
+      "lowPriceExPlus": 0.01,
+      "avg1": 0.04,
+      "avg7": 0.04,
+      "avg30": 0.03,
+      "reverseHoloAvg1": 0.21,
+      "reverseHoloAvg7": 0.11,
+      "reverseHoloAvg30": 0.13
+    }
+  }
+}
