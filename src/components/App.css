@@ -1,8 +1,14 @@
 .deck {
+  width: 100dvw;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+
+.deck > summary {
+  text-align: center;
+  list-style: none;
 }
 
 .card-list {
@@ -10,7 +16,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  align-items: space-around;
   justify-content: space-around;
 }
 
