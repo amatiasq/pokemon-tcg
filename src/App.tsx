@@ -1,21 +1,6 @@
+import decks from 'virtual:all-decks';
 import './App.css';
 import { Deck } from './data/Deck';
-import Electrico from './decks/Electrico.deck';
-import Fuego from './decks/Fuego.deck';
-import Lucha from './decks/Lucha.deck';
-import Oscuro from './decks/Oscuro.deck';
-import Psiquico from './decks/Psiquico.deck';
-import Sobras from './decks/Sobras.deck';
-
-const decks = [
-  // Multiline
-  Lucha,
-  Electrico,
-  Psiquico,
-  Fuego,
-  Oscuro,
-  Sobras,
-];
 
 export function App() {
   return (
