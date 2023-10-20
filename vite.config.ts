@@ -1,8 +1,12 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import deckLoader from './src/data/deckLoader';
+import deckLoader from './src/deck-loader/main';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), deckLoader()],
+  plugins: [
+    // multiline
+    react(),
+    deckLoader(),
+  ],
 });
