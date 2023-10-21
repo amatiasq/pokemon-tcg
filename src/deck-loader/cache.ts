@@ -5,6 +5,7 @@ import { mkdir, readFile, unlink, writeFile } from 'node:fs/promises';
 import { get } from 'node:https';
 import { extname } from 'node:path';
 import { fetchCard } from './api';
+import { DeckEntry } from './parser';
 
 type Card = any;
 
@@ -13,15 +14,17 @@ const IMG_DIR = './public';
 
 if (!existsSync(JSON_DIR)) mkdir(JSON_DIR);
 
-export async function downloadCard(id: string, count: number): Promise<any> {
-  const data = await loadCardData(id);
+export async function downloadCard(entry: DeckEntry): Promise<any> {
+  if (entry == null) return null;
+
+  const data = await loadCardData(entry.id);
 
   const { images } = data;
-  const imgPath = `/${id}${extname(images.small)}`;
+  const imgPath = `/${entry.id}${extname(images.small)}`;
   downloadToFile(images.small, `${IMG_DIR}/${imgPath}`);
-  // images.small = imgPath;
+  images.small = imgPath;
 
-  return { ...data, count };
+  return { ...data, ...entry };
 }
 
 async function loadCardData(id: string): Promise<Card> {

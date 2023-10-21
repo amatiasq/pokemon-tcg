@@ -1,7 +1,7 @@
 import decks from 'virtual:all-decks';
 import './App.css';
-import { Deck } from './data/Deck';
 import { getFocusNode } from './focus';
+import { Deck } from './types/Deck';
 
 // const FocusedCard = createContext(null);
 
@@ -42,6 +42,12 @@ function CardView({ card }: { card: Deck['cards'][number] }) {
   return (
     <div className="card" onClick={onClick}>
       <img src={card.images.small} />
+      <code>{card.id}</code>
+      <ul className="emojis">
+        {card.emojis.map((x) => (
+          <li key={x}>{x}</li>
+        ))}
+      </ul>
       {card.count != 1 ? <span>{card.count}</span> : null}
     </div>
   );

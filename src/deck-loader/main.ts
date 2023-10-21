@@ -35,9 +35,7 @@ export default function deckLoader() {
 
       const name = basename(id).replace(deckExtensionRegex, '');
       const parsed = await parseDeck(src);
-      const cards = await Promise.all(
-        parsed.map((x) => x && downloadCard(x.id, x.count))
-      );
+      const cards = await Promise.all(parsed.map(downloadCard));
 
       return `export default ${JSON.stringify({ name, cards })};`;
     },
