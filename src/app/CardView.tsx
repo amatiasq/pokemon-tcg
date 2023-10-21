@@ -1,3 +1,4 @@
+import { createRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { DeckEntry } from '../types/Deck';
 import './CardView.css';
@@ -5,9 +6,24 @@ import { set as setFocusedCard } from './focused-card';
 
 export function CardView({ card }: { card: DeckEntry }) {
   const dispatch = useDispatch();
+  const ref = createRef<HTMLDivElement>();
 
   return (
-    <div className="card" onClick={() => dispatch(setFocusedCard(card))}>
+    <div
+      ref={ref}
+      className="card"
+      onClick={() => {
+        const { top, left, width, height } =
+          ref.current!.getBoundingClientRect();
+
+        dispatch(
+          setFocusedCard({
+            card,
+            bounds: { top, left, width, height },
+          })
+        );
+      }}
+    >
       <img src={card.images.small} />
       <code className="id">{card.id}</code>
       <span className="emojis">{card.emojis}</span>
