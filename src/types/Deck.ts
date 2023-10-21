@@ -2,10 +2,10 @@ import { Card } from './Card';
 
 export interface Deck {
   name: string;
-  cards: (Card & DeckEntry)[];
+  cards: DeckEntry[];
 }
 
-export interface DeckEntry {
+export interface DeckEntry extends Card {
   id: string;
   count: number;
   notes: string;

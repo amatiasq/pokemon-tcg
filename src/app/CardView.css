@@ -1,0 +1,42 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.card img {
+  width: 10rem;
+}
+
+.card :is(.id, .emojis, .amount) {
+  background-color: black;
+  color: white;
+  opacity: 0.8;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1em;
+}
+
+.card .id {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+}
+.card:not(:hover) .id {
+  visibility: hidden;
+}
+
+.card .emojis {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.emojis:empty {
+  visibility: hidden;
+}
+
+.card .amount {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
