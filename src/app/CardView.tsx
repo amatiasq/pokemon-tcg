@@ -1,5 +1,6 @@
 import { createRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { ScaledImage } from '../components/ScaledImage';
 import { DeckEntry } from '../types/Deck';
 import './CardView.css';
 import { set as setFocusedCard } from './focused-card';
@@ -30,7 +31,11 @@ export function CardView({
         );
       }}
     >
-      <img src={large ? card.images.large : card.images.small} />
+      {large ? (
+        <ScaledImage small={card.images.small} large={card.images.large} />
+      ) : (
+        <img src={card.images.small} />
+      )}
       <code className="id">{card.id}</code>
       <span className="emojis">{card.emojis}</span>
       {card.count != 1 ? <span className="amount">{card.count}</span> : null}
