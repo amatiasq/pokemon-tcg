@@ -42,13 +42,9 @@ function CardView({ card }: { card: Deck['cards'][number] }) {
   return (
     <div className="card" onClick={onClick}>
       <img src={card.images.small} />
-      <code>{card.id}</code>
-      <ul className="emojis">
-        {card.emojis.map((x) => (
-          <li key={x}>{x}</li>
-        ))}
-      </ul>
-      {card.count != 1 ? <span>{card.count}</span> : null}
+      <code className="id">{card.id}</code>
+      <span className="emojis">{card.emojis}</span>
+      {card.count != 1 ? <span className="amount">{card.count}</span> : null}
     </div>
   );
 

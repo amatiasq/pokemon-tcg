@@ -34,21 +34,7 @@
   width: 10rem;
 }
 
-car .card :not(img) {
-  position: absolute;
-  inset: 5px;
-  top: auto;
-  display: grid;
-  grid-template-areas: 'id emojis amount';
-  grid-template-columns:
-    [id] max-content
-    [emojis] 1fr
-    [amount] min-content;
-  /* align-items: center;
-  justify-content: space-between; */
-}
-
-.card :is(code, span, li) {
+.card :is(.id, .emojis, .amount) {
   background-color: black;
   color: white;
   opacity: 0.8;
@@ -56,29 +42,28 @@ car .card :not(img) {
   border-radius: 1em;
 }
 
-.card code {
+.card .id {
   position: absolute;
   left: 5px;
   bottom: 5px;
 }
-.card:not(:hover) code {
+.card:not(:hover) .id {
   visibility: hidden;
 }
 
-.card ul {
+.card .emojis {
   position: absolute;
   top: 5px;
   right: 5px;
 }
+.emojis:empty {
+  visibility: hidden;
+}
 
-.card span {
+.card .amount {
   position: absolute;
   bottom: 5px;
   right: 5px;
-}
-
-.emojis:empty {
-  visibility: hidden;
 }
 
 /* .card span {
