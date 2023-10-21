@@ -4,7 +4,13 @@ import { DeckEntry } from '../types/Deck';
 import './CardView.css';
 import { set as setFocusedCard } from './focused-card';
 
-export function CardView({ card }: { card: DeckEntry }) {
+export function CardView({
+  card,
+  large = false,
+}: {
+  card: DeckEntry;
+  large?: boolean;
+}) {
   const dispatch = useDispatch();
   const ref = createRef<HTMLDivElement>();
 
@@ -24,7 +30,7 @@ export function CardView({ card }: { card: DeckEntry }) {
         );
       }}
     >
-      <img src={card.images.small} />
+      <img src={large ? card.images.large : card.images.small} />
       <code className="id">{card.id}</code>
       <span className="emojis">{card.emojis}</span>
       {card.count != 1 ? <span className="amount">{card.count}</span> : null}
