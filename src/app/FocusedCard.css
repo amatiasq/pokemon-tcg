@@ -1,0 +1,7 @@
+.focused-card {
+  position: fixed;
+  inset: 10px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}

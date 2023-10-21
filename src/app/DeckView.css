@@ -21,4 +21,5 @@
 
 .card-list li {
   list-style: none;
+  width: 10rem;
 }
