@@ -8,16 +8,16 @@ import { useTransitionClasses } from './useTransitionClasses';
 export function FocusedCard() {
   const { card, bounds } = useSelector((state: RootState) => state.focusedCard);
   const dispatch = useDispatch();
-  const ref = useTransitionClasses<HTMLDivElement>('focused-card');
+  const transition = useTransitionClasses<HTMLDivElement>('focused-card');
 
   if (card === null) {
-    ref.current = null;
+    transition.remove();
     return null;
   }
 
   return (
     <div
-      ref={ref}
+      ref={transition}
       className="focused-card"
       onClick={() => dispatch(clearFocusedCard())}
       style={{
