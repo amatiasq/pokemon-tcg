@@ -20,7 +20,9 @@
 
 .focused-card--enter-active,
 .focused-card--exit-active {
-  transition: top 200ms, left 200ms, width 200ms, height 200ms;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  transition-property: top, left, width, height;
 }
 
 .focused-card--exit-active {
