@@ -1,4 +1,6 @@
 .card {
+  display: flex;
+
   /* Card proportions */
   aspect-ratio: 63 / 88;
   border-radius: 5% / 3.5%;

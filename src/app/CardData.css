@@ -1,16 +1,6 @@
 .card-data {
   position: relative;
   display: flex;
-  align-items: center;
-
-  --color1: #efb2fb;
-  --color2: #acc6f8;
-}
-
-.card-data img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .card-data :is(.id, .emojis, .amount) {
@@ -34,7 +24,7 @@
   top: 5px;
   right: 5px;
 }
-.emojis:empty {
+.card-data .emojis:empty {
   visibility: hidden;
 }
 
