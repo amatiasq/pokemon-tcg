@@ -1,0 +1,44 @@
+.card-data {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  --color1: #efb2fb;
+  --color2: #acc6f8;
+}
+
+.card-data img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-data :is(.id, .emojis, .amount) {
+  position: absolute;
+  background-color: black;
+  color: white;
+  opacity: 0.8;
+  padding: 0.2rem 0.5rem;
+  border-radius: 1em;
+}
+
+.card-data .id {
+  left: 5px;
+  bottom: 5px;
+}
+.card-data:not(:hover) .id {
+  visibility: hidden;
+}
+
+.card-data .emojis {
+  top: 5px;
+  right: 5px;
+}
+.emojis:empty {
+  visibility: hidden;
+}
+
+.card-data .amount {
+  bottom: 5px;
+  right: 5px;
+}

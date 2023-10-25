@@ -24,25 +24,13 @@ export function useTransitionClasses<T extends HTMLElement>(className: string) {
       },
     };
 
-    function handleNodeDisappear(node: T) {
-      const clone = node.cloneNode(true) as T;
-      node.parentElement!.insertBefore(clone, node);
-      clone.addEventListener('transitionend', () => {
-        clone.remove();
+    function handleNodeAppear(node: T) {
+      node.addEventListener('transitionend', () => {
+        removeAllClasses(node);
+        node.classList.add(`${className}--ready`);
       });
 
-      clone.classList.remove(`${className}--enter`);
-      clone.classList.remove(`${className}--enter-active`);
-      clone.classList.remove(`${className}--ready`);
-      clone.classList.add(`${className}--exit`);
-
-      setTimeout(() => {
-        clone.classList.add(`${className}--exit-active`);
-      }, 0);
-    }
-
-    function handleNodeAppear(node: T) {
-      node.addEventListener('transitionend', handleTransitionEnd);
+      removeAllClasses(node);
       node.classList.add(`${className}--enter`);
 
       setTimeout(() => {
@@ -50,11 +38,26 @@ export function useTransitionClasses<T extends HTMLElement>(className: string) {
       }, 0);
     }
 
-    function handleTransitionEnd() {
-      const node = ref.current!;
+    function handleNodeDisappear(node: T) {
+      const clone = node.cloneNode(true) as T;
+      node.parentElement!.insertBefore(clone, node);
+
+      clone.addEventListener('transitionend', () => clone.remove());
+
+      removeAllClasses(clone);
+      clone.classList.add(`${className}--exit`);
+
+      setTimeout(() => {
+        clone.classList.add(`${className}--exit-active`);
+      }, 0);
+    }
+
+    function removeAllClasses(node: T) {
       node.classList.remove(`${className}--enter`);
       node.classList.remove(`${className}--enter-active`);
-      node.classList.add(`${className}--ready`);
+      node.classList.remove(`${className}--ready`);
+      node.classList.remove(`${className}--exit`);
+      node.classList.remove(`${className}--exit-active`);
     }
   }, [className]);
 }
