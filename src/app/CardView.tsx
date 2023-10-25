@@ -3,7 +3,7 @@ import { DeckEntry } from '../types/Deck';
 import { CardEffect } from './CardEffect';
 import './CardView.css';
 
-const hasEffects = false;
+const hasEffects = `${document.location}`.includes('effects');
 const MaybeEffects = hasEffects ? CardEffect : 'div';
 
 export interface CardViewProps {
