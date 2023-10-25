@@ -33,8 +33,8 @@ export function CardEffect(props: PropsWithChildren<CardEffectProps>) {
 
     const h = bounds.height;
     const w = bounds.width;
-    const x = pointerX - bounds.x;
-    const y = pointerY - bounds.y;
+    const x = pointerX - bounds.left;
+    const y = pointerY - bounds.top;
 
     const px = Math.abs(Math.floor((100 / w) * x) - 100);
     const py = Math.abs(Math.floor((100 / h) * y) - 100);
