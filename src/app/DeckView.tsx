@@ -18,6 +18,8 @@ export function DeckView({
         </h2>
       </summary>
 
+      {/* <DeckStats cards={deck.cards} /> */}
+
       <ul className="card-list">
         {deck.cards.map((card) => (
           <li key={card.id}>{children(card)}</li>

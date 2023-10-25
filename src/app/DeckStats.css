@@ -1,0 +1,15 @@
+/*
+ * Deck stats styles
+ */
+
+.deck-stats {
+  margin: 0 0 1em 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.deck-stats li {
+  list-style: none;
+}
