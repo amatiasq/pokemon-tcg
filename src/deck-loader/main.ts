@@ -9,7 +9,7 @@ const resolvedDecksModule = '\0' + decksModule;
 const deckExtensionRegex = /\.deck$/;
 
 const root = process.cwd();
-const DECKS_DIR = `${root}/src/decks`;
+const DECKS_DIR = `${root}/decks`;
 
 export default function deckLoader() {
   let isBuildMode = false;
