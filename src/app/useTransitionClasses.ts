@@ -50,8 +50,8 @@ export function useTransitionClasses<T extends HTMLElement>(className: string) {
       }, 0);
     }
 
-    function handleTransitionEnd(event: TransitionEvent) {
-      const node = event.target as T;
+    function handleTransitionEnd() {
+      const node = ref.current!;
       node.classList.remove(`${className}--enter`);
       node.classList.remove(`${className}--enter-active`);
       node.classList.add(`${className}--ready`);

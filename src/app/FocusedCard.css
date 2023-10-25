@@ -1,49 +1,69 @@
 .focused-card {
   position: fixed;
+  inset: 0;
   z-index: 1;
-  display: flex;
-  justify-content: center;
+  box-sizing: border-box;
+  will-change: background-color;
+}
+
+.focused-card .card .id {
+  /* never hide the ID */
+  visibility: visible !important;
+}
+
+/*
+ * Background transition
+ */
+
+.focused-card--enter {
+  background-color: transparent;
+}
+
+.focused-card--enter-active,
+.focused-card--ready,
+.focused-card--exit {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.focused-card--exit-active {
+  background-color: transparent;
+}
+
+.focused-card--exit-active,
+.focused-card--exit-active {
+  transition: background-color 200ms ease-in-out;
+}
+
+/*
+ * Card grow transition
+ */
+
+.focused-card--enter .card {
   top: var(--card-top);
   left: var(--card-left);
   width: var(--card-width);
   height: var(--card-height);
-  box-sizing: border-box;
-  background-color: #000000ee;
 }
 
-.focused-card .card {
-  width: 100%;
-}
-
-.focused-card .card .id {
-  display: block !important;
-}
-
-.focused-card--ready {
-  inset: 0;
-  padding: 10px;
-  width: 100dvw;
-  height: 100dvh;
-}
-
-.focused-card--enter-active,
-.focused-card--exit {
+.focused-card--enter-active .card,
+.focused-card--ready .card,
+.focused-card--exit .card {
   top: 10px;
   left: 10px;
   width: calc(100vw - 20px);
   height: calc(100vh - 20px);
 }
 
-.focused-card--enter-active,
-.focused-card--exit-active {
-  transition-duration: 200ms;
-  transition-timing-function: ease-in-out;
-  transition-property: top, left, width, height;
-}
-
-.focused-card--exit-active {
+.focused-card--exit-active .card {
   top: var(--card-top);
   left: var(--card-left);
   width: var(--card-width);
   height: var(--card-height);
+}
+
+.focused-card--enter-active .card,
+.focused-card--exit-active .card {
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  transition-property: top, left, width, height;
 }
