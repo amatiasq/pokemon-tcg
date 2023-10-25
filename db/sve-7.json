@@ -33,13 +33,5 @@
   "images": {
     "small": "https://images.pokemontcg.io/sve/7.png",
     "large": "https://images.pokemontcg.io/sve/7_hires.png"
-  },
-  "tcgplayer": {
-    "url": "https://prices.pokemontcg.io/tcgplayer/sve-7",
-    "updatedAt": "2023/07/20"
-  },
-  "cardmarket": {
-    "url": "https://prices.pokemontcg.io/cardmarket/sve-7",
-    "updatedAt": "2023/07/20"
   }
 }

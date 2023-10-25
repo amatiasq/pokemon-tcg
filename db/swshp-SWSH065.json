@@ -88,39 +88,5 @@
   "images": {
     "small": "https://images.pokemontcg.io/swshp/SWSH065.png",
     "large": "https://images.pokemontcg.io/swshp/SWSH065_hires.png"
-  },
-  "tcgplayer": {
-    "url": "https://prices.pokemontcg.io/tcgplayer/swshp-SWSH065",
-    "updatedAt": "2023/10/19",
-    "prices": {
-      "holofoil": {
-        "low": 0.49,
-        "mid": 1.86,
-        "high": 11.61,
-        "market": 1.59,
-        "directLow": 1.8
-      }
-    }
-  },
-  "cardmarket": {
-    "url": "https://prices.pokemontcg.io/cardmarket/swshp-SWSH065",
-    "updatedAt": "2023/10/19",
-    "prices": {
-      "averageSellPrice": 5.08,
-      "lowPrice": 2.49,
-      "trendPrice": 5.09,
-      "germanProLow": 0,
-      "suggestedPrice": 0,
-      "reverseHoloSell": 0,
-      "reverseHoloLow": 0,
-      "reverseHoloTrend": 5.15,
-      "lowPriceExPlus": 2.95,
-      "avg1": 4.4,
-      "avg7": 5.04,
-      "avg30": 5.01,
-      "reverseHoloAvg1": 5,
-      "reverseHoloAvg7": 5.46,
-      "reverseHoloAvg30": 5.76
-    }
   }
 }
