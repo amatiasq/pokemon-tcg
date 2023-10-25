@@ -9,8 +9,14 @@ const resolvedDecksModule = '\0' + decksModule;
 const deckExtensionRegex = /\.deck$/;
 
 export default function deckLoader() {
+  let isBuildMode = false;
+
   return {
     name: 'Deck Loader',
+
+    configResolved({ command }) {
+      isBuildMode = command !== 'serve';
+    },
 
     resolveId(id) {
       if (id === decksModule) {
@@ -35,7 +41,9 @@ export default function deckLoader() {
 
       const name = basename(id).replace(deckExtensionRegex, '');
       const parsed = await parseDeck(src);
-      const cards = await Promise.all(parsed.map(downloadCard));
+      const cards = await Promise.all(
+        parsed.map((x) => downloadCard(x, isBuildMode))
+      );
 
       return `export default ${JSON.stringify({ name, cards })};`;
     },

@@ -14,15 +14,26 @@ const IMG_DIR = './public';
 
 if (!existsSync(JSON_DIR)) mkdir(JSON_DIR);
 
-export async function downloadCard(entry: DeckEntry): Promise<any> {
+export async function downloadCard(
+  entry: DeckEntry,
+  replaceImages = false
+): Promise<any> {
   if (entry == null) return null;
 
   const data = await loadCardData(entry.id);
 
   const { images } = data;
+
   const imgPath = `/${entry.id}${extname(images.small)}`;
   downloadToFile(images.small, `${IMG_DIR}/${imgPath}`);
-  images.small = imgPath;
+
+  const hiresPath = `/${entry.id}_hires${extname(images.small)}`;
+  downloadToFile(images.large, `${IMG_DIR}/${hiresPath}`);
+
+  if (replaceImages) {
+    images.small = imgPath;
+    images.large = hiresPath;
+  }
 
   return { ...data, ...entry };
 }
