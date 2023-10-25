@@ -22,8 +22,8 @@ export function DeckStats({ cards }: { cards: DeckEntry[] }) {
     </ul>
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function hideEmoji(emoji: string) {
+    console.log(emoji);
     return undefined;
   }
 }
