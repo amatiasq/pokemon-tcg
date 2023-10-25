@@ -9,8 +9,22 @@
   height: var(--card-height);
 }
 
+.focused-card .card {
+  width: 100%;
+}
+
+.focused-card .card .id {
+  display: block !important;
+}
+
+.focused-card--ready {
+  inset: 0;
+  padding: 10px;
+  width: 100dvw;
+  height: 100dvh;
+}
+
 .focused-card--enter-active,
-.focused-card--ready,
 .focused-card--exit {
   top: 10px;
   left: 10px;

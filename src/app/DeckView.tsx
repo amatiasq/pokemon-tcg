@@ -12,6 +12,7 @@ export function DeckView({ deck }: { deck: Deck }) {
           {deck.name} <small>({total})</small>
         </h2>
       </summary>
+
       <ul className="card-list">
         {deck.cards.map((card) => (
           <li key={card.id}>

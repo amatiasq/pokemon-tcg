@@ -1,4 +1,5 @@
 import decks from 'virtual:all-decks';
+import './App.css';
 import { DeckView } from './DeckView';
 import { FocusedCard } from './FocusedCard';
 
