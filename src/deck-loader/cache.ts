@@ -27,12 +27,12 @@ export async function downloadCard(
   const imgPath = `/${entry.id}${extname(images.small)}`;
   downloadToFile(images.small, `${IMG_DIR}/${imgPath}`);
 
-  const hiresPath = `/${entry.id}_hires${extname(images.small)}`;
-  downloadToFile(images.large, `${IMG_DIR}/${hiresPath}`);
+  // const hiresPath = `/${entry.id}_hires${extname(images.small)}`;
+  // downloadToFile(images.large, `${IMG_DIR}/${hiresPath}`);
 
   if (replaceImages) {
     images.small = imgPath;
-    images.large = hiresPath;
+    // images.large = hiresPath;
   }
 
   return { ...data, ...entry };
