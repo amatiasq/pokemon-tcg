@@ -13,6 +13,7 @@ const JSON_DIR = './db';
 const IMG_DIR = './public';
 
 if (!existsSync(JSON_DIR)) mkdir(JSON_DIR);
+if (!existsSync(IMG_DIR)) mkdir(IMG_DIR);
 
 export async function downloadCard(
   entry: DeckEntry,
@@ -21,7 +22,6 @@ export async function downloadCard(
   if (entry == null) return null;
 
   const data = await loadCardData(entry.id);
-
   const { images } = data;
 
   const imgPath = `/${entry.id}${extname(images.small)}`;
@@ -51,7 +51,8 @@ async function loadCardData(id: string): Promise<Card> {
     }
   }
 
-  const data = await fetchCard(id);
+  // remove pricing data
+  const { tcgplayer, cardmarket, ...data } = await fetchCard(id);
   await writeFile(cachePath, JSON.stringify(data, null, 2));
   return data;
 }
