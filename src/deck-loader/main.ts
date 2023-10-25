@@ -8,6 +8,9 @@ const decksModule = 'virtual:all-decks';
 const resolvedDecksModule = '\0' + decksModule;
 const deckExtensionRegex = /\.deck$/;
 
+const root = process.cwd();
+const DECKS_DIR = `${root}/src/decks`;
+
 export default function deckLoader() {
   let isBuildMode = false;
 
@@ -51,15 +54,12 @@ export default function deckLoader() {
 }
 
 async function allDecksModule() {
-  const root = process.cwd();
-  const decks = (await readdir('./src/decks'))
+  const decks = (await readdir(DECKS_DIR))
     .filter((x) => deckExtensionRegex.test(x))
     .map((x) => x.replace(deckExtensionRegex, ''));
 
   return `
-    ${decks
-      .map((x) => `import ${x} from '${root}/src/decks/${x}.deck';`)
-      .join('\n')}
+    ${decks.map((x) => `import ${x} from '${DECKS_DIR}/${x}.deck';`).join('\n')}
     export default [${decks.join(', ')}];
   `;
 }

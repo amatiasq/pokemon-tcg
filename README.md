@@ -20,9 +20,11 @@ swsh12-17       Vulpix
 swsh12-18       Ninetales
 ```
 
+Any emojis in the notes will be displayed in the UI next to the card.
+
 ## Technical implementation
 
-We could then write this data into `*.deck` files which will be processed by a custom Vite Plugin.
+We could write this data into `*.deck` files which will be processed by a custom Vite Plugin.
 This plugin will process each line, download the information of the card from the [Pokemon TCG API][2] and save it to disk (only once, to prevent overloading the API with requests), and does the same for the image of the card.
 All of this is done at build time so the data and images are available even when offline.
 
