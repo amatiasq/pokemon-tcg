@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import decks from 'virtual:all-decks';
 import { DeckEntry } from '../types/Deck';
 import './App.css';
-import { CardView } from './CardView';
+import { CardData } from './CardData';
 import { DeckView } from './DeckView';
 import { FocusedCard } from './FocusedCard';
 import { set as setFocusedCard } from './FocusedCard.slice';
@@ -20,7 +20,7 @@ export function App() {
         {decks2.map((deck) => (
           <DeckView key={deck.name} deck={deck}>
             {(card) => (
-              <CardView card={card} onClick={onCardClick.bind(null, card)} />
+              <CardData card={card} onClick={onCardClick.bind(null, card)} />
             )}
           </DeckView>
         ))}
@@ -35,7 +35,7 @@ export function App() {
     event: React.MouseEvent<HTMLDivElement>
   ) {
     const target = event.target as HTMLDivElement;
-    const bounds = target.closest('.card')!.getBoundingClientRect();
+    const bounds = target.closest('.card-data')!.getBoundingClientRect();
     const { top, left, width, height } = bounds;
     console.log(bounds);
 

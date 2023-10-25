@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { CardView } from './CardView';
+import { CardData } from './CardData';
 import './FocusedCard.css';
 import { clear as clearFocusedCard } from './FocusedCard.slice';
 import { RootState } from './store';
@@ -27,7 +27,7 @@ export function FocusedCard() {
         '--card-height': `${bounds.height}px`,
       }}
     >
-      <CardView card={card} large />
+      <CardData card={card} large />
     </div>
   );
 }

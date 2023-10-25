@@ -8,7 +8,7 @@
   will-change: background-color;
 }
 
-.focused-card .card .id {
+.focused-card .card-data .id {
   /* never hide the ID */
   visibility: visible !important;
 }
@@ -40,31 +40,31 @@
  * Card grow transition
  */
 
-.focused-card--enter .card {
+.focused-card--enter .card-data {
   top: var(--card-top);
   left: var(--card-left);
   width: var(--card-width);
   height: var(--card-height);
 }
 
-.focused-card--enter-active .card,
-.focused-card--ready .card,
-.focused-card--exit .card {
+.focused-card--enter-active .card-data,
+.focused-card--ready .card-data,
+.focused-card--exit .card-data {
   top: 10px;
   left: 10px;
   width: calc(100vw - 20px);
   height: calc(100vh - 20px);
 }
 
-.focused-card--exit-active .card {
+.focused-card--exit-active .card-data {
   top: var(--card-top);
   left: var(--card-left);
   width: var(--card-width);
   height: var(--card-height);
 }
 
-.focused-card--enter-active .card,
-.focused-card--exit-active .card {
+.focused-card--enter-active .card-data,
+.focused-card--exit-active .card-data {
   transition-duration: 200ms;
   transition-timing-function: ease-in-out;
   transition-property: top, left, width, height;
