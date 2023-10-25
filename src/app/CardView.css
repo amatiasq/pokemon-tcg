@@ -1,5 +1,6 @@
 .card {
   position: relative;
+  outline: 1px solid red;
 }
 
 .card .card-effect {

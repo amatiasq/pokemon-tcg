@@ -13,15 +13,15 @@ export function CardView({
   large?: boolean;
 }) {
   const dispatch = useDispatch();
-  const ref = createRef<HTMLDivElement>();
 
   return (
-    <div
-      ref={ref}
+    <CardEffect
       className="card"
-      onClick={() => {
-        const { top, left, width, height } =
-          ref.current!.getBoundingClientRect();
+      onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+        const target = event.target as HTMLDivElement;
+        const { top, left, width, height } = target
+          .closest('.card')!
+          .getBoundingClientRect();
 
         dispatch(
           setFocusedCard({
@@ -31,21 +31,24 @@ export function CardView({
         );
       }}
     >
-      <CardEffect>
-        {large ? (
-          <ScaledImage small={card.images.small} large={card.images.large} />
-        ) : (
-          <img src={card.images.small} />
-        )}
-        <code className="id">{card.id}</code>
-        <span className="emojis">{card.emojis}</span>
-        {card.count != 1 ? <span className="amount">{card.count}</span> : null}
-      </CardEffect>
-    </div>
+      {large ? (
+        <ScaledImage small={card.images.small} large={card.images.large} />
+      ) : (
+        <img src={card.images.small} />
+      )}
+      <code className="id">{card.id}</code>
+      <span className="emojis">{card.emojis}</span>
+      {card.count != 1 ? <span className="amount">{card.count}</span> : null}
+    </CardEffect>
   );
 }
 
-function CardEffect(props: PropsWithChildren<Record<string, never>>) {
+interface CardEffectProps {
+  className: string;
+  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+}
+
+function CardEffect(props: PropsWithChildren<CardEffectProps>) {
   const ref = createRef<HTMLDivElement>();
 
   function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
@@ -59,21 +62,27 @@ function CardEffect(props: PropsWithChildren<Record<string, never>>) {
       event.touches[0].clientY
     );
   }
+
   function handlePointerMove(
     event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
-    ...pos: [number, number]
+    pointerX: number,
+    pointerY: number
   ) {
     event.preventDefault();
 
-    const card = ref.current!.parentElement!;
+    const card = ref.current!;
     const bounds = card.getBoundingClientRect();
 
-    const [l, t] = pos;
+    // const y = pointerY - bounds.top;
+    // const dx = (100 / bounds.width) * (pointerX - bounds.x);
+    // const dy = (100 / bounds.height) * (pointerY - bounds.y);
+
+    // const [l, t] = pos;
     const h = bounds.height;
     const w = bounds.width;
 
-    const px = Math.abs(Math.floor((100 / w) * l) - 100);
-    const py = Math.abs(Math.floor((100 / h) * t) - 100);
+    const px = Math.abs(Math.floor((100 / w) * pointerX) - 100);
+    const py = Math.abs(Math.floor((100 / h) * pointerY) - 100);
     const pa = 50 - px + (50 - py);
 
     // console.log({
@@ -88,7 +97,7 @@ function CardEffect(props: PropsWithChildren<Record<string, never>>) {
     //   bounds,
     // });
 
-    // math for gradient / background positions
+    // // math for gradient / background positions
     const lp = 50 + (px - 50) / 1.5;
     const tp = 50 + (py - 50) / 1.5;
     const px_spark = 50 + (px - 50) / 7;
@@ -98,26 +107,39 @@ function CardEffect(props: PropsWithChildren<Record<string, never>>) {
     const tx = ((lp - 50) / 1.5) * 0.5;
     // css to apply for active card
 
-    card.style.setProperty('--rotate-x', `${tx}deg`);
-    card.style.setProperty('--rotate-y', `${ty}deg`);
+    // const deg = (val: number) => `${(val - 50 + 360) % 360}deg`;
+
+    // // Intentionally mix x and y
+    // const rotateY = deg(dx);
+    // const rotateX = deg(dy);
+
+    // console.log({ rotateX, dy });
+
+    card.style.setProperty('--rotate-x', `${ty}deg`);
+    card.style.setProperty('--rotate-y', `${tx}deg`);
+
+    console.log({ ty, tx });
   }
 
   function reset() {
+    console.log('reset');
     const card = ref.current!;
-    card.style.transform = '';
+    card.style.setProperty('--rotate-x', `0deg`);
+    card.style.setProperty('--rotate-y', `0deg`);
   }
 
   return (
     <div
       ref={ref}
-      className="card-effect"
+      className={props.className}
+      onClick={props.onClick}
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
       onMouseOut={reset}
       onTouchEnd={reset}
       onTouchCancel={reset}
     >
-      {props.children}
+      <div className="card-effect">{props.children}</div>
     </div>
   );
 }
