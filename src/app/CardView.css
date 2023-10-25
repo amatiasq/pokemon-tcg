@@ -1,24 +1,11 @@
 .card {
   position: relative;
+  display: flex;
+  align-items: center;
+
   --color1: #efb2fb;
   --color2: #acc6f8;
 }
-
-.card .card-effect {
-  display: flex;
-  align-items: center;
-  /* border-radius: 5% / 3.5%;
-  box-shadow: -5px -5px 5px -5px var(--color1), 5px 5px 5px -5px var(--color2),
-    -7px -7px 10px -5px transparent, 7px 7px 10px -5px transparent,
-    0 0 5px 0px rgba(255, 255, 255, 0), 0 55px 35px -20px rgba(0, 0, 0, 0.5); */
-}
-
-/* .card:hover .card-effect {
-  box-shadow: -20px -20px 30px -25px var(--color1),
-    20px 20px 30px -25px var(--color2), -7px -7px 10px -5px var(--color1),
-    7px 7px 10px -5px var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3),
-    0 55px 35px -20px rgba(0, 0, 0, 0.5);
-} */
 
 .card img {
   width: 100%;
@@ -54,63 +41,4 @@
 .card .amount {
   bottom: 5px;
   right: 5px;
-}
-
-.card-effect {
-  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
-  transition: transform 0.5s ease, box-shadow 0.2s ease;
-  transform-origin: center;
-  will-change: transform;
-}
-
-.card-effect:before,
-.card-effect:after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  mix-blend-mode: color-dodge;
-  transition: all 0.33s ease;
-}
-
-.card-effect:before {
-  background-position: 50% 50%;
-  background-position: var(--gradient-position);
-  background-size: 300% 300%;
-  background-image: linear-gradient(
-    115deg,
-    transparent 0%,
-    var(--color1) 25%,
-    transparent 47%,
-    transparent 53%,
-    var(--color2) 75%,
-    transparent 100%
-  );
-  opacity: 0.5;
-  filter: brightness(0.5) contrast(1);
-  z-index: 1;
-}
-
-.card-effect:after {
-  background-image: url(../assets/sparkles.gif), url(../assets/holo.png),
-    linear-gradient(
-      125deg,
-      #ff008450 15%,
-      #fca40040 30%,
-      #ffff0030 40%,
-      #00ff8a20 60%,
-      #00cfff40 70%,
-      #cc4cfa50 85%
-    );
-  background-position: 50% 50%;
-  background-position: var(--sparkle-position);
-  background-size: 160%;
-  background-blend-mode: overlay;
-  z-index: 2;
-  filter: brightness(1) contrast(1);
-  transition: all 0.33s ease;
-  mix-blend-mode: color-dodge;
-  opacity: 0.75;
-  opacity: var(--sparkle-opacity);
 }

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { focusedcardSlice } from './focused-card';
+import { focusedcardSlice } from './FocusedCard.slice';
 
 export const store = configureStore({
   reducer: {

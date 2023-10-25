@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { CardView } from './CardView';
 import './FocusedCard.css';
-import { clear as clearFocusedCard } from './focused-card';
+import { clear as clearFocusedCard } from './FocusedCard.slice';
 import { RootState } from './store';
 import { useTransitionClasses } from './useTransitionClasses';
 
