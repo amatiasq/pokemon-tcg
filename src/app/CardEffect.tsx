@@ -3,7 +3,7 @@ import './CardEffect.css';
 
 export interface CardEffectProps {
   className: string;
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 export function CardEffect(props: PropsWithChildren<CardEffectProps>) {

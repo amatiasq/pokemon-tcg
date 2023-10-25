@@ -1,8 +1,13 @@
-import { Deck } from '../types/Deck';
-import { CardView } from './CardView';
+import { Deck, DeckEntry } from '../types/Deck';
 import './DeckView.css';
 
-export function DeckView({ deck }: { deck: Deck }) {
+export function DeckView({
+  deck,
+  children,
+}: {
+  deck: Deck;
+  children: (card: DeckEntry) => JSX.Element;
+}) {
   const total = deck.cards.reduce((acc, card) => acc + card.count, 0);
 
   return (
@@ -15,9 +20,7 @@ export function DeckView({ deck }: { deck: Deck }) {
 
       <ul className="card-list">
         {deck.cards.map((card) => (
-          <li key={card.id}>
-            <CardView card={card} />
-          </li>
+          <li key={card.id}>{children(card)}</li>
         ))}
       </ul>
     </details>
