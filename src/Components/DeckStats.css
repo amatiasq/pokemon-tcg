@@ -13,3 +13,7 @@
 .deck-stats li {
   list-style: none;
 }
+
+.deck-stats .excluded {
+  opacity: 0.4;
+}
