@@ -1,10 +1,10 @@
-import { useFocusedCard } from '../hooks/useFocusedCard';
+import { clearFocusedCard, useFocusedCard } from '../hooks/useFocusedCard';
 import { useTransitionClass } from '../hooks/useTransitionClasses';
 import { CardData } from './CardData';
 import './FocusedCard.css';
 
 export function FocusedCard() {
-  const { card, bounds, clear: clearFocusedCard } = useFocusedCard();
+  const { card, bounds } = useFocusedCard();
   const transition = useTransitionClass<HTMLDivElement>('focused-card');
 
   if (card === null) {
