@@ -1,28 +1,24 @@
 import { DeckEntry } from 'types:Deck';
 import decks from 'virtual:all-decks';
-import { useFocusedCard } from '../hooks/useFocusedCard';
+import { setFocusedCard } from '../hooks/useFocusedCard';
 import './App.css';
 import { CardData } from './CardData';
+import { DeckBuilder } from './DeckBuilder';
 import { DeckView } from './DeckView';
 import { FocusedCard } from './FocusedCard';
 
-const decks2 = decks;
-// const decks2 = [decks[0]];
-// decks2[0].cards = decks2[0].cards.slice(0, 1);
-
 export function App() {
-  const setFocusedCard = useFocusedCard((state) => state.set);
-
   return (
     <>
       <main>
-        {decks2.map((deck) => (
+        {decks.map((deck) => (
           <DeckView key={deck.name} deck={deck}>
             {(card) => (
               <CardData card={card} onClick={onCardClick.bind(null, card)} />
             )}
           </DeckView>
         ))}
+        <DeckBuilder />
       </main>
 
       <FocusedCard />

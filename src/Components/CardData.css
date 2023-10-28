@@ -1,9 +1,11 @@
 .card-data {
   position: relative;
   display: flex;
+  
+  --padding: 5px;
 }
 
-.card-data :is(.id, .emojis, .amount) {
+.card-data > :not(.card) {
   position: absolute;
   background-color: black;
   color: white;
@@ -13,22 +15,22 @@
 }
 
 .card-data .id {
-  left: 5px;
-  bottom: 5px;
+  left: var(--padding);
+  bottom: var(--padding);
 }
 .card-data:not(:hover) .id {
   visibility: hidden;
 }
 
 .card-data .emojis {
-  top: 5px;
-  right: 5px;
+  top: var(--padding);
+  right: var(--padding);
 }
 .card-data .emojis:empty {
   visibility: hidden;
 }
 
 .card-data .amount {
-  bottom: 5px;
-  right: 5px;
+  bottom: var(--padding);
+  right: var(--padding);
 }

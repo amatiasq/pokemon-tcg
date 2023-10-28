@@ -11,6 +11,7 @@ type Card = any;
 
 const JSON_DIR = './db';
 const IMG_DIR = './public';
+const OFFLINE = process.env.OFFLINE;
 
 if (!existsSync(JSON_DIR)) mkdir(JSON_DIR);
 if (!existsSync(IMG_DIR)) mkdir(IMG_DIR);
@@ -30,7 +31,7 @@ export async function downloadCard(
   // const hiresPath = `/${entry.id}_hires${extname(images.small)}`;
   // downloadToFile(images.large, `${IMG_DIR}/${hiresPath}`);
 
-  if (replaceImages) {
+  if (replaceImages || OFFLINE) {
     images.small = imgPath;
     // images.large = hiresPath;
   }

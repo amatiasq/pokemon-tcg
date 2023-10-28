@@ -1,0 +1,57 @@
+.deck-builder ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-around;
+}
+
+.deck-builder li {
+  list-style: none;
+  width: 10rem;
+}
+
+.card-selector :is(.amount, .id) {
+  /* We're going to replace this */
+  display: none;
+}
+
+.card-selector .used-amount {
+  position: absolute;
+  right: var(--padding);
+  bottom: var(--padding);
+}
+
+.card-selector:hover .used-amount {
+  /* We're going to replace this */
+  display: none;
+}
+
+.card-selector .input {
+  position: absolute;
+  left: var(--padding);
+  right: var(--padding);
+  bottom: var(--padding);
+
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 0;
+  padding-right: 1em;
+}
+
+.card-selector:not(:hover) .input {
+  display: none;
+}
+
+.card-selector .input input {
+  width: 2em;
+  flex: 1;
+  padding: 0.5em;
+  padding-left: 0;
+  text-align: right;
+  border: none;
+  border-radius: 1em 0 0 1em;
+  font-size: 1em;
+}
