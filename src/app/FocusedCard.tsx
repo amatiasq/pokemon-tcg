@@ -1,13 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useFocusedCard } from '../hooks/useFocusedCard';
+import { useTransitionClass } from '../hooks/useTransitionClasses';
 import { CardData } from './CardData';
 import './FocusedCard.css';
-import { clear as clearFocusedCard } from './FocusedCard.slice';
-import { RootState } from './store';
-import { useTransitionClass } from './useTransitionClasses';
 
 export function FocusedCard() {
-  const { card, bounds } = useSelector((state: RootState) => state.focusedCard);
-  const dispatch = useDispatch();
+  const { card, bounds, clear: clearFocusedCard } = useFocusedCard();
   const transition = useTransitionClass<HTMLDivElement>('focused-card');
 
   if (card === null) {
@@ -19,7 +16,7 @@ export function FocusedCard() {
     <div
       ref={transition}
       className="focused-card"
-      onClick={() => dispatch(clearFocusedCard())}
+      onClick={clearFocusedCard}
       style={{
         '--card-top': `${bounds.top}px`,
         '--card-left': `${bounds.left}px`,

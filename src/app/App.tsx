@@ -1,18 +1,17 @@
-import { useDispatch } from 'react-redux';
 import decks from 'virtual:all-decks';
+import { useFocusedCard } from '../hooks/useFocusedCard';
 import { DeckEntry } from '../types/Deck';
 import './App.css';
 import { CardData } from './CardData';
 import { DeckView } from './DeckView';
 import { FocusedCard } from './FocusedCard';
-import { set as setFocusedCard } from './FocusedCard.slice';
 
 const decks2 = decks;
 // const decks2 = [decks[0]];
 // decks2[0].cards = decks2[0].cards.slice(0, 1);
 
 export function App() {
-  const dispatch = useDispatch();
+  const setFocusedCard = useFocusedCard((state) => state.set);
 
   return (
     <>
@@ -39,11 +38,6 @@ export function App() {
     const { top, left, width, height } = bounds;
     console.log(bounds);
 
-    dispatch(
-      setFocusedCard({
-        card,
-        bounds: { top, left, width, height },
-      })
-    );
+    setFocusedCard(card, { top, left, width, height });
   }
 }
