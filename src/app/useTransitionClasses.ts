@@ -1,6 +1,9 @@
 import { createRef, useMemo } from 'react';
 
-export function useTransitionClasses<T extends HTMLElement>(className: string) {
+export function useTransitionClass<T extends HTMLElement>(
+  className: string,
+  { activeClass = '--active' } = {}
+) {
   const ref = createRef<T>();
 
   return useMemo(() => {
@@ -25,16 +28,11 @@ export function useTransitionClasses<T extends HTMLElement>(className: string) {
     };
 
     function handleNodeAppear(node: T) {
-      node.addEventListener('transitionend', () => {
-        removeAllClasses(node);
-        node.classList.add(`${className}--ready`);
-      });
-
-      removeAllClasses(node);
-      node.classList.add(`${className}--enter`);
+      // just in case it was there
+      node.classList.remove(`${className}${activeClass}`);
 
       setTimeout(() => {
-        node.classList.add(`${className}--enter-active`);
+        node.classList.add(`${className}${activeClass}`);
       }, 0);
     }
 
@@ -44,20 +42,11 @@ export function useTransitionClasses<T extends HTMLElement>(className: string) {
 
       clone.addEventListener('transitionend', () => clone.remove());
 
-      removeAllClasses(clone);
-      clone.classList.add(`${className}--exit`);
+      clone.classList.add(`${className}${activeClass}`);
 
       setTimeout(() => {
-        clone.classList.add(`${className}--exit-active`);
+        clone.classList.remove(`${className}${activeClass}`);
       }, 0);
     }
-
-    function removeAllClasses(node: T) {
-      node.classList.remove(`${className}--enter`);
-      node.classList.remove(`${className}--enter-active`);
-      node.classList.remove(`${className}--ready`);
-      node.classList.remove(`${className}--exit`);
-      node.classList.remove(`${className}--exit-active`);
-    }
-  }, [className]);
+  }, [className, activeClass]);
 }

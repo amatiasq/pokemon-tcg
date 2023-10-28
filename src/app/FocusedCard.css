@@ -5,7 +5,23 @@
   max-height: 100dvh;
   max-width: 100dvw;
   box-sizing: border-box;
+  background-color: transparent;
+
   will-change: background-color;
+  transition: background-color 200ms ease-in-out;
+}
+
+.focused-card .card-data {
+  top: var(--card-top);
+  left: var(--card-left);
+  width: var(--card-width);
+  height: var(--card-height);
+  font-size: 1em;
+
+  will-change: top, left, width, height, font-size;
+  transition-property: top, left, width, height, font-size;
+  transition-timing-function: ease-in-out;
+  transition-duration: 200ms;
 }
 
 .focused-card .card-data .id {
@@ -14,72 +30,17 @@
 }
 
 /*
- * Background transition
+ * Transitions
  */
 
-.focused-card--enter {
-  background-color: transparent;
-}
-
-.focused-card--enter-active,
-.focused-card--ready,
-.focused-card--exit {
+.focused-card--active {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.focused-card--exit-active {
-  background-color: transparent;
-}
-
-.focused-card--exit-active,
-.focused-card--exit-active {
-  transition: background-color 200ms ease-in-out;
-}
-
-/*
- * Card grow transition
- */
-
-.focused-card--enter .card-data {
-  top: var(--card-top);
-  left: var(--card-left);
-  width: var(--card-width);
-  height: var(--card-height);
-}
-.focused-card--enter .card-data .id {
-  font-size: 1em;
-}
-
-.focused-card--enter-active .card-data,
-.focused-card--ready .card-data,
-.focused-card--exit .card-data {
+.focused-card--active .card-data {
   top: 10px;
   left: 10px;
   width: calc(100dvw - 20px);
   height: calc(100dvh - 20px);
-}
-.focused-card--enter-active .card-data .id,
-.focused-card--ready .card-data .id,
-.focused-card--exit .card-data .id {
   font-size: 2em;
-}
-
-.focused-card--exit-active .card-data {
-  top: var(--card-top);
-  left: var(--card-left);
-  width: var(--card-width);
-  height: var(--card-height);
-}
-.focused-card--enter .card-data .id {
-  font-size: 1em;
-}
-
-.focused-card--enter-active .card-data,
-.focused-card--exit-active .card-data {
-  transition-duration: 200ms;
-  transition-timing-function: ease-in-out;
-  transition-property: top, left, width, height;
-}
-.focused-card--enter .card-data .id {
-  transition: font-size 200ms ease-in-out;
 }

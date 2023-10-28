@@ -3,12 +3,12 @@ import { CardData } from './CardData';
 import './FocusedCard.css';
 import { clear as clearFocusedCard } from './FocusedCard.slice';
 import { RootState } from './store';
-import { useTransitionClasses } from './useTransitionClasses';
+import { useTransitionClass } from './useTransitionClasses';
 
 export function FocusedCard() {
   const { card, bounds } = useSelector((state: RootState) => state.focusedCard);
   const dispatch = useDispatch();
-  const transition = useTransitionClasses<HTMLDivElement>('focused-card');
+  const transition = useTransitionClass<HTMLDivElement>('focused-card');
 
   if (card === null) {
     transition.remove();
