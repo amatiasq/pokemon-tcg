@@ -1,6 +1,6 @@
+import { DeckEntry } from 'types:Deck';
 import decks from 'virtual:all-decks';
 import { useFocusedCard } from '../hooks/useFocusedCard';
-import { DeckEntry } from '../types/Deck';
 import './App.css';
 import { CardData } from './CardData';
 import { DeckView } from './DeckView';

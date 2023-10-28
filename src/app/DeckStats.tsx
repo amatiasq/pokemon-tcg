@@ -1,4 +1,4 @@
-import { DeckEntry } from '../types/Deck';
+import { DeckEntry } from 'types:Deck';
 import './DeckStats.css';
 
 export function DeckStats({ cards }: { cards: DeckEntry[] }) {

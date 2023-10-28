@@ -1,9 +1,5 @@
-declare module '*.deck' {
-  const deck: Deck;
-  export default deck;
-}
-
 declare module 'virtual:all-decks' {
+  import { Deck } from 'types:Deck';
   const decks: Deck[];
   export default decks;
 }

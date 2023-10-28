@@ -1,4 +1,4 @@
-import { DeckEntry } from '../types/Deck';
+import { DeckEntry } from 'types:Deck';
 import './CardData.css';
 import { CardView } from './CardView';
 

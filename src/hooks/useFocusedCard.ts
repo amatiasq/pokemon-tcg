@@ -1,5 +1,5 @@
+import { DeckEntry } from 'types:Deck';
 import { create } from 'zustand';
-import { DeckEntry } from '../types/Deck';
 
 const VOID_BOUNDS = { top: 0, left: 0, width: 0, height: 0 };
 

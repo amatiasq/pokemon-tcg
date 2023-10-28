@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Card } from '../types/Card';
+import { Card } from 'types:Card';
 import { CardEffect } from './CardEffect';
 import './CardView.css';
 

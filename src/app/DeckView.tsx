@@ -1,4 +1,4 @@
-import { Deck, DeckEntry } from '../types/Deck';
+import { Deck, DeckEntry } from 'types:Deck';
 import './DeckView.css';
 
 export function DeckView({
