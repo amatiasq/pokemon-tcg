@@ -1,3 +1,20 @@
+aside {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  max-width: 3em;
+  overflow: hidden;
+  gap: 1em;
+}
+
+aside a {
+  background-color: var(--neutral-dark);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  color: var(--neutral-light);
+}
+
 main {
   width: 100dvw;
   height: 100dvh;
