@@ -26,6 +26,16 @@ export function DeckBuilder() {
         : a.supertype.localeCompare(b.supertype)
     );
 
+  const maxLength = Math.max(...usedIds.map((x) => x.length));
+  const code = deck.cards
+    .map((card) => {
+      const id = card.id.padEnd(maxLength, ' ');
+      const amount =
+        card.selected === 1 ? '   ' : `x${card.selected}`.padEnd(3, ' ');
+      return `${id} ${amount}  ${card.name} ${card.emojis}`;
+    })
+    .join('\n');
+
   return (
     <div className="deck-builder">
       <h1>Deck Builder {total ? `(${total})` : null}</h1>
@@ -36,6 +46,14 @@ export function DeckBuilder() {
           </li>
         ))}
       </ul>
+      <textarea
+        rows={deck.cards.length}
+        value={code}
+        readOnly
+        onClick={() => {
+          navigator.clipboard.writeText(code);
+        }}
+      />
       <hr />
       <ul>
         {unused.map((card) => (

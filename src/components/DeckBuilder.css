@@ -12,6 +12,15 @@
   width: 10rem;
 }
 
+.deck-builder textarea {
+  width: 100dvw;
+  margin: 1em 0;
+  padding: 2em;
+  font-size: 1.5em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
 .card-selector :is(.amount, .id) {
   /* We're going to replace this */
   display: none;
