@@ -21,6 +21,10 @@ export default function deckLoader() {
       isBuildMode = command !== 'serve';
     },
 
+    buildStart() {
+      this.addWatchFile(DECKS_DIR);
+    },
+
     resolveId(id) {
       if (id === decksModule) {
         return resolvedDecksModule;
