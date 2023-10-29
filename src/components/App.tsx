@@ -1,6 +1,4 @@
-import { createHashHistory } from 'history';
 import { ComponentChild } from 'preact';
-import Router, { CustomHistory } from 'preact-router';
 import decks from 'virtual:all-decks';
 import { setFocusedCard } from '../hooks/useFocusedCard';
 import './App.css';
@@ -12,18 +10,18 @@ import { FocusedCard } from './FocusedCard';
 export function App() {
   return (
     <>
-      <aside>
+      {/* <aside>
         <a href="/">Decks</a>
         <a href="/build">Build</a>
         <a href="/filters">Filters</a>
-      </aside>
+      </aside> */}
 
       <main>
-        <Router history={createHashHistory() as unknown as CustomHistory}>
-          <Path path="/" component={<Decks />} />
-          <Path path="/build" component={<DeckBuilder />} />
-          <Path path="/filters" component={<p>TODO</p>} />
-        </Router>
+        {/* <Router history={createHashHistory() as unknown as CustomHistory}> */}
+        <Path path="/" component={<Decks />} />
+        <Path path="/build" component={<DeckBuilder />} />
+        {/* <Path path="/filters" component={<p>TODO</p>} /> */}
+        {/* </Router> */}
       </main>
 
       <FocusedCard />

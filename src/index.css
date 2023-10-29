@@ -83,8 +83,8 @@ body {
 
   font-family: 'Arial', sans-serif; /* Change to a font of your choice */
   font-size: 16px;
-  color: var(--neutral-dark);
+  /* color: var(--neutral-dark); */
   line-height: 1.5;
 
-  background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+  /* background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%); */
 }
