@@ -15,9 +15,16 @@ const count = (list: DeckBuild['cards']) =>
 
 export function DeckBuilder() {
   const deck = useDeckBuilder();
-  const usedIds = deck.cards.map((x) => x.id);
-  const unused = cards.filter((x) => !usedIds.includes(x.id));
   const total = count(deck.cards);
+  const usedIds = deck.cards.map((x) => x.id);
+
+  const unused = cards
+    .filter((x) => !usedIds.includes(x.id))
+    .sort((a, b) =>
+      a.supertype === b.supertype
+        ? a.name.localeCompare(b.name)
+        : a.supertype.localeCompare(b.supertype)
+    );
 
   return (
     <div className="deck-builder">
@@ -51,7 +58,7 @@ function DeckBuilderCard({ card }: { card: SelectableCard }) {
         setFocusedCard(card, target.closest('.card-selector')!);
       }}
     >
-      <div className="input">
+      <div className="input" onClick={(event) => event.stopPropagation()}>
         <button
           disabled={card.selected <= 0}
           onClick={() => setCardCount(card, card.selected - 1)}
@@ -63,6 +70,7 @@ function DeckBuilderCard({ card }: { card: SelectableCard }) {
           min="0"
           max={card.count}
           value={card.selected ?? 0}
+          onClick={(event) => (event.target as HTMLInputElement).select()}
           onChange={(event) =>
             setCardCount(card, parseInt(event.target.value, 10))
           }

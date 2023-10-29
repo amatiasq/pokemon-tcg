@@ -67,11 +67,11 @@
 }
 
 @media (min-width: 768px) {
-  .card-selector:not(:hover) .used-amount {
+  .card-selector:not(:hover):not(:has(.input :focus)) .used-amount {
     display: block;
   }
 
-  .card-selector:not(:hover) .input {
+  .card-selector:not(:hover) .input:not(:has(:focus)) {
     display: none;
   }
 }
