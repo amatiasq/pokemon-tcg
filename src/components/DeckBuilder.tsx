@@ -46,15 +46,20 @@ export function DeckBuilder() {
           </li>
         ))}
       </ul>
-      <textarea
-        rows={deck.cards.length}
-        value={code}
-        readOnly
-        onClick={() => {
-          navigator.clipboard.writeText(code);
-        }}
-      />
-      <hr />
+
+      {code ? (
+        <>
+          <textarea
+            rows={deck.cards.length}
+            value={code}
+            readOnly
+            onClick={() => {
+              navigator.clipboard.writeText(code);
+            }}
+          />
+          <hr />
+        </>
+      ) : null}
       <ul>
         {unused.map((card) => (
           <li key={card.key}>

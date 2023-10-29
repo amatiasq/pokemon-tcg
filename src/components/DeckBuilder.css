@@ -57,13 +57,6 @@
   background-color: transparent;
 }
 
-.card-selector .input button:first-of-type {
-  border-radius: 1em 0 0 1em;
-}
-.card-selector .input button:last-of-type {
-  border-radius: 0 1em 1em 0;
-}
-
 .card-selector .input span {
   padding: 0 0.5em;
 }
