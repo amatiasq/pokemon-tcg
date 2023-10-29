@@ -1,8 +1,13 @@
 import { Deck, DeckEntry } from 'types:Deck';
 import { create } from 'zustand';
 
+export interface SelectableCard extends DeckEntry {
+  key: string;
+  selected: number;
+}
+
 export interface DeckBuild extends Deck {
-  cards: (DeckEntry & { selected: number; key: string })[];
+  cards: SelectableCard[];
 }
 
 export const useDeckBuilder = create<DeckBuild>(() => ({
@@ -12,9 +17,7 @@ export const useDeckBuilder = create<DeckBuild>(() => ({
 
 const { setState } = useDeckBuilder;
 
-export function setCardCount(card: DeckEntry & { key: string }, count: number) {
-  console.log('Set card count');
-
+export function setCardCount(card: SelectableCard, count: number) {
   setState(({ cards }) => {
     if (count === 0) {
       return { cards: cards.filter((x) => x.id !== card.id) };

@@ -1,14 +1,14 @@
-import { DeckEntry } from 'types:Deck';
 import decks from 'virtual:all-decks';
 import {
   DeckBuild,
+  SelectableCard,
   setCardCount,
   useDeckBuilder,
 } from '../hooks/useDeckBuilder';
 import { CardData } from './CardData';
 import './DeckBuilder.css';
 
-const cards = countCards();
+const cards = deckBuilderCards();
 const count = (list: DeckBuild['cards']) =>
   list.reduce((acc, card) => acc + card.selected, 0);
 
@@ -40,11 +40,7 @@ export function DeckBuilder() {
   );
 }
 
-function DeckBuilderCard({
-  card,
-}: {
-  card: DeckEntry & { key: string; selected?: number };
-}) {
+function DeckBuilderCard({ card }: { card: SelectableCard }) {
   const handleClick = card.selected ? undefined : () => setCardCount(card, 1);
 
   return (
@@ -68,8 +64,8 @@ function DeckBuilderCard({
   );
 }
 
-function countCards() {
-  const cards: Record<string, DeckEntry & { key: string }> = {};
+function deckBuilderCards() {
+  const cards: Record<string, SelectableCard> = {};
 
   for (const deck of decks) {
     for (const card of deck.cards) {
@@ -78,7 +74,7 @@ function countCards() {
       if (cards[key]) {
         cards[key].count += card.count;
       } else {
-        cards[key] = { ...card, key };
+        cards[key] = { ...card, key, selected: 0 };
       }
     }
   }
