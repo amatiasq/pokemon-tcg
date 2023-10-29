@@ -102,7 +102,7 @@ function DeckBuilderCard({ card }: { card: SelectableCard }) {
         </button>
       </div>
 
-      <span className="used-amount">{card.selected ?? card.count}</span>
+      <span className="used-amount">{card.selected || card.count}</span>
     </CardData>
   );
 }
