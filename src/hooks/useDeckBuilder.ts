@@ -2,7 +2,6 @@ import { Deck, DeckEntry } from 'types:Deck';
 import { create } from 'zustand';
 
 export interface SelectableCard extends DeckEntry {
-  key: string;
   selected: number;
 }
 

@@ -1,13 +1,14 @@
 declare module 'types:Deck' {
-  import { Card } from 'types:Card';
+  import { ApiCard } from 'types:Card';
 
   export interface Deck {
     name: string;
     cards: DeckEntry[];
   }
 
-  export interface DeckEntry extends Card {
+  export interface DeckEntry extends ApiCard {
     id: string;
+    key: string;
     count: number;
     notes: string;
     emojis: string[];

@@ -1,4 +1,3 @@
-import { DeckEntry } from 'types:Deck';
 import decks from 'virtual:all-decks';
 import { setFocusedCard } from '../hooks/useFocusedCard';
 import './App.css';
@@ -14,7 +13,13 @@ export function App() {
         {decks.map((deck) => (
           <DeckView key={deck.name} deck={deck}>
             {(card) => (
-              <CardData card={card} onClick={onCardClick.bind(null, card)} />
+              <CardData
+                card={card}
+                onClick={(event) => {
+                  const target = event.target as HTMLDivElement;
+                  setFocusedCard(card, target.closest('.card-data')!);
+                }}
+              />
             )}
           </DeckView>
         ))}
@@ -24,16 +29,4 @@ export function App() {
       <FocusedCard />
     </>
   );
-
-  function onCardClick(
-    card: DeckEntry,
-    event: React.MouseEvent<HTMLDivElement>
-  ) {
-    const target = event.target as HTMLDivElement;
-    const bounds = target.closest('.card-data')!.getBoundingClientRect();
-    const { top, left, width, height } = bounds;
-    console.log(bounds);
-
-    setFocusedCard(card, { top, left, width, height });
-  }
 }

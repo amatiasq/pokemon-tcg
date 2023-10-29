@@ -20,11 +20,14 @@ export function parseDeck(data: string): (DeckEntry | null)[] {
 
       const [, id, countStr, rest] = match;
       const count = countStr ? parseInt(countStr.slice(2)) : 1;
+
       const emojis = [...new Intl.Segmenter().segment(rest)]
         .map((x) => x.segment)
         .filter((x) => /\p{Emoji}/gu.test(x));
-      const notes = emojis.reduce((a, x) => a.replace(x, ''), rest).trim();
 
-      return { id, count, notes, emojis };
+      const notes = emojis.reduce((a, x) => a.replace(x, ''), rest).trim();
+      const key = `${id}-${emojis.join('')}`;
+
+      return { id, key, count, notes, emojis };
     });
 }

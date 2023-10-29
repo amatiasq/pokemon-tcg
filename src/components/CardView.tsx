@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Card } from 'types:Card';
+import { ApiCard } from 'types:Card';
 import { CardEffect } from './CardEffect';
 import './CardView.css';
 
 const hasEffects = `${document.location}`.includes('effects');
 const MaybeEffects = hasEffects ? CardEffect : 'div';
 
-export function CardView({ card, large }: { card: Card; large?: boolean }) {
+export function CardView({ card, large }: { card: ApiCard; large?: boolean }) {
   return (
     <MaybeEffects className="card">
       {large ? (

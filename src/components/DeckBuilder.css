@@ -23,8 +23,7 @@
   bottom: var(--padding);
 }
 
-.card-selector:hover .used-amount {
-  /* We're going to replace this */
+.card-selector .used-amount {
   display: none;
 }
 
@@ -36,13 +35,25 @@
 
   display: flex;
   align-items: center;
-  gap: 1em;
   padding: 0;
-  padding-right: 1em;
+  border-radius: 1em;
 }
 
-.card-selector:not(:hover) .input {
-  display: none;
+.card-selector .input button {
+  align-self: stretch;
+  padding: 0 0.8em;
+  background-color: transparent;
+}
+
+.card-selector .input button:first-of-type {
+  border-radius: 1em 0 0 1em;
+}
+.card-selector .input button:last-of-type {
+  border-radius: 0 1em 1em 0;
+}
+
+.card-selector .input span {
+  padding: 0 0.5em;
 }
 
 .card-selector .input input {
@@ -52,6 +63,31 @@
   padding-left: 0;
   text-align: right;
   border: none;
-  border-radius: 1em 0 0 1em;
   font-size: 1em;
+}
+
+@media (min-width: 768px) {
+  .card-selector:not(:hover) .used-amount {
+    display: block;
+  }
+
+  .card-selector:not(:hover) .input {
+    display: none;
+  }
+}
+
+/*
+ * Disable arrows in number input
+ */
+
+/* Chrome, Safari, Edge, Opera */
+.card-selector input::-webkit-outer-spin-button,
+.card-selector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.card-selector input[type='number'] {
+  -moz-appearance: textfield;
 }

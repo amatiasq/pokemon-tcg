@@ -15,8 +15,10 @@ export const useFocusedCard = create<FocusedCard>(() => ({
 
 const { setState } = useFocusedCard;
 
-export function setFocusedCard(card: DeckEntry, bounds: FocusedCard['bounds']) {
-  setState({ card, bounds });
+export function setFocusedCard(card: DeckEntry, element: HTMLElement) {
+  const bounds = element.getBoundingClientRect();
+  const { top, left, width, height } = bounds;
+  setState({ card, bounds: { top, left, width, height } });
 }
 
 export function clearFocusedCard() {

@@ -5,6 +5,7 @@ import {
   setCardCount,
   useDeckBuilder,
 } from '../hooks/useDeckBuilder';
+import { setFocusedCard } from '../hooks/useFocusedCard';
 import { CardData } from './CardData';
 import './DeckBuilder.css';
 
@@ -41,11 +42,22 @@ export function DeckBuilder() {
 }
 
 function DeckBuilderCard({ card }: { card: SelectableCard }) {
-  const handleClick = card.selected ? undefined : () => setCardCount(card, 1);
-
   return (
-    <CardData card={card} className="card-selector" onClick={handleClick}>
+    <CardData
+      card={card}
+      className="card-selector"
+      onClick={(event) => {
+        const target = event.target as HTMLElement;
+        setFocusedCard(card, target.closest('.card-selector')!);
+      }}
+    >
       <div className="input">
+        <button
+          disabled={card.selected <= 0}
+          onClick={() => setCardCount(card, card.selected - 1)}
+        >
+          -
+        </button>
         <input
           type="number"
           min="0"
@@ -55,11 +67,16 @@ function DeckBuilderCard({ card }: { card: SelectableCard }) {
             setCardCount(card, parseInt(event.target.value, 10))
           }
         />
-        <span>/</span>
-        <span>{card.count}</span>
+        <span>/ {card.count}</span>
+        <button
+          disabled={card.selected >= card.count}
+          onClick={() => setCardCount(card, card.selected + 1)}
+        >
+          +
+        </button>
       </div>
 
-      <span className="used-amount">{card.selected ?? 0}</span>
+      <span className="used-amount">{card.selected ?? card.count}</span>
     </CardData>
   );
 }
@@ -69,12 +86,10 @@ function deckBuilderCards() {
 
   for (const deck of decks) {
     for (const card of deck.cards) {
-      const key = `${card.id}-${card.emojis.join('-')}`;
-
-      if (cards[key]) {
-        cards[key].count += card.count;
+      if (cards[card.key]) {
+        cards[card.key].count += card.count;
       } else {
-        cards[key] = { ...card, key, selected: 0 };
+        cards[card.key] = { ...card, selected: 0 };
       }
     }
   }
