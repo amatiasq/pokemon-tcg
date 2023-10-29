@@ -28,7 +28,7 @@ We could write this data into `*.deck` files which will be processed by a custom
 This plugin will process each line, download the information of the card from the [Pokemon TCG API][2] and save it to disk (only once, to prevent overloading the API with requests), and does the same for the image of the card.
 All of this is done at build time so the data and images are available even when offline.
 
-This data is then injected into a React application that shows it in a webpage.
+This data is then injected into a Preact application that shows it in a webpage.
 
 [1]: https://pokemoncard.io/deckbuilder/
 [2]: https://pokemontcg.io/

@@ -19,7 +19,7 @@ export function DeckView({
   const visible = count(cards);
 
   return (
-    <details className="deck" key={deck.name}>
+    <details class="deck" key={deck.name}>
       <summary>
         <h2>
           {deck.name}{' '}
@@ -31,7 +31,7 @@ export function DeckView({
 
       <DeckStats cards={deck.cards} />
 
-      <ul className="card-list">
+      <ul class="card-list">
         {cards.map((card) => (
           <li key={card.id}>{children(card)}</li>
         ))}

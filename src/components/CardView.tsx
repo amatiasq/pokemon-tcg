@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'preact/hooks';
 import { ApiCard } from 'types:Card';
 import { CardEffect } from './CardEffect';
 import './CardView.css';
@@ -8,7 +8,7 @@ const MaybeEffects = hasEffects ? CardEffect : 'div';
 
 export function CardView({ card, large }: { card: ApiCard; large?: boolean }) {
   return (
-    <MaybeEffects className="card">
+    <MaybeEffects class="card">
       {large ? (
         <ScaledImage small={card.images.small} large={card.images.large} />
       ) : (

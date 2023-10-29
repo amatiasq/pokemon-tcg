@@ -1,6 +1,6 @@
-import 'react';
+import 'preact/compat';
 
-declare module 'react' {
+declare module 'preact/compat' {
   interface CSSProperties {
     [key: `--${string}`]: string | number;
   }

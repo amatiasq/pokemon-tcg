@@ -1,9 +1,6 @@
 import { createRef, useMemo } from 'react';
 
-export function useTransitionClass<T extends HTMLElement>(
-  className: string,
-  { activeClass = '--active' } = {}
-) {
+export function useTransitionClass<T extends HTMLElement>(activeClass: string) {
   const ref = createRef<T>();
 
   return useMemo(() => {
@@ -29,10 +26,10 @@ export function useTransitionClass<T extends HTMLElement>(
 
     function handleNodeAppear(node: T) {
       // just in case it was there
-      node.classList.remove(`${className}${activeClass}`);
+      node.classList.remove(`${activeClass}`);
 
       setTimeout(() => {
-        node.classList.add(`${className}${activeClass}`);
+        node.classList.add(`${activeClass}`);
       }, 0);
     }
 
@@ -42,11 +39,11 @@ export function useTransitionClass<T extends HTMLElement>(
 
       clone.addEventListener('transitionend', () => clone.remove());
 
-      clone.classList.add(`${className}${activeClass}`);
+      clone.classList.add(`${activeClass}`);
 
       setTimeout(() => {
-        clone.classList.remove(`${className}${activeClass}`);
+        clone.classList.remove(`${activeClass}`);
       }, 0);
     }
-  }, [className, activeClass]);
+  }, [activeClass]);
 }

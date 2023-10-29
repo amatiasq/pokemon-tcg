@@ -1,19 +1,20 @@
-import { PropsWithChildren, createRef } from 'react';
+import { ComponentChildren, createRef } from 'preact';
 import './CardEffect.css';
 
 export interface CardEffectProps {
-  className: string;
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  class: string;
+  children: ComponentChildren;
+  onClick?: (event: MouseEvent) => void;
 }
 
-export function CardEffect(props: PropsWithChildren<CardEffectProps>) {
+export function CardEffect(props: CardEffectProps) {
   const ref = createRef<HTMLDivElement>();
 
-  function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
+  function handleMouseMove(event: MouseEvent) {
     handlePointerMove(event, event.clientX, event.clientY);
   }
 
-  function handleTouchMove(event: React.TouchEvent<HTMLDivElement>) {
+  function handleTouchMove(event: TouchEvent) {
     handlePointerMove(
       event,
       event.touches[0].clientX,
@@ -22,7 +23,7 @@ export function CardEffect(props: PropsWithChildren<CardEffectProps>) {
   }
 
   function handlePointerMove(
-    event: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+    event: MouseEvent | TouchEvent,
     pointerX: number,
     pointerY: number
   ) {
@@ -65,7 +66,7 @@ export function CardEffect(props: PropsWithChildren<CardEffectProps>) {
   return (
     <div
       ref={ref}
-      className={props.className}
+      class={props.class}
       onClick={props.onClick}
       onMouseMove={handleMouseMove}
       onTouchMove={handleTouchMove}
@@ -73,7 +74,7 @@ export function CardEffect(props: PropsWithChildren<CardEffectProps>) {
       onTouchEnd={reset}
       onTouchCancel={reset}
     >
-      <div className="card-effect">{props.children}</div>
+      <div class="card-effect">{props.children}</div>
     </div>
   );
 }

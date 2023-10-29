@@ -14,9 +14,9 @@ export function DeckStats({ cards }: { cards: DeckEntry[] }) {
   }
 
   return (
-    <ul className="deck-stats">
+    <ul class="deck-stats">
       {Object.entries(emojis).map(([emoji, count]) => (
-        <li key={emoji} className={isExcluded(emoji) ? 'excluded' : ''}>
+        <li key={emoji} class={isExcluded(emoji) ? 'excluded' : ''}>
           <button onClick={() => toggleFilter(emoji)}>
             {emoji} ({count})
           </button>

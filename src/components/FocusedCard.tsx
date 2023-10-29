@@ -5,7 +5,7 @@ import './FocusedCard.css';
 
 export function FocusedCard() {
   const { card, bounds } = useFocusedCard();
-  const transition = useTransitionClass<HTMLDivElement>('focused-card');
+  const transition = useTransitionClass<HTMLDivElement>('focused-card--active');
 
   if (card === null) {
     transition.remove();
@@ -15,7 +15,7 @@ export function FocusedCard() {
   return (
     <div
       ref={transition}
-      className="focused-card"
+      class="focused-card"
       onClick={clearFocusedCard}
       style={{
         '--card-top': `${bounds.top}px`,

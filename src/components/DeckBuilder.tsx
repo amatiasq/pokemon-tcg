@@ -37,7 +37,7 @@ export function DeckBuilder() {
     .join('\n');
 
   return (
-    <div className="deck-builder">
+    <div class="deck-builder">
       <h1>Deck Builder {total ? `(${total})` : null}</h1>
       <ul>
         {deck.cards.map((card) => (
@@ -67,16 +67,18 @@ export function DeckBuilder() {
 }
 
 function DeckBuilderCard({ card }: { card: SelectableCard }) {
+  const target = (event: Event) => event.target as HTMLInputElement;
+
   return (
     <CardData
       card={card}
-      className="card-selector"
+      class="card-selector"
       onClick={(event) => {
         const target = event.target as HTMLElement;
         setFocusedCard(card, target.closest('.card-selector')!);
       }}
     >
-      <div className="input" onClick={(event) => event.stopPropagation()}>
+      <div class="input" onClick={(event) => event.stopPropagation()}>
         <button
           disabled={card.selected <= 0}
           onClick={() => setCardCount(card, card.selected - 1)}
@@ -88,9 +90,9 @@ function DeckBuilderCard({ card }: { card: SelectableCard }) {
           min="0"
           max={card.count}
           value={card.selected ?? 0}
-          onClick={(event) => (event.target as HTMLInputElement).select()}
+          onClick={(event) => target(event).select()}
           onChange={(event) =>
-            setCardCount(card, parseInt(event.target.value, 10))
+            setCardCount(card, parseInt(target(event).value, 10))
           }
         />
         <span>/ {card.count}</span>
@@ -102,7 +104,7 @@ function DeckBuilderCard({ card }: { card: SelectableCard }) {
         </button>
       </div>
 
-      <span className="used-amount">{card.selected || card.count}</span>
+      <span class="used-amount">{card.selected || card.count}</span>
     </CardData>
   );
 }
