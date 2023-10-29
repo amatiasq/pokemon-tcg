@@ -19,6 +19,9 @@
   font-size: 1.5em;
   box-sizing: border-box;
   cursor: pointer;
+  border: none;
+  overflow: hidden;
+  resize: none;
 }
 
 .card-selector :is(.amount, .id) {
