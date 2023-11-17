@@ -21,7 +21,7 @@
 .deck > summary small::after {
   display: inline-block;
   margin-left: 1em;
-  content: '▶';
+  /* content: '▶'; */
   transform: rotate(0deg);
   transition: transform 0.2s ease-in-out;
 }

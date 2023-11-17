@@ -1,22 +1,53 @@
-aside {
-  display: flex;
-  flex-direction: column;
-  white-space: nowrap;
-  max-width: 3em;
-  overflow: hidden;
-  gap: 1em;
-}
-
-aside a {
-  background-color: var(--neutral-dark);
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  color: var(--neutral-light);
-}
-
 main {
   width: 100dvw;
   height: 100dvh;
   overflow-x: auto;
+}
+
+svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+:root body {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  background-color: white;
+  color: black;
+}
+
+table {
+  width: 400px;
+}
+
+.aaa {
+  max-width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.potato {
+  display: flex;
+
+  .card {
+    width: 80px !important;
+  }
+
+  .amount {
+    color: black !important;
+  }
+
+  & h2 {
+    margin: 0;
+    font-size: 0.5rem;
+  }
+  & h4 {
+    font-size: 0.2rem;
+    margin: 0;
+  }
 }

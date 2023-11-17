@@ -8,21 +8,60 @@ import { CardData } from './CardData';
 import { DeckBuilder } from './DeckBuilder';
 import { DeckView } from './DeckView';
 import { FocusedCard } from './FocusedCard';
+import { Sidebar } from './Sidebar';
 
 export function App() {
+  console.log(decks);
+  const deck = decks.filter(
+    (x) => x.name === 'TorneoMati' // ||
+    // x.name === 'TorneoFacu'
+  )!;
+
   return (
     <>
-      <aside>
-        <a href="/">Decks</a>
-        <a href="/build">Build</a>
-        <a href="/filters">Filters</a>
-      </aside>
+      {deck.map((deck) => (
+        <>
+          <table>
+            <thead>
+              <tr>
+                <th>QTY</th>
+                <th>ID</th>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {deck.cards.map((card) => (
+                <tr key={card.id}>
+                  <td>{card.count}x</td>
+                  <td>{card.id}</td>
+                  <td>{card.name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <ul class="aaa">
+            {deck.cards.map((card) => (
+              <li key={card.id} className="potato">
+                <CardData card={card} />
+              </li>
+            ))}
+          </ul>
+        </>
+      ))}
+    </>
+  );
+}
+
+export function App2() {
+  return (
+    <>
+      <Sidebar />
 
       <main>
         <Router history={createHashHistory() as unknown as CustomHistory}>
           <Path path="/" component={<Decks />} />
           <Path path="/build" component={<DeckBuilder />} />
-          <Path path="/filters" component={<p>TODO</p>} />
+          <Path path="/filters" component={<></>} />
         </Router>
       </main>
 

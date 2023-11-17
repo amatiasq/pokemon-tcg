@@ -22,7 +22,7 @@ export function CardData({
     <div class={`card-data ${props.class ?? ''}`} onClick={onClick}>
       <CardView card={card} large={large} />
       <code class="id">{card.id}</code>
-      <span class="emojis">{card.emojis}</span>
+      {/* <span class="emojis">{card.emojis}</span> */}
       {card.count != 1 ? <span class="amount">{card.count}</span> : null}
       {children}
     </div>

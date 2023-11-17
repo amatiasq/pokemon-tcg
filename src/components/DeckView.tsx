@@ -6,9 +6,11 @@ import './DeckView.css';
 export function DeckView({
   deck,
   children,
+  open = false,
 }: {
   deck: Deck;
   children: (card: DeckEntry) => JSX.Element;
+  open?: boolean;
 }) {
   const { isExcluded } = useCardFilters();
   const count = (list: DeckEntry[]) =>
@@ -19,7 +21,7 @@ export function DeckView({
   const visible = count(cards);
 
   return (
-    <details class="deck" key={deck.name}>
+    <details class="deck" key={deck.name} open={open}>
       <summary>
         <h2>
           {deck.name}{' '}
