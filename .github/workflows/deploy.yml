@@ -12,6 +12,8 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npm run build
+        env:
+          POKEMON_API_KEY: ${{ vars.POKEMON_API_KEY }}
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
