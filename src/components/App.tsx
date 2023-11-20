@@ -1,6 +1,5 @@
 import { createHashHistory } from 'history';
-import { ComponentChild } from 'preact';
-import Router, { CustomHistory } from 'preact-router';
+import Router, { CustomHistory, Route } from 'preact-router';
 import decks from 'virtual:all-decks';
 import { setFocusedCard } from '../hooks/useFocusedCard';
 import './App.css';
@@ -8,21 +7,19 @@ import { CardData } from './CardData';
 import { DeckBuilder } from './DeckBuilder';
 import { DeckView } from './DeckView';
 import { FocusedCard } from './FocusedCard';
+import { Sidebar } from './Sidebar';
 
 export function App() {
   return (
     <>
-      <aside>
-        <a href="/">Decks</a>
-        <a href="/build">Build</a>
-        <a href="/filters">Filters</a>
-      </aside>
+      <Sidebar />
 
       <main>
         <Router history={createHashHistory() as unknown as CustomHistory}>
-          <Path path="/" component={<Decks />} />
-          <Path path="/build" component={<DeckBuilder />} />
-          <Path path="/filters" component={<p>TODO</p>} />
+          <Route path="/" component={Decks} />
+          <Route path="/deck/:deckName" component={SingleDeck} />
+          <Route path="/build" component={DeckBuilder} />
+          <Route path="/filters" component={() => <p>TODO</p>} />
         </Router>
       </main>
 
@@ -31,26 +28,28 @@ export function App() {
   );
 }
 
-function Path({ component }: { path: string; component: ComponentChild }) {
-  return <>{component}</>;
+function SingleDeck({ deckName }: { deckName: string }) {
+  const deck = decks.find((deck) => deck.name === deckName);
+  if (!deck) return <>Deck not found: {deckName}</>;
+  return <ShowDeck deck={deck} />;
 }
 
 function Decks() {
+  return <>Hi</>;
+}
+
+function ShowDeck({ deck }: { deck: (typeof decks)[number] }) {
   return (
-    <>
-      {decks.map((deck) => (
-        <DeckView key={deck.name} deck={deck}>
-          {(card) => (
-            <CardData
-              card={card}
-              onClick={(event) => {
-                const target = event.target as HTMLDivElement;
-                setFocusedCard(card, target.closest('.card-data')!);
-              }}
-            />
-          )}
-        </DeckView>
-      ))}
-    </>
+    <DeckView key={deck.name} deck={deck}>
+      {(card) => (
+        <CardData
+          card={card}
+          onClick={(event) => {
+            const target = event.target as HTMLDivElement;
+            setFocusedCard(card, target.closest('.card-data')!);
+          }}
+        />
+      )}
+    </DeckView>
   );
 }

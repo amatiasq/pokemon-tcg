@@ -3,31 +3,28 @@ import { useCardFilters } from '../hooks/useCardFilters';
 import { DeckStats } from './DeckStats';
 import './DeckView.css';
 
-export function DeckView({
-  deck,
-  children,
-}: {
+export interface DeckViewProps {
   deck: Deck;
   children: (card: DeckEntry) => JSX.Element;
-}) {
-  const { isExcluded } = useCardFilters();
+}
+
+export function DeckView({ deck, children }: DeckViewProps) {
+  const { check } = useCardFilters();
   const count = (list: DeckEntry[]) =>
     list.reduce((acc, card) => acc + card.count, 0);
 
-  const cards = deck.cards.filter((card) => !card.emojis.some(isExcluded));
+  const cards = deck.cards.filter(check);
   const total = count(deck.cards);
   const visible = count(cards);
 
   return (
-    <details class="deck" key={deck.name}>
-      <summary>
-        <h2>
-          {deck.name}{' '}
-          <small>
-            ({total === visible ? `${total}` : `${visible}/${total}`})
-          </small>
-        </h2>
-      </summary>
+    <div class="deck">
+      <h2>
+        {deck.name}{' '}
+        <small>
+          ({total === visible ? `${total}` : `${visible}/${total}`} cards)
+        </small>
+      </h2>
 
       <DeckStats cards={deck.cards} />
 
@@ -36,6 +33,6 @@ export function DeckView({
           <li key={card.id}>{children(card)}</li>
         ))}
       </ul>
-    </details>
+    </div>
   );
 }

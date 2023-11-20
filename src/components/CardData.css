@@ -1,36 +1,37 @@
 .card-data {
+  --padding: 5px;
+
   position: relative;
   display: flex;
-  
-  --padding: 5px;
-}
 
-.card-data > :not(.card) {
-  position: absolute;
-  background-color: black;
-  color: white;
-  opacity: 0.8;
-  padding: 0.2rem 0.5rem;
-  border-radius: 1em;
-}
+  & > :not(.card) {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: var(--spacing-half) var(--spacing);
+    border-radius: 1em;
+  }
 
-.card-data .id {
-  left: var(--padding);
-  bottom: var(--padding);
-}
-.card-data:not(:hover) .id {
-  visibility: hidden;
-}
+  & .id {
+    left: var(--padding);
+    bottom: var(--padding);
+  }
 
-.card-data .emojis {
-  top: var(--padding);
-  right: var(--padding);
-}
-.card-data .emojis:empty {
-  visibility: hidden;
-}
+  &:not(:hover) .id {
+    visibility: hidden;
+  }
 
-.card-data .amount {
-  bottom: var(--padding);
-  right: var(--padding);
+  & .emojis {
+    top: var(--padding);
+    right: var(--padding);
+  }
+  & .emojis:empty {
+    visibility: hidden;
+  }
+
+  & .amount {
+    bottom: var(--padding);
+    right: var(--padding);
+    border-radius: 100%;
+  }
 }

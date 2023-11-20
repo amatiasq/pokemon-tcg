@@ -8,9 +8,9 @@ export function Sidebar() {
         <a href="/build">Build</a>
         <a href="/filters">Filters</a>
 
-        <details>
+        <details open>
           <summary>Decks</summary>
-          <div>
+          <div class="deck-list">
             {decks.map((deck) => (
               <a href={`/deck/${deck.name}`}>{deck.name}</a>
             ))}

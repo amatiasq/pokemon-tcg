@@ -1,48 +1,21 @@
-/*
- * Heading styles
- */
+.deck {
+  --card-width: 10rem;
 
-.deck > summary {
-  text-align: center;
-  list-style: none;
-  background-color: transparent;
-  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin: var(--spacing-4) 0;
 }
-
-.deck > summary h2 {
-  margin: 0;
-  padding: 0.83em 0;
-}
-
-.deck:not([open]) > summary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.deck > summary small::after {
-  display: inline-block;
-  margin-left: 1em;
-  content: '▶';
-  transform: rotate(0deg);
-  transition: transform 0.2s ease-in-out;
-}
-.deck[open] > summary small::after {
-  transform: rotate(90deg);
-}
-
-/*
- * Card list styles
- */
 
 .card-list {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--card-width));
+  gap: var(--spacing);
+  max-width: 100%;
 }
 
 .card-list li {
   list-style: none;
-  width: 10rem;
+  width: var(--card-width);
 }

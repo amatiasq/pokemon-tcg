@@ -3,15 +3,20 @@
  */
 
 .deck-stats {
-  margin: 0 0 1em 0;
-  padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: var(--spacing-2);
 }
 
 .deck-stats li {
   list-style: none;
+}
+
+.deck-stats button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
 }
 
 .deck-stats .excluded {
