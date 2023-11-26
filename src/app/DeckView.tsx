@@ -1,7 +1,7 @@
 import { JSX, createMemo } from 'solid-js';
 import { Deck, DeckEntry } from 'types:Deck';
-import { check } from '../stores/filters';
-import { DeckFilters } from './DeckFilters';
+import { DeckFilters } from '../filters/DeckFilters';
+import { check } from '../filters/filter-store';
 import './DeckView.css';
 
 export function DeckView(props: {

@@ -1,12 +1,12 @@
 import { Route, Router, Routes, useParams } from '@solidjs/router';
 import { createMemo } from 'solid-js';
 import decks from 'virtual:all-decks';
-import { setFocusedCard } from '../stores/focusedCard';
+import { CardData } from '../card/CardData';
+import { DeckBuilder } from '../deck-builder/DeckBuilder';
+import { FocusedCard } from '../focused-card/FocusedCard';
+import { setFocusedCard } from '../focused-card/focused-card-store';
 import './App.css';
-import { CardData } from './CardData';
-import { DeckBuilder } from './DeckBuilder';
 import { DeckView } from './DeckView';
-import { FocusedCard } from './FocusedCard';
 import { Sidebar } from './Sidebar';
 
 export function App() {
@@ -30,6 +30,7 @@ export function App() {
 
 function SingleDeck() {
   const params = useParams();
+
   const deck = createMemo(() =>
     decks.find((deck) => deck.name === params.deckName)
   );

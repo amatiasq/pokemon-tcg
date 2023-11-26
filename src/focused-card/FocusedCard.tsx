@@ -1,11 +1,11 @@
+import { CardData } from '../card/CardData';
+import { Transition } from '../components/Transition';
+import './FocusedCard.css';
 import {
   clearFocusedCard,
   focusedCard,
   focusedCardBounds,
-} from '../stores/focusedCard';
-import { Transition } from '../tools/Transition';
-import { CardData } from './CardData';
-import './FocusedCard.css';
+} from './focused-card-store';
 
 export function FocusedCard() {
   return (

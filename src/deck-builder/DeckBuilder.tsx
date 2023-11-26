@@ -1,9 +1,13 @@
 import decks from 'virtual:all-decks';
-import { setFocusedCard } from '../stores/focusedCard';
-import { SelectableCard, newDeckCards, setCardCount } from '../stores/newDeck';
-import { CardData } from './CardData';
+import { CardData } from '../card/CardData';
+import { DeckFilters } from '../filters/DeckFilters';
+import { setFocusedCard } from '../focused-card/focused-card-store';
 import './DeckBuilder.css';
-import { DeckFilters } from './DeckFilters';
+import {
+  SelectableCard,
+  newDeckCards,
+  setCardCount,
+} from './deck-builder-store';
 
 const cards = deckBuilderCards();
 const count = (list: SelectableCard[]) =>
