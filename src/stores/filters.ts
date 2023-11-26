@@ -1,42 +1,39 @@
 import { createSignal } from 'solid-js';
-import { SuperType } from 'types:Card';
 import { DeckEntry } from 'types:Deck';
 
-export const [cardTypeFilter, setCardTypeFilter] =
-  createSignal<SuperType | null>(null);
+type Filter = (card: DeckEntry) => boolean;
 
-const [excludedEmojis, setExcludedEmojis] = createSignal<Set<string>>(
-  new Set()
-);
+const [filters, setFilters] = createSignal({
+  include: [] as Filter[],
+  exclude: [] as Filter[],
+});
 
-export function isEmojiExcluded(emoji: string) {
-  return excludedEmojis().has(emoji);
+export function showCardsWith(filter: Filter) {
+  setFilters((filters) => ({
+    include: [...filters.include, filter],
+    exclude: filters.exclude.filter((f) => f !== filter),
+  }));
+}
+
+export function hideCardsWith(filter: Filter) {
+  setFilters((filters) => ({
+    include: filters.include.filter((f) => f !== filter),
+    exclude: [...filters.exclude, filter],
+  }));
+}
+
+export function reset(filter: Filter) {
+  setFilters((filters) => ({
+    include: filters.include.filter((f) => f !== filter),
+    exclude: filters.exclude.filter((f) => f !== filter),
+  }));
 }
 
 export function check(card: DeckEntry) {
-  if (cardTypeFilter() && card.supertype !== cardTypeFilter()) {
-    return false;
-  }
+  const { include, exclude } = filters();
 
-  if (card.emojis.some(isEmojiExcluded)) {
-    return false;
-  }
-
-  return true;
-}
-
-export function toggleEmojiFilter(emoji: string) {
-  setExcludedEmojis((data) => toggle(data, emoji));
-}
-
-function toggle<T>(data: Set<T>, value: T) {
-  const copy = new Set(data);
-
-  if (copy.has(value)) {
-    copy.delete(value);
-  } else {
-    copy.add(value);
-  }
-
-  return copy;
+  return (
+    include.every((filter) => filter(card)) &&
+    exclude.every((filter) => !filter(card))
+  );
 }

@@ -1,4 +1,5 @@
 import { Route, Router, Routes, useParams } from '@solidjs/router';
+import { createMemo } from 'solid-js';
 import decks from 'virtual:all-decks';
 import { setFocusedCard } from '../stores/focusedCard';
 import './App.css';
@@ -10,35 +11,43 @@ import { Sidebar } from './Sidebar';
 
 export function App() {
   return (
-    <>
+    <Router>
       <Sidebar />
 
       <main>
-        <Router>
-          <Routes>
-            <Route path="/" component={() => <></>} />
-            <Route path="/deck/:deckName" component={SingleDeck} />
-            <Route path="/build" component={DeckBuilder} />
-            <Route path="/filters" component={() => <p>TODO</p>} />
-          </Routes>
-        </Router>
+        <Routes>
+          <Route path="/" component={() => <></>} />
+          <Route path="/deck/:deckName" component={SingleDeck} />
+          <Route path="/build" component={DeckBuilder} />
+          <Route path="/filters" component={() => <p>TODO</p>} />
+        </Routes>
       </main>
 
       <FocusedCard />
-    </>
+    </Router>
   );
 }
 
 function SingleDeck() {
-  const { deckName } = useParams();
-  const deck = decks.find((deck) => deck.name === deckName);
-  if (!deck) return <>Deck not found: {deckName}</>;
-  return <ShowDeck deck={deck} />;
+  const params = useParams();
+  const deck = createMemo(() =>
+    decks.find((deck) => deck.name === params.deckName)
+  );
+
+  return (
+    <>
+      {deck() ? (
+        <ShowDeck deck={deck()!} />
+      ) : (
+        <p>Deck not found: {params.deckName}</p>
+      )}
+    </>
+  );
 }
 
-function ShowDeck({ deck }: { deck: (typeof decks)[number] }) {
+function ShowDeck(props: { deck: (typeof decks)[number] }) {
   return (
-    <DeckView deck={deck}>
+    <DeckView deck={props.deck}>
       {(card) => (
         <CardData
           card={card}

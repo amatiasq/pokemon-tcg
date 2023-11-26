@@ -5,13 +5,16 @@ import './CardView.css';
 
 // const hasEffects = `${document.location}`.includes('effects');
 // const MaybeEffects = hasEffects ? CardEffect : 'div';
-export function CardView({ card, large }: { card: ApiCard; large?: boolean }) {
+export function CardView(props: { card: ApiCard; large?: boolean }) {
   return (
     <div class="card">
-      {large ? (
-        <ScaledImage small={card.images.small} large={card.images.large} />
+      {props.large ? (
+        <ScaledImage
+          small={props.card.images.small}
+          large={props.card.images.large}
+        />
       ) : (
-        <img src={card.images.small} />
+        <img src={props.card.images.small} />
       )}
     </div>
   );

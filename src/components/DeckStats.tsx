@@ -1,65 +1,115 @@
-import { SuperType } from 'types:Card';
+import { createMemo, createSignal } from 'solid-js';
+import { CardType, SuperType } from 'types:Card';
 import { DeckEntry } from 'types:Deck';
-import {
-  cardTypeFilter,
-  isEmojiExcluded,
-  setCardTypeFilter,
-  toggleEmojiFilter,
-} from '../stores/filters';
+import { hideCardsWith, reset, showCardsWith } from '../stores/filters';
 import './DeckStats.css';
 
-export function DeckStats({ cards }: { cards: DeckEntry[] }) {
-  const emojis: Record<string, number> = {};
-  const cardTypes: Partial<Record<SuperType, number>> = {};
+class Counter<T extends string> {
+  #counts: Record<T, number> = {} as Record<T, number>;
 
-  for (const card of cards) {
-    for (const emoji of card.emojis) {
-      emojis[emoji] = (emojis[emoji] || 0) + card.count;
+  constructor(private readonly by: (item: DeckEntry, value: T) => boolean) {}
+
+  visit(item: T) {
+    this.#counts[item] = (this.#counts[item] || 0) + 1;
+  }
+
+  get(item: T) {
+    return this.#counts[item];
+  }
+
+  keys() {
+    return Object.keys(this.#counts) as T[];
+  }
+
+  entries() {
+    return Object.entries(this.#counts) as [T, number][];
+  }
+
+  checker(value: T) {
+    return (item: DeckEntry) => this.by(item, value);
+  }
+}
+
+export function DeckStats(props: { cards: DeckEntry[] }) {
+  const filters = createMemo(() => {
+    const emojis = new Counter<string>((card, emoji) =>
+      card.emojis.includes(emoji)
+    );
+
+    const cardTypes = new Counter<SuperType>(
+      (card, type) => card.supertype === type
+    );
+
+    const types = new Counter<CardType>((card, type) =>
+      card.types.includes(type)
+    );
+
+    for (const card of props.cards) {
+      for (const emoji of card.emojis) {
+        emojis.visit(emoji);
+      }
+
+      cardTypes.visit(card.supertype);
     }
 
-    const type = card.supertype;
-    cardTypes[type] = card.count + (cardTypes[type] || 0);
-  }
+    return [cardTypes, types, emojis] as const;
+  });
 
   return (
     <>
-      <FilterList
-        filters={Object.entries(cardTypes) as [SuperType, number][]}
-        isActive={(x) => x === cardTypeFilter()}
-        onClick={setCardTypeFilter}
-      />
-      <FilterList
-        filters={Object.entries(emojis)}
-        isActive={isEmojiExcluded}
-        onClick={toggleEmojiFilter}
-      />
+      {filters().map((filter) => (
+        <>
+          {filter.keys().length > 0 ? (
+            <ul class="deck-stats">
+              {filter.keys().map((entry: any) => (
+                <Filter name={entry} filter={filter} />
+              ))}
+            </ul>
+          ) : null}
+        </>
+      ))}
     </>
   );
 }
 
-function FilterList<T extends string>({
-  filters,
-  isActive,
-  onClick,
-}: {
-  filters: [T, number][];
-  isActive: (filter: T) => boolean;
-  onClick: (filter: T) => void;
+function Filter<T extends string>(props: {
+  name: T;
+  filter: Counter<T>;
+  // count: number;
+  // by: (x: DeckEntry) => boolean;
 }) {
-  if (!filters.length) {
-    return null;
-  }
+  const FilterStatus = ['UNSET', 'INCLUDED', 'EXCLUDED'];
+  type FilterStatus = (typeof FilterStatus)[number];
+
+  const [status, setStatus] = createSignal<FilterStatus>('UNSET');
+  const by = createMemo(() => props.filter.checker(props.name));
 
   return (
-    <ul class="deck-stats">
-      {filters.map(([filter, count]) => (
-        <li class={isActive(filter) ? 'excluded' : ''}>
-          <button onClick={() => onClick(filter)}>
-            <span>{filter}</span>
-            <span>({count})</span>
-          </button>
-        </li>
-      ))}
-    </ul>
+    <li class={`filter-${status().toLowerCase()}`}>
+      <button onClick={handleClick}>
+        <span>
+          {props.name}
+          {status() === 'INCLUDED' ? ' only' : ''}
+        </span>
+        <span>({props.filter.get(props.name)})</span>
+      </button>
+    </li>
   );
+
+  function handleClick() {
+    switch (status()) {
+      case 'UNSET':
+        setStatus('INCLUDED');
+        showCardsWith(by());
+        break;
+      case 'INCLUDED':
+        setStatus('EXCLUDED');
+        hideCardsWith(by());
+        break;
+      case 'EXCLUDED':
+        setStatus('UNSET');
+        reset(by());
+        break;
+    }
+  }
 }

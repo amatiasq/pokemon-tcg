@@ -19,6 +19,11 @@
   gap: var(--spacing);
 }
 
-.deck-stats .excluded {
+.deck-stats .filter-included button {
+  font-weight: bold;
+}
+
+.deck-stats .filter-excluded {
   opacity: 0.4;
+  text-decoration: line-through;
 }
