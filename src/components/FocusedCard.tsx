@@ -1,30 +1,31 @@
-import { clearFocusedCard, useFocusedCard } from '../hooks/useFocusedCard';
-import { useTransitionClass } from '../hooks/useTransitionClasses';
+import {
+  clearFocusedCard,
+  focusedCard,
+  focusedCardBounds,
+} from '../stores/focusedCard';
 import { CardData } from './CardData';
 import './FocusedCard.css';
+import { Transition } from './Transition';
 
 export function FocusedCard() {
-  const { card, bounds } = useFocusedCard();
-  const transition = useTransitionClass<HTMLDivElement>('focused-card--active');
-
-  if (card === null) {
-    transition.remove();
-    return null;
-  }
-
   return (
-    <div
-      ref={transition}
-      class="focused-card"
-      onClick={clearFocusedCard}
-      style={{
-        '--card-top': `${bounds.top}px`,
-        '--card-left': `${bounds.left}px`,
-        '--card-width': `${bounds.width}px`,
-        '--card-height': `${bounds.height}px`,
-      }}
-    >
-      <CardData card={card} large />
-    </div>
+    <>
+      {focusedCard() ? (
+        <Transition activeClass="focused-card--active">
+          <div
+            class="focused-card"
+            onClick={clearFocusedCard}
+            style={{
+              '--card-top': `${focusedCardBounds().top}px`,
+              '--card-left': `${focusedCardBounds().left}px`,
+              '--card-width': `${focusedCardBounds().width}px`,
+              '--card-height': `${focusedCardBounds().height}px`,
+            }}
+          >
+            <CardData card={focusedCard()!} large />
+          </div>
+        </Transition>
+      ) : null}
+    </>
   );
 }

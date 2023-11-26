@@ -32,3 +32,7 @@ This data is then injected into a Preact application that shows it in a webpage.
 
 [1]: https://pokemoncard.io/deckbuilder/
 [2]: https://pokemontcg.io/
+
+---
+
+Now it runs in Solid.js

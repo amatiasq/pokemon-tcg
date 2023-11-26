@@ -14,7 +14,6 @@ jobs:
       - run: npm run build
         env:
           POKEMON_API_KEY: ${{ vars.POKEMON_API_KEY }}
-      - run: cp ./dist/index.html ./dist/404.html
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

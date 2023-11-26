@@ -1,3 +1,5 @@
+import { Plugin } from 'vite';
+
 import { readdir } from 'node:fs/promises';
 import { basename } from 'node:path';
 
@@ -49,12 +51,12 @@ export default function deckLoader() {
       const name = basename(id).replace(deckExtensionRegex, '');
       const parsed = await parseDeck(src);
       const cards = await Promise.all(
-        parsed.map((x) => downloadCard(x, isBuildMode))
+        parsed.filter(Boolean).map((x) => downloadCard(x!, isBuildMode))
       );
 
       return `export default ${JSON.stringify({ name, cards })};`;
     },
-  };
+  } as Plugin;
 }
 
 async function allDecksModule() {

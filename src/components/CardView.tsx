@@ -1,31 +1,28 @@
-import { useEffect, useState } from 'preact/hooks';
 import { ApiCard } from 'types:Card';
-import { CardEffect } from './CardEffect';
+// import { CardEffect } from './CardEffect';
+import { createSignal } from 'solid-js';
 import './CardView.css';
 
-const hasEffects = `${document.location}`.includes('effects');
-const MaybeEffects = hasEffects ? CardEffect : 'div';
-
+// const hasEffects = `${document.location}`.includes('effects');
+// const MaybeEffects = hasEffects ? CardEffect : 'div';
 export function CardView({ card, large }: { card: ApiCard; large?: boolean }) {
   return (
-    <MaybeEffects class="card">
+    <div class="card">
       {large ? (
         <ScaledImage small={card.images.small} large={card.images.large} />
       ) : (
         <img src={card.images.small} />
       )}
-    </MaybeEffects>
+    </div>
   );
 }
 
 function ScaledImage({ small, large }: { small: string; large: string }) {
-  const [isReady, setIsReady] = useState(false);
+  const [isReady, setIsReady] = createSignal(false);
 
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => setIsReady(true);
-    img.src = large;
-  }, [large]);
+  const img = new Image();
+  img.onload = () => setIsReady(true);
+  img.src = large;
 
-  return <img src={isReady ? large : small} />;
+  return <img src={isReady() ? large : small} />;
 }

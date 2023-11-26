@@ -1,5 +1,6 @@
+import { JSX } from 'solid-js';
 import { Deck, DeckEntry } from 'types:Deck';
-import { useCardFilters } from '../hooks/useCardFilters';
+import { check } from '../stores/filters';
 import { DeckStats } from './DeckStats';
 import './DeckView.css';
 
@@ -9,7 +10,6 @@ export interface DeckViewProps {
 }
 
 export function DeckView({ deck, children }: DeckViewProps) {
-  const { check } = useCardFilters();
   const count = (list: DeckEntry[]) =>
     list.reduce((acc, card) => acc + card.count, 0);
 
@@ -30,7 +30,7 @@ export function DeckView({ deck, children }: DeckViewProps) {
 
       <ul class="card-list">
         {cards.map((card) => (
-          <li key={card.id}>{children(card)}</li>
+          <li>{children(card)}</li>
         ))}
       </ul>
     </div>

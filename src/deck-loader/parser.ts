@@ -21,7 +21,7 @@ export function parseDeck(data: string): (DeckEntry | null)[] {
       const [, id, countStr, rest] = match;
       const count = countStr ? parseInt(countStr.slice(2)) : 1;
 
-      const emojis = [...new Intl.Segmenter().segment(rest)]
+      const emojis = Array.from(new Intl.Segmenter().segment(rest))
         .map((x) => x.segment)
         .filter((x) => /\p{Emoji}/gu.test(x));
 

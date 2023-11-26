@@ -1,6 +1,6 @@
-import 'preact/compat';
+import 'solid-js';
 
-declare module 'preact/compat' {
+declare module 'solid-js' {
   declare namespace JSX {
     interface IntrinsicAttributes {
       path?: string;

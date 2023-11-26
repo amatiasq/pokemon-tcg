@@ -1,15 +1,14 @@
 import { SuperType } from 'types:Card';
 import { DeckEntry } from 'types:Deck';
 import {
+  cardTypeFilter,
+  isEmojiExcluded,
   setCardTypeFilter,
   toggleEmojiFilter,
-  useCardFilters,
-} from '../hooks/useCardFilters';
+} from '../stores/filters';
 import './DeckStats.css';
 
 export function DeckStats({ cards }: { cards: DeckEntry[] }) {
-  const { cardType, isEmojiExcluded } = useCardFilters();
-
   const emojis: Record<string, number> = {};
   const cardTypes: Partial<Record<SuperType, number>> = {};
 
@@ -26,7 +25,7 @@ export function DeckStats({ cards }: { cards: DeckEntry[] }) {
     <>
       <FilterList
         filters={Object.entries(cardTypes) as [SuperType, number][]}
-        isActive={(x) => x === cardType}
+        isActive={(x) => x === cardTypeFilter()}
         onClick={setCardTypeFilter}
       />
       <FilterList

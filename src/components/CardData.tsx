@@ -1,4 +1,4 @@
-import { ComponentChildren } from 'preact';
+import { JSX } from 'solid-js';
 import { DeckEntry } from 'types:Deck';
 import './CardData.css';
 import { CardView } from './CardView';
@@ -7,7 +7,7 @@ export interface CardViewProps {
   card: DeckEntry;
   large?: boolean;
   class?: string;
-  children?: ComponentChildren;
+  children?: JSX.Element;
   onClick?: (event: MouseEvent) => void;
 }
 

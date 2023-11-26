@@ -1,7 +1,6 @@
-import { createHashHistory } from 'history';
-import Router, { CustomHistory, Route } from 'preact-router';
+import { Route, Router, Routes, useParams } from '@solidjs/router';
 import decks from 'virtual:all-decks';
-import { setFocusedCard } from '../hooks/useFocusedCard';
+import { setFocusedCard } from '../stores/focusedCard';
 import './App.css';
 import { CardData } from './CardData';
 import { DeckBuilder } from './DeckBuilder';
@@ -15,11 +14,13 @@ export function App() {
       <Sidebar />
 
       <main>
-        <Router history={createHashHistory() as unknown as CustomHistory}>
-          <Route path="/" component={Decks} />
-          <Route path="/deck/:deckName" component={SingleDeck} />
-          <Route path="/build" component={DeckBuilder} />
-          <Route path="/filters" component={() => <p>TODO</p>} />
+        <Router>
+          <Routes>
+            <Route path="/" component={() => <></>} />
+            <Route path="/deck/:deckName" component={SingleDeck} />
+            <Route path="/build" component={DeckBuilder} />
+            <Route path="/filters" component={() => <p>TODO</p>} />
+          </Routes>
         </Router>
       </main>
 
@@ -28,19 +29,16 @@ export function App() {
   );
 }
 
-function SingleDeck({ deckName }: { deckName: string }) {
+function SingleDeck() {
+  const { deckName } = useParams();
   const deck = decks.find((deck) => deck.name === deckName);
   if (!deck) return <>Deck not found: {deckName}</>;
   return <ShowDeck deck={deck} />;
 }
 
-function Decks() {
-  return <>Hi</>;
-}
-
 function ShowDeck({ deck }: { deck: (typeof decks)[number] }) {
   return (
-    <DeckView key={deck.name} deck={deck}>
+    <DeckView deck={deck}>
       {(card) => (
         <CardData
           card={card}

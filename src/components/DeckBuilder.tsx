@@ -1,22 +1,16 @@
 import decks from 'virtual:all-decks';
-import {
-  DeckBuild,
-  SelectableCard,
-  setCardCount,
-  useDeckBuilder,
-} from '../hooks/useDeckBuilder';
-import { setFocusedCard } from '../hooks/useFocusedCard';
+import { setFocusedCard } from '../stores/focusedCard';
+import { SelectableCard, newDeckCards, setCardCount } from '../stores/newDeck';
 import { CardData } from './CardData';
 import './DeckBuilder.css';
 
 const cards = deckBuilderCards();
-const count = (list: DeckBuild['cards']) =>
+const count = (list: SelectableCard[]) =>
   list.reduce((acc, card) => acc + card.selected, 0);
 
 export function DeckBuilder() {
-  const deck = useDeckBuilder();
-  const total = count(deck.cards);
-  const usedIds = deck.cards.map((x) => x.id);
+  const total = count(newDeckCards());
+  const usedIds = newDeckCards().map((x) => x.id);
 
   const unused = cards
     .filter((x) => !usedIds.includes(x.id))
@@ -27,7 +21,7 @@ export function DeckBuilder() {
     );
 
   const maxLength = Math.max(...usedIds.map((x) => x.length));
-  const code = deck.cards
+  const code = newDeckCards()
     .map((card) => {
       const id = card.id.padEnd(maxLength, ' ');
       const amount =
@@ -40,8 +34,8 @@ export function DeckBuilder() {
     <div class="deck-builder">
       <h1>Deck Builder {total ? `(${total})` : null}</h1>
       <ul>
-        {deck.cards.map((card) => (
-          <li key={card.key}>
+        {newDeckCards().map((card) => (
+          <li>
             <DeckBuilderCard card={card} />
           </li>
         ))}
@@ -50,7 +44,7 @@ export function DeckBuilder() {
       {code ? (
         <>
           <textarea
-            rows={deck.cards.length}
+            rows={newDeckCards().length}
             value={code}
             readOnly
             onClick={() => {
@@ -62,7 +56,7 @@ export function DeckBuilder() {
       ) : null}
       <ul>
         {unused.map((card) => (
-          <li key={card.key}>
+          <li>
             <DeckBuilderCard card={card} />
           </li>
         ))}
