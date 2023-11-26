@@ -1,7 +1,7 @@
 import { JSX, createMemo } from 'solid-js';
 import { Deck, DeckEntry } from 'types:Deck';
 import { check } from '../stores/filters';
-import { DeckStats } from './DeckStats';
+import { DeckFilters } from './DeckFilters';
 import './DeckView.css';
 
 export function DeckView(props: {
@@ -25,7 +25,7 @@ export function DeckView(props: {
         </small>
       </h2>
 
-      <DeckStats cards={props.deck.cards} />
+      <DeckFilters cards={props.deck.cards} />
 
       <ul class="card-list">
         {cards().map((card) => (

@@ -3,9 +3,9 @@ import {
   focusedCard,
   focusedCardBounds,
 } from '../stores/focusedCard';
+import { Transition } from '../tools/Transition';
 import { CardData } from './CardData';
 import './FocusedCard.css';
-import { Transition } from './Transition';
 
 export function FocusedCard() {
   return (
