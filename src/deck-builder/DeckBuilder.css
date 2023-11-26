@@ -1,27 +1,33 @@
-.deck-builder ul {
-  margin: 0;
-  padding: 0;
+.deck-builder {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: space-around;
-}
+  flex-direction: column;
+  gap: var(--spacing-4);
 
-.deck-builder li {
-  list-style: none;
-  width: 10rem;
-}
+  & ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-around;
+  }
 
-.deck-builder textarea {
-  width: 100dvw;
-  margin: 1em 0;
-  padding: 2em;
-  font-size: 1.5em;
-  box-sizing: border-box;
-  cursor: pointer;
-  border: none;
-  overflow: hidden;
-  resize: none;
+  & li {
+    list-style: none;
+    width: 10rem;
+  }
+
+  & textarea {
+    width: 100dvw;
+    margin: 1em 0;
+    padding: 2em;
+    font-size: 1.5em;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: none;
+    overflow: hidden;
+    resize: none;
+  }
 }
 
 .card-selector :is(.amount, .id) {

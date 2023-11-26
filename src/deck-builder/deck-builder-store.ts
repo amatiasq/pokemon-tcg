@@ -1,11 +1,11 @@
 import { createSignal } from 'solid-js';
 import { DeckEntry } from 'types:Deck';
+import decks from 'virtual:all-decks';
 
 export interface SelectableCard extends DeckEntry {
   selected: number;
 }
 
-// const [name, setName] = createSignal('');
 const [cards, setCards] = createSignal<SelectableCard[]>([]);
 
 export { cards as newDeckCards };
@@ -27,4 +27,22 @@ export function setCardCount(card: SelectableCard, count: number) {
   const copy = [...cards()];
   copy[index] = newEntry;
   setCards(copy);
+}
+
+export const allCards = deckBuilderCards();
+
+function deckBuilderCards() {
+  const cards: Record<string, SelectableCard> = {};
+
+  for (const deck of decks) {
+    for (const card of deck.cards) {
+      if (cards[card.key]) {
+        cards[card.key].count += card.count;
+      } else {
+        cards[card.key] = { ...card, selected: 0 };
+      }
+    }
+  }
+
+  return Object.values(cards);
 }
