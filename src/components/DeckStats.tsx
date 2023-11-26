@@ -7,49 +7,69 @@ import './DeckStats.css';
 class Counter<T extends string> {
   #counts: Record<T, number> = {} as Record<T, number>;
 
-  constructor(private readonly by: (item: DeckEntry, value: T) => boolean) {}
+  constructor(private readonly getter: (item: DeckEntry) => T | T[]) {}
 
-  visit(item: T) {
-    this.#counts[item] = (this.#counts[item] || 0) + 1;
+  visit(card: DeckEntry) {
+    const value = this.getter(card);
+
+    if (Array.isArray(value)) {
+      for (const item of value) {
+        this.#increment(item);
+      }
+    } else {
+      this.#increment(value);
+    }
+  }
+
+  #increment(item: T) {
+    const key = this.#clean(item);
+    this.#counts[key] = (this.#counts[key] || 0) + 1;
   }
 
   get(item: T) {
-    return this.#counts[item];
+    const key = this.#clean(item);
+    return this.#counts[key];
   }
 
   keys() {
     return Object.keys(this.#counts) as T[];
   }
 
-  entries() {
-    return Object.entries(this.#counts) as [T, number][];
+  checker(needle: T) {
+    const key = needle === 'Unknown' ? undefined : needle;
+
+    return (item: DeckEntry) => {
+      const value = this.getter(item);
+
+      if (Array.isArray(value)) {
+        return value.includes(key as any);
+      } else {
+        return value === key;
+      }
+    };
   }
 
-  checker(value: T) {
-    return (item: DeckEntry) => this.by(item, value);
+  reset() {
+    this.#counts = {} as Record<T, number>;
+  }
+
+  #clean(key: T) {
+    return key ?? 'Unknown';
   }
 }
 
 export function DeckStats(props: { cards: DeckEntry[] }) {
   const filters = createMemo(() => {
-    const emojis = new Counter<string>((card, emoji) =>
-      card.emojis.includes(emoji)
-    );
-
-    const cardTypes = new Counter<SuperType>(
-      (card, type) => card.supertype === type
-    );
-
-    const types = new Counter<CardType>((card, type) =>
-      card.types.includes(type)
-    );
+    const emojis = new Counter<string>((card) => card.emojis);
+    const cardTypes = new Counter<SuperType>((card) => card.supertype);
+    const subtypes = new Counter<CardType>((card) => card.subtypes);
+    const types = new Counter<CardType>((card) => card.types);
 
     for (const card of props.cards) {
-      for (const emoji of card.emojis) {
-        emojis.visit(emoji);
-      }
-
-      cardTypes.visit(card.supertype);
+      emojis.visit(card);
+      cardTypes.visit(card);
+      subtypes.visit(card);
+      types.visit(card);
     }
 
     return [cardTypes, types, emojis] as const;
