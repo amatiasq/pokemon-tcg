@@ -68,3 +68,14 @@ aside {
     }
   }
 }
+
+body:has(> main:empty) {
+  & aside > nav {
+    left: 0;
+    width: 100dvw;
+  }
+
+  & aside > hamburger-button {
+    display: none;
+  }
+}

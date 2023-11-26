@@ -1,4 +1,5 @@
 import decks from 'virtual:all-decks';
+import HamburgerButton from 'web-component://components.amatiasq.com/hamburger-button.js';
 import './Sidebar.css';
 
 export function Sidebar() {
@@ -18,13 +19,8 @@ export function Sidebar() {
         </details>
       </nav>
 
-      <hamburger-button>
-        <script
-          type="module"
-          src="https://components.amatiasq.com/hamburger-button.js"
-          defer
-        />
-      </hamburger-button>
+      <HamburgerButton />
     </aside>
   );
 }
+``;
