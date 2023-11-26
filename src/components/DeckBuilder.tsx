@@ -3,6 +3,7 @@ import { setFocusedCard } from '../stores/focusedCard';
 import { SelectableCard, newDeckCards, setCardCount } from '../stores/newDeck';
 import { CardData } from './CardData';
 import './DeckBuilder.css';
+import { DeckFilters } from './DeckFilters';
 
 const cards = deckBuilderCards();
 const count = (list: SelectableCard[]) =>
@@ -54,6 +55,9 @@ export function DeckBuilder() {
           <hr />
         </>
       ) : null}
+
+      <DeckFilters cards={unused} />
+
       <ul>
         {unused.map((card) => (
           <li>

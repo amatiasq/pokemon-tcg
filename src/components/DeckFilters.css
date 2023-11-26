@@ -1,29 +1,32 @@
-/*
- * Deck stats styles
- */
-
-.deck-stats {
+.deck-filters {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: var(--spacing-2);
-}
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+  column-gap: var(--spacing-2);
+  row-gap: var(--spacing);
 
-.deck-stats li {
-  list-style: none;
-}
+  & .filter-separator {
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+    height: 1.8em;
 
-.deck-stats button {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing);
-}
+    &:last-child {
+      display: none;
+    }
+  }
 
-.deck-stats .filter-included button {
-  font-weight: bold;
-}
+  & button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing);
+  }
 
-.deck-stats .filter-excluded {
-  opacity: 0.4;
-  text-decoration: line-through;
+  & .filter-included {
+    font-weight: bold;
+  }
+
+  & .filter-excluded {
+    opacity: 0.4;
+    text-decoration: line-through;
+  }
 }

@@ -8,6 +8,15 @@ const [filters, setFilters] = createSignal({
   exclude: [] as Filter[],
 });
 
+export function hasFilters() {
+  const { include, exclude } = filters();
+  return include.length > 0 || exclude.length > 0;
+}
+
+export function clearFilters() {
+  setFilters({ include: [], exclude: [] });
+}
+
 export function showCardsWith(filter: Filter) {
   setFilters((filters) => ({
     include: [...filters.include, filter],

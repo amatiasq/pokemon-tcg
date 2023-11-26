@@ -1,6 +1,12 @@
 import { createMemo, createSignal } from 'solid-js';
 import { DeckEntry } from 'types:Deck';
-import { hideCardsWith, reset, showCardsWith } from '../stores/filters';
+import {
+  clearFilters,
+  hasFilters,
+  hideCardsWith,
+  reset,
+  showCardsWith,
+} from '../stores/filters';
 import { Filter } from '../tools/Filter';
 import './DeckFilters.css';
 
@@ -23,27 +29,23 @@ export function DeckFilters(props: { cards: DeckEntry[] }) {
   });
 
   return (
-    <>
+    <div class="deck-filters">
       {filters().map((filter) => (
-        <FilterPack filter={filter} />
+        <>
+          {filter.keys().map((entry: any) => (
+            <FilterButton name={entry} filter={filter} />
+          ))}
+          <div class="filter-separator" />
+        </>
       ))}
-    </>
+      {hasFilters() ? (
+        <button onClick={clearFilters}>Clear Filters</button>
+      ) : null}
+    </div>
   );
 }
 
-function FilterPack<T extends string>(props: { filter: Filter<DeckEntry, T> }) {
-  return (
-    <ul class="deck-stats">
-      {props.filter.keys().map((entry: any) => (
-        <li>
-          <FilterComp name={entry} filter={props.filter} />
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function FilterComp<T extends string>(props: {
+function FilterButton<T extends string>(props: {
   name: T;
   filter: Filter<DeckEntry, T>;
 }) {
@@ -56,7 +58,7 @@ function FilterComp<T extends string>(props: {
   return (
     <button class={`filter-${status().toLowerCase()}`} onClick={handleClick}>
       <span>
-        {props.name}
+        {props.name === 'undefined' ? 'None' : props.name}
         {status() === 'INCLUDED' ? ' only' : ''}
       </span>
       <span>({props.filter.get(props.name)})</span>
