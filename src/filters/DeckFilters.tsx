@@ -1,4 +1,4 @@
-import { createMemo } from 'solid-js';
+import { For, Show, createMemo } from 'solid-js';
 import { DeckEntry } from 'types:Deck';
 import './DeckFilters.css';
 import { Filter } from './Filter';
@@ -27,17 +27,22 @@ export function DeckFilters(props: { cards: DeckEntry[] }) {
 
   return (
     <div class="deck-filters">
-      {hack()(filters).map((filter) => (
-        <>
-          {filter.keys().map((entry: any) => (
-            <FilterButton name={entry} filter={filter} />
-          ))}
-          <div class="filter-separator" />
-        </>
-      ))}
-      {hasFilters() ? (
+      <For each={hack()(filters)}>
+        {(filter) => (
+          <>
+            <For each={filter.keys()}>
+              {(entry) => <FilterButton name={entry} filter={filter} />}
+            </For>
+            <div class="filter-separator" />
+          </>
+        )}
+      </For>
+
+      <div class="filter-separator" />
+
+      <Show when={hasFilters()}>
         <button onClick={clearFilters}>Clear Filters</button>
-      ) : null}
+      </Show>
     </div>
   );
 }

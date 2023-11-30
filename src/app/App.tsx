@@ -1,5 +1,5 @@
 import { Route, Router, Routes, useParams } from '@solidjs/router';
-import { createMemo } from 'solid-js';
+import { Show, createMemo } from 'solid-js';
 import decks from 'virtual:all-decks';
 import { CardData } from '../card/CardData';
 import { DeckBuilder } from '../deck-builder/DeckBuilder';
@@ -36,28 +36,18 @@ function SingleDeck() {
   );
 
   return (
-    <>
-      {deck() ? (
-        <ShowDeck deck={deck()!} />
-      ) : (
-        <p>Deck not found: {params.deckName}</p>
-      )}
-    </>
-  );
-}
-
-function ShowDeck(props: { deck: (typeof decks)[number] }) {
-  return (
-    <DeckView deck={props.deck}>
-      {(card) => (
-        <CardData
-          card={card}
-          onClick={(event) => {
-            const target = event.target as HTMLDivElement;
-            setFocusedCard(card, target.closest('.card-data')!);
-          }}
-        />
-      )}
-    </DeckView>
+    <Show when={deck()} fallback={<p>Deck not found: {params.deckName}</p>}>
+      <DeckView deck={deck()!}>
+        {(card) => (
+          <CardData
+            card={card}
+            onClick={(event) => {
+              const target = event.target as HTMLDivElement;
+              setFocusedCard(card, target.closest('.card-data')!);
+            }}
+          />
+        )}
+      </DeckView>
+    </Show>
   );
 }

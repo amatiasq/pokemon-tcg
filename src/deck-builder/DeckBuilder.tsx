@@ -1,4 +1,4 @@
-import { createMemo } from 'solid-js';
+import { For, Show, createMemo } from 'solid-js';
 import { DeckFilters } from '../filters/DeckFilters';
 import { check } from '../filters/filter-store';
 import './DeckBuilder.css';
@@ -27,25 +27,29 @@ export function DeckBuilder() {
   return (
     <div class="deck-builder">
       <h1>Deck Builder {total() ? `(${total()})` : null}</h1>
-      {filtered().length ? (
+      <Show when={filtered().length}>
         <ul>
-          {filtered().map((card) => (
+          <For each={filtered()}>
+            {(card) => (
+              <li>
+                <DeckBuilderCard card={card} />
+              </li>
+            )}
+          </For>
+        </ul>
+      </Show>
+
+      {/* <DeckBuilderCode usedIds={usedIds()} /> */}
+      <DeckFilters cards={allCards} />
+
+      <ul>
+        <For each={unused()}>
+          {(card) => (
             <li>
               <DeckBuilderCard card={card} />
             </li>
-          ))}
-        </ul>
-      ) : null}
-
-      {/* <DeckBuilderCode usedIds={usedIds()} /> */}
-      <DeckFilters cards={unused()} />
-
-      <ul>
-        {unused().map((card) => (
-          <li>
-            <DeckBuilderCard card={card} />
-          </li>
-        ))}
+          )}
+        </For>
       </ul>
     </div>
   );

@@ -1,4 +1,4 @@
-import { JSX, createMemo } from 'solid-js';
+import { For, JSX, createMemo } from 'solid-js';
 import { Deck, DeckEntry } from 'types:Deck';
 import { DeckFilters } from '../filters/DeckFilters';
 import { check } from '../filters/filter-store';
@@ -28,9 +28,7 @@ export function DeckView(props: {
       <DeckFilters cards={props.deck.cards} />
 
       <ul class="card-list">
-        {cards().map((card) => (
-          <li>{props.children(card)}</li>
-        ))}
+        <For each={cards()}>{(card) => <li>{props.children(card)}</li>}</For>
       </ul>
     </div>
   );

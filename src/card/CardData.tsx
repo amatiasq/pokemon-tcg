@@ -1,4 +1,4 @@
-import { JSX } from 'solid-js';
+import { JSX, Show } from 'solid-js';
 import { DeckEntry } from 'types:Deck';
 import './CardData.css';
 import { CardView } from './CardView';
@@ -15,9 +15,11 @@ export function CardData(props: {
       <CardView card={props.card} large={props.large ?? false} />
       <code class="id">{props.card.id}</code>
       <span class="emojis">{props.card.emojis}</span>
-      {props.card.count != 1 ? (
+
+      <Show when={props.card.count != 1}>
         <span class="amount">{props.card.count}</span>
-      ) : null}
+      </Show>
+
       {props.children}
     </div>
   );

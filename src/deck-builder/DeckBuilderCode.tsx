@@ -1,4 +1,4 @@
-import { createMemo } from 'solid-js';
+import { Show, createMemo } from 'solid-js';
 import { newDeckCards } from './deck-builder-store';
 
 export function DeckBuilderCode(props: { usedIds: string[] }) {
@@ -16,15 +16,13 @@ export function DeckBuilderCode(props: { usedIds: string[] }) {
   });
 
   return (
-    <>
-      {code() ? (
-        <textarea
-          rows={newDeckCards().length}
-          value={code()}
-          readOnly
-          onClick={() => navigator.clipboard.writeText(code())}
-        />
-      ) : null}
-    </>
+    <Show when={code()}>
+      <textarea
+        rows={newDeckCards().length}
+        value={code()}
+        readOnly
+        onClick={() => navigator.clipboard.writeText(code())}
+      />
+    </Show>
   );
 }

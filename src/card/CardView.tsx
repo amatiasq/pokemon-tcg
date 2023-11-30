@@ -1,6 +1,6 @@
 import { ApiCard } from 'types:Card';
 // import { CardEffect } from './CardEffect';
-import { createSignal } from 'solid-js';
+import { Show, createSignal } from 'solid-js';
 import './CardView.css';
 
 // const hasEffects = `${document.location}`.includes('effects');
@@ -8,14 +8,12 @@ import './CardView.css';
 export function CardView(props: { card: ApiCard; large?: boolean }) {
   return (
     <div class="card">
-      {props.large ? (
+      <Show when={props.large} fallback={<img src={props.card.images.small} />}>
         <ScaledImage
           small={props.card.images.small}
           large={props.card.images.large}
         />
-      ) : (
-        <img src={props.card.images.small} />
-      )}
+      </Show>
     </div>
   );
 }
