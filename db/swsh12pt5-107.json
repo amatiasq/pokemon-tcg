@@ -1,0 +1,65 @@
+{
+  "id": "swsh12pt5-107",
+  "name": "Ditto",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Basic"
+  ],
+  "hp": "70",
+  "types": [
+    "Colorless"
+  ],
+  "abilities": [
+    {
+      "name": "Sudden Transformation",
+      "text": "This Pokémon can use the attacks of any Basic Pokémon in your discard pile, except for Pokémon with a Rule Box (Pokémon V, Pokémon-GX, etc. have Rule Boxes). (You still need the necessary Energy to use each attack.)",
+      "type": "Ability"
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Fighting",
+      "value": "×2"
+    }
+  ],
+  "retreatCost": [
+    "Colorless"
+  ],
+  "convertedRetreatCost": 1,
+  "set": {
+    "id": "swsh12pt5",
+    "name": "Crown Zenith",
+    "series": "Sword & Shield",
+    "printedTotal": 159,
+    "total": 160,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "CRZ",
+    "releaseDate": "2023/01/20",
+    "updatedAt": "2023/01/19 15:45:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/swsh12pt5/symbol.png",
+      "logo": "https://images.pokemontcg.io/swsh12pt5/logo.png"
+    }
+  },
+  "number": "107",
+  "artist": "KIYOTAKA OSHIYAMA",
+  "rarity": "Rare Holo",
+  "flavorText": "It can reconstitute its entire cellular structure to change into what it sees, but it returns to normal when it relaxes.",
+  "nationalPokedexNumbers": [
+    132
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "F",
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh12pt5/107.png",
+    "large": "https://images.pokemontcg.io/swsh12pt5/107_hires.png"
+  }
+}
