@@ -1,0 +1,12 @@
+.search-card {
+  & .search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing);
+    margin-top: var(--spacing);
+  }
+
+  & .card {
+    width: 10em;
+  }
+}

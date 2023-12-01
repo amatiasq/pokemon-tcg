@@ -7,7 +7,7 @@ import './CardView.css';
 // const MaybeEffects = hasEffects ? CardEffect : 'div';
 export function CardView(props: { card: ApiCard; large?: boolean }) {
   return (
-    <div class="card">
+    <div class="card" data-id={props.card.id}>
       <Show when={props.large} fallback={<img src={props.card.images.small} />}>
         <ScaledImage
           small={props.card.images.small}
