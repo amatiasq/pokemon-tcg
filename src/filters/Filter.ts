@@ -6,20 +6,20 @@ export class Filter<TTarget, TNeedle extends string> {
     this.#getter = getter;
   }
 
-  visit(target: TTarget) {
+  visit(target: TTarget, amount = 1) {
     const value = this.#getter(target);
 
     if (Array.isArray(value)) {
       for (const item of value) {
-        this.#increment(item);
+        this.#increment(item, amount);
       }
     } else {
-      this.#increment(value);
+      this.#increment(value, amount);
     }
   }
 
-  #increment(needle: TNeedle) {
-    this.#counts[needle] = (this.#counts[needle] || 0) + 1;
+  #increment(needle: TNeedle, amount = 1) {
+    this.#counts[needle] = (this.#counts[needle] || 0) + amount;
   }
 
   get(needle: TNeedle) {

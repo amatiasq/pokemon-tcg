@@ -19,7 +19,7 @@ export function DeckFilters(props: { cards: DeckEntry[] }) {
       filter.reset();
 
       for (const card of props.cards) {
-        filter.visit(card);
+        filter.visit(card, card.count);
       }
     }
 
