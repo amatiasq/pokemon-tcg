@@ -1,5 +1,5 @@
 import { CardData } from '../card/CardData';
-import { setFocusedCard } from '../focused-card/focused-card-store';
+import { store } from '../store';
 import { SelectableCard, setCardCount } from './deck-builder-store';
 
 export function DeckBuilderCard({ card }: { card: SelectableCard }) {
@@ -12,7 +12,7 @@ export function DeckBuilderCard({ card }: { card: SelectableCard }) {
       class="card-selector"
       onClick={(event) => {
         const target = event.target as HTMLElement;
-        setFocusedCard(card, target.closest('.card-selector')!);
+        store.setFocusCard(card, target.closest('.card-selector')!);
       }}
     >
       <div class="input" onClick={(event) => event.stopPropagation()}>

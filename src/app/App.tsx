@@ -4,7 +4,7 @@ import decks from 'virtual:all-decks';
 import { CardData } from '../card/CardData';
 import { DeckBuilder } from '../deck-builder/DeckBuilder';
 import { FocusedCard } from '../focused-card/FocusedCard';
-import { setFocusedCard } from '../focused-card/focused-card-store';
+import { store } from '../store';
 import './App.css';
 import { DeckView } from './DeckView';
 import { Sidebar } from './Sidebar';
@@ -43,7 +43,7 @@ function SingleDeck() {
             card={card}
             onClick={(event) => {
               const target = event.target as HTMLDivElement;
-              setFocusedCard(card, target.closest('.card-data')!);
+              store.setFocusCard(card, target.closest('.card-data')!);
             }}
           />
         )}
