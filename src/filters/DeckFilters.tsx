@@ -31,17 +31,13 @@ export function DeckFilters(props: { cards: DeckEntry[] }) {
       <div class="deck-filters">
         <For each={hack()(filters)}>
           {(filter) => (
-            <>
+            <div class="row">
               <For each={filter.keys()}>
                 {(entry) => <FilterButton name={entry} filter={filter} />}
               </For>
-              <div class="filter-separator" />
-            </>
+            </div>
           )}
         </For>
-
-        <div class="filter-separator" />
-
         <Show when={hasFilters()}>
           <button onClick={clearFilters}>Clear Filters</button>
         </Show>

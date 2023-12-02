@@ -1,19 +1,15 @@
 .deck-filters {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-around; */
-  flex-wrap: wrap;
-  column-gap: var(--spacing-2);
-  row-gap: var(--spacing);
+  max-width: 100%;
 
-  & .filter-separator {
-    &:not(:has(+ button)) {
+  .row {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
       display: none;
-    }
-
-    &:has(+ button) {
-      border-right: 2px solid rgba(255, 255, 255, 0.2);
-      height: 1.8em;
     }
   }
 
@@ -21,6 +17,9 @@
     display: flex;
     align-items: center;
     gap: var(--spacing);
+    border-radius: 0;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   & .filter-included {

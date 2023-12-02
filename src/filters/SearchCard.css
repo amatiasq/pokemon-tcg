@@ -1,4 +1,20 @@
 .search-card {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+
+  & input {
+    width: 100%;
+    padding: var(--spacing);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: var(--font-family);
+    color: var(--color-gray);
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+  }
+
   & .search-results {
     display: flex;
     flex-wrap: wrap;
