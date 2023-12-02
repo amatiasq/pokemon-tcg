@@ -1,8 +1,8 @@
-import create from "solid-zustand";
-import { ApiCard } from "types:Card";
-import decks from "virtual:all-decks";
+import create from 'solid-zustand';
+import { ApiCard } from 'types:Card';
+import decks from 'virtual:all-decks';
 
-export const FilterStatus = ["UNSET", "INCLUDED", "EXCLUDED"];
+export const FilterStatus = ['UNSET', 'INCLUDED', 'EXCLUDED'];
 export type FilterStatus = (typeof FilterStatus)[number];
 
 type FilterEntry = {
@@ -17,7 +17,7 @@ interface AppState {
   filters: FilterEntry[];
 }
 
-const useStore = create<AppState>((set) => ({
+const useStore = create<AppState>(() => ({
   decks,
   newDeck: [],
   focusCard: null,
@@ -37,7 +37,7 @@ export const store = {
     set((state) => {
       const without = state.filters.filter((f) => f.name !== filter.name);
       return {
-        filters: filter.status === "UNSET" ? without : [...without, filter],
+        filters: filter.status === 'UNSET' ? without : [...without, filter],
       };
     }),
 

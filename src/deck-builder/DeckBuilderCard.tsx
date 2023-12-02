@@ -4,6 +4,7 @@ import { SelectableCard, setCardCount } from './deck-builder-store';
 
 export function DeckBuilderCard({ card }: { card: SelectableCard }) {
   const target = (event: Event) => event.target as HTMLInputElement;
+  const selected = () => card.selected ?? 0;
 
   return (
     <CardData
@@ -16,8 +17,8 @@ export function DeckBuilderCard({ card }: { card: SelectableCard }) {
     >
       <div class="input" onClick={(event) => event.stopPropagation()}>
         <button
-          disabled={card.selected <= 0}
-          onClick={() => setCardCount(card, card.selected - 1)}
+          disabled={selected() <= 0}
+          onClick={() => setCardCount(card, selected() - 1)}
         >
           -
         </button>
@@ -25,7 +26,7 @@ export function DeckBuilderCard({ card }: { card: SelectableCard }) {
           type="number"
           min="0"
           max={card.count}
-          value={card.selected ?? 0}
+          value={selected() ?? 0}
           onClick={(event) => target(event).select()}
           onChange={(event) =>
             setCardCount(card, parseInt(target(event).value, 10))
@@ -33,8 +34,8 @@ export function DeckBuilderCard({ card }: { card: SelectableCard }) {
         />
         <span>/ {card.count}</span>
         <button
-          disabled={card.selected >= card.count}
-          onClick={() => setCardCount(card, card.selected + 1)}
+          disabled={selected() >= card.count}
+          onClick={() => setCardCount(card, selected() + 1)}
         >
           +
         </button>
