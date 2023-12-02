@@ -1,8 +1,7 @@
-import { For, JSX, createMemo } from 'solid-js';
-import { Deck, DeckEntry } from 'types:Deck';
-import { DeckFilters } from '../filters/DeckFilters';
-import { check } from '../filters/filter-store';
-import './DeckView.css';
+import { For, JSX, createMemo } from "solid-js";
+import { Deck, DeckEntry } from "types:Deck";
+import { DeckFilters, filterCards } from "../filters/DeckFilters";
+import "./DeckView.css";
 
 export function DeckView(props: {
   deck: Deck;
@@ -11,16 +10,16 @@ export function DeckView(props: {
   const count = (list: DeckEntry[]) =>
     list.reduce((acc, card) => acc + card.count, 0);
 
-  const cards = createMemo(() => props.deck.cards.filter(check));
+  const cards = createMemo(() => filterCards(props.deck.cards));
   const total = createMemo(() => count(props.deck.cards));
   const visible = createMemo(() => count(cards()));
 
   return (
     <div class="deck">
       <h2>
-        {props.deck.name}{' '}
+        {props.deck.name}{" "}
         <small>
-          ({total() === visible() ? `${total()}` : ` ${visible()}/${total()}`}{' '}
+          ({total() === visible() ? `${total()}` : ` ${visible()}/${total()}`}{" "}
           cards)
         </small>
       </h2>

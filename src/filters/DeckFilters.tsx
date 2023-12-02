@@ -1,45 +1,50 @@
-import { For, Show, createMemo } from 'solid-js';
-import { DeckEntry } from 'types:Deck';
-import './DeckFilters.css';
-import { Filter } from './Filter';
-import { FilterButton } from './FilterButton';
-import { SearchCard } from './SearchCard';
-import { clearFilters, hasFilters } from './filter-store';
+import { Show } from "solid-js";
+import { DeckEntry } from "types:Deck";
+import { store } from "../store";
+import "./DeckFilters.css";
+import { FilterBy } from "./FilterBy";
+import { SearchCard } from "./SearchCard";
+
+export function filterCards(cards: DeckEntry[]) {
+  const filters = store.useFilters();
+
+  const include = filters
+    .filter((filter) => filter.status === "INCLUDED")
+    .map((filter) => eval(filter.name));
+
+  const exclude = filters
+    .filter((filter) => filter.status === "EXCLUDED")
+    .map((filter) => eval(filter.name));
+
+  return cards.filter(
+    (card) =>
+      include.every((filter) => filter(card)) &&
+      exclude.every((filter) => !filter(card))
+  );
+}
 
 export function DeckFilters(props: { cards: DeckEntry[] }) {
-  const filters = [
-    new Filter((card: DeckEntry) => card.supertype),
-    new Filter((card: DeckEntry) => card.types),
-    new Filter((card: DeckEntry) => card.subtypes),
-    new Filter((card: DeckEntry) => card.emojis),
-  ] as const;
-
-  const hack = createMemo(() => {
-    for (const filter of filters) {
-      filter.reset();
-
-      for (const card of props.cards) {
-        filter.visit(card, card.count);
-      }
-    }
-
-    return <T,>(x: T) => x;
-  });
-
   return (
     <>
       <div class="deck-filters">
-        <For each={hack()(filters)}>
-          {(filter) => (
-            <div class="row">
-              <For each={filter.keys()}>
-                {(entry) => <FilterButton name={entry} filter={filter} />}
-              </For>
-            </div>
-          )}
-        </For>
-        <Show when={hasFilters()}>
-          <button onClick={clearFilters}>Clear Filters</button>
+        <FilterBy cards={props.cards}>
+          {(card: DeckEntry) => card.supertype}
+        </FilterBy>
+
+        <FilterBy cards={props.cards}>
+          {(card: DeckEntry) => card.types}
+        </FilterBy>
+
+        <FilterBy cards={props.cards}>
+          {(card: DeckEntry) => card.subtypes}
+        </FilterBy>
+
+        <FilterBy cards={props.cards}>
+          {(card: DeckEntry) => card.emojis}
+        </FilterBy>
+
+        <Show when={store.hasFilters()}>
+          <button onClick={store.clearFilters}>Clear Filters</button>
         </Show>
       </div>
 

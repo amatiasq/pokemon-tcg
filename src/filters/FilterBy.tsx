@@ -1,4 +1,39 @@
-export class Filter<TTarget, TNeedle extends string> {
+import { For, createMemo } from "solid-js";
+import { DeckEntry } from "types:Deck";
+import { FilterButton } from "./FilterButton";
+
+export function FilterBy(props: {
+  cards: DeckEntry[];
+  children: (card: DeckEntry) => string | string[];
+}) {
+  const filter = new Filter(props.children);
+
+  const states = createMemo(() => {
+    filter.reset();
+
+    for (const card of props.cards) {
+      filter.visit(card, card.count);
+    }
+
+    return filter.keys();
+  });
+
+  return (
+    <div class="row">
+      <For each={states()}>
+        {(entry) => (
+          <FilterButton
+            key={props.children.toString()}
+            name={entry}
+            cardCount={filter.get(entry)}
+          />
+        )}
+      </For>
+    </div>
+  );
+}
+
+class Filter<TTarget, TNeedle extends string> {
   #counts: Record<TNeedle, number> = {} as Record<TNeedle, number>;
   #getter: (item: TTarget) => TNeedle | TNeedle[];
 

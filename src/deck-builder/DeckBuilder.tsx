@@ -1,21 +1,19 @@
-import { For, Show, createMemo } from 'solid-js';
-import { DeckFilters } from '../filters/DeckFilters';
-import { check } from '../filters/filter-store';
-import './DeckBuilder.css';
-import { DeckBuilderCard } from './DeckBuilderCard';
-import { SelectableCard, allCards, newDeckCards } from './deck-builder-store';
+import { For, Show, createMemo } from "solid-js";
+import { DeckFilters, filterCards } from "../filters/DeckFilters";
+import "./DeckBuilder.css";
+import { DeckBuilderCard } from "./DeckBuilderCard";
+import { SelectableCard, allCards, newDeckCards } from "./deck-builder-store";
 
 const count = (list: SelectableCard[]) =>
-  list.reduce((acc, card) => acc + card.selected, 0);
+  list.reduce((acc, card) => acc + (card.selected ?? 0), 0);
 
 export function DeckBuilder() {
   const total = createMemo(() => count(newDeckCards()));
   const usedIds = createMemo(() => newDeckCards().map((x) => x.id));
-  const filtered = createMemo(() => newDeckCards().filter(check));
+  const filtered = createMemo(() => filterCards(newDeckCards()));
 
   const unused = createMemo(() =>
-    allCards
-      .filter(check)
+    filterCards(allCards)
       .filter((x) => !usedIds().includes(x.id))
       .sort((a, b) =>
         a.supertype === b.supertype

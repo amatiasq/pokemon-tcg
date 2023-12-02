@@ -1,40 +1,38 @@
-import { createMemo, createSignal } from 'solid-js';
-import { DeckEntry } from 'types:Deck';
-import { Filter } from './Filter';
-import { hideCardsWith, reset, showCardsWith } from './filter-store';
-
-const FilterStatus = ['UNSET', 'INCLUDED', 'EXCLUDED'];
-type FilterStatus = (typeof FilterStatus)[number];
+import { createEffect, createSignal } from "solid-js";
+import { FilterStatus, store } from "../store";
 
 export function FilterButton<T extends string>(props: {
+  key: string;
   name: T;
-  filter: Filter<DeckEntry, T>;
+  cardCount: number;
 }) {
-  const [status, setStatus] = createSignal<FilterStatus>('UNSET');
-  const by = createMemo(() => props.filter.checker(props.name));
+  const [status, setStatus] = createSignal<FilterStatus>("UNSET");
+
+  createEffect(() => {
+    store.setFilter({
+      key: props.key,
+      name: props.name,
+      status: status(),
+    });
+  });
 
   return (
     <button class={`filter-${status().toLowerCase()}`} onClick={handleClick}>
-      <span>{props.name === 'undefined' ? 'None' : props.name}</span>
-      <span>{status() === 'INCLUDED' ? ' only' : ''}</span>
-      <span>({props.filter.get(props.name)})</span>
+      <span>{props.name === "undefined" ? "None" : props.name}</span>
+      <span>{status() === "INCLUDED" ? " only" : ""}</span>
+      <span>({props.cardCount})</span>
     </button>
   );
 
   function handleClick() {
-    switch (status()) {
-      case 'UNSET':
-        setStatus('INCLUDED');
-        showCardsWith(by());
-        break;
-      case 'INCLUDED':
-        setStatus('EXCLUDED');
-        hideCardsWith(by());
-        break;
-      case 'EXCLUDED':
-        setStatus('UNSET');
-        reset(by());
-        break;
-    }
+    setStatus(
+      (
+        {
+          UNSET: "INCLUDED",
+          INCLUDED: "EXCLUDED",
+          EXCLUDED: "UNSET",
+        } as const
+      )[status()]!
+    );
   }
 }

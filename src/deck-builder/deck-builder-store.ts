@@ -1,9 +1,9 @@
-import { createSignal } from 'solid-js';
-import { DeckEntry } from 'types:Deck';
-import decks from 'virtual:all-decks';
+import { createSignal } from "solid-js";
+import { DeckEntry } from "types:Deck";
+import decks from "virtual:all-decks";
 
 export interface SelectableCard extends DeckEntry {
-  selected: number;
+  selected?: number;
 }
 
 const [cards, setCards] = createSignal<SelectableCard[]>([]);

@@ -1,5 +1,5 @@
-declare module 'types:Deck' {
-  import { ApiCard } from 'types:Card';
+declare module "types:Deck" {
+  import { ApiCard } from "types:Card";
 
   export interface Deck {
     name: string;
@@ -15,8 +15,8 @@ declare module 'types:Deck' {
   }
 }
 
-declare module '*.deck' {
-  import { Deck } from 'types:Deck';
+declare module "*.deck" {
+  import { Deck } from "types:Deck";
   const deck: Deck;
   export default deck;
 }
