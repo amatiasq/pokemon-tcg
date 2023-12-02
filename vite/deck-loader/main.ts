@@ -54,7 +54,10 @@ export default function deckLoader() {
         parsed.filter(Boolean).map((x) => downloadCard(x!, isBuildMode))
       );
 
-      return `export default ${JSON.stringify({ name, cards })};`;
+      return `export default ${JSON.stringify({
+        name: name.replace(/_/g, ' '),
+        cards,
+      })};`;
     },
   } as Plugin;
 }

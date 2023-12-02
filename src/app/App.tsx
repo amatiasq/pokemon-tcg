@@ -32,7 +32,7 @@ function SingleDeck() {
   const params = useParams();
 
   const deck = createMemo(() =>
-    decks.find((deck) => deck.name === params.deckName)
+    decks.find((deck) => encodeURIComponent(deck.name) === params.deckName)
   );
 
   return (
