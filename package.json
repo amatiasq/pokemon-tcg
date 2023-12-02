@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.9.1",
+    "@storybook/manager-api": "^7.6.3",
+    "@storybook/theming": "^7.6.3",
     "pokemontcgsdk": "^2.0.0",
     "solid-js": "^1.8.5",
     "solid-zustand": "^1.7.1",
+    "storybook-dark-mode": "^3.0.3",
     "zustand": "^4.4.7"
   },
   "devDependencies": {

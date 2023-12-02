@@ -10,6 +10,10 @@
 
   --color1: #efb2fb;
   --color2: #acc6f8;
+
+  &:not(.is-large) {
+    max-height: 50dvh;
+  }
 }
 
 .card img {
