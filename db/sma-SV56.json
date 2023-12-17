@@ -1,0 +1,90 @@
+{
+  "id": "sma-SV56",
+  "name": "Greninja-GX",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Stage 2",
+    "GX"
+  ],
+  "hp": "230",
+  "types": [
+    "Water"
+  ],
+  "evolvesFrom": "Frogadier",
+  "rules": [
+    "Pokémon-GX rule: When your Pokémon-GX is Knocked Out, your opponent takes 2 Prize cards."
+  ],
+  "abilities": [
+    {
+      "name": "Shuriken Flurry",
+      "text": "When you play this Pokémon from your hand to evolve 1 of your Pokémon during your turn, you may put 3 damage counters on 1 of your opponent's Pokémon.",
+      "type": "Ability"
+    }
+  ],
+  "attacks": [
+    {
+      "name": "Haze Slash",
+      "cost": [
+        "Water",
+        "Colorless",
+        "Colorless"
+      ],
+      "convertedEnergyCost": 3,
+      "damage": "110",
+      "text": "You may shuffle this Pokémon and all cards attached to it into your deck."
+    },
+    {
+      "name": "Shadowy Hunter-GX",
+      "cost": [
+        "Water",
+        "Colorless",
+        "Colorless"
+      ],
+      "convertedEnergyCost": 3,
+      "damage": "",
+      "text": "This attack does 130 damage to 1 of your opponent's Benched Pokémon. (Don't apply Weakness and Resistance for Benched Pokémon.) (You can't use more than 1 GX attack in a game.)"
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Grass",
+      "value": "×2"
+    }
+  ],
+  "retreatCost": [
+    "Colorless",
+    "Colorless"
+  ],
+  "convertedRetreatCost": 2,
+  "set": {
+    "id": "sma",
+    "name": "Shiny Vault",
+    "series": "Sun & Moon",
+    "printedTotal": 94,
+    "total": 94,
+    "legalities": {
+      "unlimited": "Legal",
+      "expanded": "Legal"
+    },
+    "releaseDate": "2019/08/23",
+    "updatedAt": "2021/09/01 05:37:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/sma/symbol.png",
+      "logo": "https://images.pokemontcg.io/sma/logo.png"
+    }
+  },
+  "number": "SV56",
+  "artist": "5ban Graphics",
+  "rarity": "Rare Shiny GX",
+  "nationalPokedexNumbers": [
+    658
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "expanded": "Legal"
+  },
+  "images": {
+    "small": "https://images.pokemontcg.io/sma/SV56.png",
+    "large": "https://images.pokemontcg.io/sma/SV56_hires.png"
+  }
+}

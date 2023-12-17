@@ -7,6 +7,7 @@ import { FocusedCard } from '../focused-card/FocusedCard';
 import { store } from '../store';
 import './App.css';
 import { DeckView } from './DeckView';
+import { PrintDeck } from './PrintDeck';
 import { Sidebar } from './Sidebar';
 
 export function App() {
@@ -18,6 +19,7 @@ export function App() {
         <Routes>
           <Route path="/" component={() => <></>} />
           <Route path="/deck/:deckName" component={SingleDeck} />
+          <Route path="/deck/:deckName/print" component={PrintSimpleDeck} />
           <Route path="/build" component={DeckBuilder} />
           <Route path="/filters" component={() => <p>TODO</p>} />
         </Routes>
@@ -25,6 +27,20 @@ export function App() {
 
       <FocusedCard />
     </Router>
+  );
+}
+
+function PrintSimpleDeck() {
+  const params = useParams();
+
+  const deck = createMemo(() =>
+    decks.find((deck) => encodeURIComponent(deck.name) === params.deckName)
+  );
+
+  return (
+    <Show when={deck()} fallback={<p>Deck not found: {params.deckName}</p>}>
+      <PrintDeck deck={deck()!} />
+    </Show>
   );
 }
 

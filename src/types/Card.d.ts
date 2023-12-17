@@ -49,9 +49,9 @@ declare module 'types:Card' {
   }
 
   export interface Legalities {
-    unlimited: string;
-    standard: string;
-    expanded: string;
+    unlimited?: 'Legal';
+    standard?: 'Legal';
+    expanded?: 'Legal';
   }
 
   export interface Set {
