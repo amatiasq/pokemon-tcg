@@ -26,7 +26,8 @@
 
     & li {
       list-style: none;
-      width: 10em;
+      /* width: 10em; */
+      width: 4em;
     }
   }
 }
@@ -38,6 +39,12 @@
 
   .printable {
     margin-top: 0;
+    font-size: 0.8em;
+
+    & th:first-child,
+    & td:first-child {
+      display: none;
+    }
 
     * {
       color: black !important;
