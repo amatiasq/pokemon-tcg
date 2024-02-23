@@ -26,20 +26,26 @@
 
     & li {
       list-style: none;
-      /* width: 10em; */
-      width: 4em;
+      width: 6em;
+      /* mati */
+      /* width: 5em; */
+      /* width: 4em; */
     }
   }
 }
 
 @media print {
+  * {
+    overflow: hidden;
+  }
+
   aside {
     display: none;
   }
 
   .printable {
     margin-top: 0;
-    font-size: 0.8em;
+    font-size: 0.9em;
 
     & th:first-child,
     & td:first-child {

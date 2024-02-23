@@ -1,0 +1,75 @@
+{
+  "id": "sm3-69",
+  "name": "Solrock",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Basic"
+  ],
+  "hp": "90",
+  "types": [
+    "Fighting"
+  ],
+  "attacks": [
+    {
+      "name": "Double Draw",
+      "cost": [
+        "Colorless"
+      ],
+      "convertedEnergyCost": 1,
+      "damage": "",
+      "text": "Draw 2 cards."
+    },
+    {
+      "name": "Solar Heat",
+      "cost": [
+        "Fighting"
+      ],
+      "convertedEnergyCost": 1,
+      "damage": "20+",
+      "text": "If there is any Stadium card in play, this attack does 20 more damage."
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Grass",
+      "value": "×2"
+    }
+  ],
+  "retreatCost": [
+    "Colorless"
+  ],
+  "convertedRetreatCost": 1,
+  "set": {
+    "id": "sm3",
+    "name": "Burning Shadows",
+    "series": "Sun & Moon",
+    "printedTotal": 147,
+    "total": 177,
+    "legalities": {
+      "unlimited": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "BUS",
+    "releaseDate": "2017/08/05",
+    "updatedAt": "2022/10/11 21:39:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/sm3/symbol.png",
+      "logo": "https://images.pokemontcg.io/sm3/logo.png"
+    }
+  },
+  "number": "69",
+  "artist": "Masakazu Fukuda",
+  "rarity": "Uncommon",
+  "flavorText": "Solar energy is the source of its power, so it is strong during the daytime. When it spins, its body shines.",
+  "nationalPokedexNumbers": [
+    338
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "expanded": "Legal"
+  },
+  "images": {
+    "small": "https://images.pokemontcg.io/sm3/69.png",
+    "large": "https://images.pokemontcg.io/sm3/69_hires.png"
+  }
+}
