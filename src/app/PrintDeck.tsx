@@ -5,35 +5,39 @@ import './PrintDeck.css';
 
 export function PrintDeck(props: { deck: Deck }) {
   return (
-    <div class="printable">
-      <table>
-        <thead>
-          <tr>
-            <th>Legality</th>
-            <th>QTY</th>
-            <th>ID</th>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {props.deck.cards.map((card) => (
+    <>
+      <h2>A. Matias Quezada</h2>
+      <h3>ID: 4640144</h3>
+      <div class="printable">
+        <table>
+          <thead>
             <tr>
-              <td>{getCardLegality(card)}</td>
-              <td>{card.count}x</td>
-              <td>{card.id}</td>
-              <td>{card.name}</td>
+              <th>Legality</th>
+              <th>QTY</th>
+              <th>ID</th>
+              <th>Name</th>
             </tr>
+          </thead>
+          <tbody>
+            {props.deck.cards.map((card) => (
+              <tr>
+                <td>{getCardLegality(card)}</td>
+                <td>{card.count}x</td>
+                <td>{card.id}</td>
+                <td>{card.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <ul>
+          {props.deck.cards.map((card) => (
+            <li>
+              <CardData card={card} />
+            </li>
           ))}
-        </tbody>
-      </table>
-      <ul>
-        {props.deck.cards.map((card) => (
-          <li>
-            <CardData card={card} />
-          </li>
-        ))}
-      </ul>
-    </div>
+        </ul>
+      </div>
+    </>
   );
 
   function getCardLegality(card: ApiCard) {
