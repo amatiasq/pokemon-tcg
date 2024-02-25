@@ -1,6 +1,6 @@
 import { existsSync } from 'fs';
 import { mkdir, readFile, unlink, writeFile } from 'fs/promises';
-import { Plugin } from 'vite';
+import type { Plugin } from 'vite';
 
 const CACHE_DIR = '.cache/web-components';
 const DOM_STUB = `

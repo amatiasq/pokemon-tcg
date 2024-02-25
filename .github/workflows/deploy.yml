@@ -1,9 +1,10 @@
-name: Deploy
+name: Build frontend
 on:
   push:
     branches: [main]
+
 jobs:
-  deploy:
+  build-frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,7 +14,7 @@ jobs:
       - run: bun install
       - run: bun run build
         env:
-          POKEMON_API_KEY: ${{ vars.POKEMON_API_KEY }}
+          VITE_SUPABASE_KEY: ${{ vars.VITE_SUPABASE_KEY }}
       - run: cp ./dist/index.html ./dist/404.html
       - uses: peaceiris/actions-gh-pages@v3
         with:

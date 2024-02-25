@@ -1,39 +1,40 @@
 {
-  "name": "pokemon-tcg",
+  "name": "app-template",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "vite": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "supabase": "docker compose up",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@solidjs/router": "^0.9.1",
-    "@storybook/manager-api": "^7.6.3",
-    "@storybook/theming": "^7.6.3",
-    "pokemontcgsdk": "^2.0.0",
-    "solid-js": "^1.8.5",
-    "solid-zustand": "^1.7.1",
-    "storybook-dark-mode": "^3.0.3",
-    "zustand": "^4.4.7"
+    "@solidjs/router": "^0.12.4",
+    "@storybook/manager-api": "^7.6.17",
+    "@storybook/theming": "^7.6.17",
+    "@supabase/supabase-js": "^2.39.7",
+    "normalize.css": "^8.0.1",
+    "solid-js": "^1.8.15",
+    "storybook-dark-mode": "^3.0.3"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.3",
-    "@storybook/addon-interactions": "^7.6.3",
-    "@storybook/addon-links": "^7.6.3",
-    "@storybook/blocks": "^7.6.3",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/blocks": "^7.6.17",
     "@storybook/testing-library": "^0.2.2",
-    "@types/node": "^20.10.0",
+    "@types/node": "^20.11.20",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.6.3",
+    "storybook": "^7.6.17",
     "storybook-solidjs": "^1.0.0-beta.2",
     "storybook-solidjs-vite": "^1.0.0-beta.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.5",
-    "vite-plugin-solid": "^2.7.2"
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4",
+    "vite-plugin-solid": "^2.10.1"
   }
 }
