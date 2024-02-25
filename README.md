@@ -22,19 +22,26 @@ cd "$NAME"
 npm install
 ```
 
-2. Run supabase
+2. Create `.env` by copying it from `.env.sample`
+```sh
+cp .env.sample .env
+```
+
+3. Run supabase
 ```sh
 npm run supabase
 ```
 
-3. Run vite
+4. Run vite
 ```sh
 npm run vite
 ```
 
-4. Open `http://localhost:8000`. This is supabase admin.
-5. Create a user at `http://localhost:8000/project/default/auth/users`
-5. Open whatever port Vite used (`http://localhost:5173` maybe?)
-6. Login with that user
+5. Open `http://localhost:8000`. This is supabase admin.
+6. Create a user at `http://localhost:8000/project/default/auth/users`
+7. Open whatever port Vite used (`http://localhost:5173` maybe?)
+8. Login with that user
 
-You may want to replace all occurrences of `app-template` in files with the name of your application
+You may want to replace all occurrences of `app-template` in files with the name of your application.
+
+If you're deploying this change the values in `.env`. [Supabase docs](https://supabase.com/docs/guides/self-hosting/docker#securing-your-services) are great for this.
