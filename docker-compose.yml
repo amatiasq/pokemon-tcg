@@ -4,7 +4,7 @@
 #   Stop:           docker compose down
 #   Destroy:        docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml down -v --remove-orphans
 
-name: app-template
+name: pokemon-tcg
 version: "3.8"
 services:
 
@@ -20,7 +20,7 @@ services:
   #     - PORT=3000
 
   studio:
-    container_name: supabase-studio
+    container_name: pokedecks-studio
     image: supabase/studio:20240205-b145c86
     restart: unless-stopped
     healthcheck:
@@ -58,7 +58,7 @@ services:
       # NEXT_ANALYTICS_BACKEND_PROVIDER: bigquery
 
   kong:
-    container_name: supabase-kong
+    container_name: pokedecks-kong
     image: kong:2.8.1
     restart: unless-stopped
     # https://unix.stackexchange.com/a/294837
@@ -86,7 +86,7 @@ services:
       - ./volumes/api/kong.yml:/home/kong/temp.yml:ro
 
   auth:
-    container_name: supabase-auth
+    container_name: pokedecks-auth
     image: supabase/gotrue:v2.132.3
     depends_on:
       db:
@@ -145,7 +145,7 @@ services:
       GOTRUE_SMS_AUTOCONFIRM: ${ENABLE_PHONE_AUTOCONFIRM}
 
   rest:
-    container_name: supabase-rest
+    container_name: pokedecks-rest
     image: postgrest/postgrest:v12.0.1
     depends_on:
       db:
@@ -207,7 +207,7 @@ services:
 
   # To use S3 backed storage: docker compose -f docker-compose.yml -f docker-compose.s3.yml up
   storage:
-    container_name: supabase-storage
+    container_name: pokedecks-storage
     image: supabase/storage-api:v0.46.4
     depends_on:
       db:
@@ -250,7 +250,7 @@ services:
       - ./volumes/storage:/var/lib/storage:z
 
   imgproxy:
-    container_name: supabase-imgproxy
+    container_name: pokedecks-imgproxy
     image: darthsim/imgproxy:v3.8.0
     healthcheck:
       test: [ "CMD", "imgproxy", "health" ]
@@ -266,7 +266,7 @@ services:
       - ./volumes/storage:/var/lib/storage:z
 
   meta:
-    container_name: supabase-meta
+    container_name: pokedecks-meta
     image: supabase/postgres-meta:v0.77.2
     depends_on:
       db:
@@ -284,7 +284,7 @@ services:
       PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD}
 
   functions:
-    container_name: supabase-edge-functions
+    container_name: pokedecks-edge-functions
     image: supabase/edge-runtime:v1.36.1
     restart: unless-stopped
     depends_on:
@@ -306,7 +306,7 @@ services:
       - /home/deno/functions/main
 
   analytics:
-    container_name: supabase-analytics
+    container_name: pokedecks-analytics
     image: supabase/logflare:1.4.0
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:4000/health" ]
@@ -349,7 +349,7 @@ services:
 
   # Comment out everything below this point if you are using an external Postgres database
   db:
-    container_name: supabase-db
+    container_name: pokedecks-db
     image: supabase/postgres:15.1.0.147
     healthcheck:
       test: pg_isready -U postgres -h localhost
@@ -393,7 +393,7 @@ services:
       - ./volumes/db/logs.sql:/docker-entrypoint-initdb.d/migrations/99-logs.sql:Z
 
   vector:
-    container_name: supabase-vector
+    container_name: pokedecks-vector
     image: timberio/vector:0.28.1-alpine
     healthcheck:
       test:

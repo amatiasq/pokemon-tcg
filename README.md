@@ -1,3 +1,5 @@
+# PokeDecks
+
 This project started as a way to learn to make Vite plugins and to teach my kid about the joy of creating your own tools tailored to your needs.
 
 ## The need
