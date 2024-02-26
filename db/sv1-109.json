@@ -1,0 +1,80 @@
+{
+  "id": "sv1-109",
+  "name": "Annihilape",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Stage 2"
+  ],
+  "hp": "140",
+  "types": [
+    "Fighting"
+  ],
+  "evolvesFrom": "Primeape",
+  "attacks": [
+    {
+      "cost": [
+        "Fighting"
+      ],
+      "name": "Rage Fist",
+      "damage": "70×",
+      "text": "This attack does 70 damage for each Prize card your opponent has taken.",
+      "convertedEnergyCost": 1
+    },
+    {
+      "cost": [
+        "Fighting",
+        "Fighting"
+      ],
+      "name": "Dynamite Punch",
+      "damage": "170",
+      "text": "This Pokémon also does 50 damage to itself.",
+      "convertedEnergyCost": 2
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Psychic",
+      "value": "×2"
+    }
+  ],
+  "retreatCost": [
+    "Colorless",
+    "Colorless"
+  ],
+  "convertedRetreatCost": 2,
+  "set": {
+    "id": "sv1",
+    "name": "Scarlet & Violet",
+    "series": "Scarlet & Violet",
+    "printedTotal": 198,
+    "total": 258,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "releaseDate": "2023/03/31",
+    "updatedAt": "2023/03/31 15:45:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/sv1/symbol.png",
+      "logo": "https://images.pokemontcg.io/sv1/logo.png"
+    }
+  },
+  "number": "109",
+  "artist": "Anesaki Dynamic",
+  "rarity": "Rare",
+  "flavorText": "It imbues its fists with the power of the rage that it kept hidden in its heart. Opponents struck by these imbued fists will be shattered to their core.",
+  "nationalPokedexNumbers": [
+    979
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "G",
+  "images": {
+    "small": "https://images.pokemontcg.io/sv1/109.png",
+    "large": "https://images.pokemontcg.io/sv1/109_hires.png"
+  }
+}

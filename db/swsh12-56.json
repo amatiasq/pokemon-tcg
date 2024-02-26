@@ -1,0 +1,76 @@
+{
+  "id": "swsh12-56",
+  "name": "Zeraora",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Basic"
+  ],
+  "hp": "110",
+  "types": [
+    "Lightning"
+  ],
+  "attacks": [
+    {
+      "name": "Battle Claw",
+      "cost": [
+        "Lightning"
+      ],
+      "convertedEnergyCost": 1,
+      "damage": "30+",
+      "text": "If your opponent's Active Pokémon is an Evolution Pokémon, this attack does 30 more damage."
+    },
+    {
+      "name": "Mach Bolt",
+      "cost": [
+        "Lightning",
+        "Colorless",
+        "Colorless"
+      ],
+      "convertedEnergyCost": 3,
+      "damage": "80",
+      "text": ""
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Fighting",
+      "value": "×2"
+    }
+  ],
+  "set": {
+    "id": "swsh12",
+    "name": "Silver Tempest",
+    "series": "Sword & Shield",
+    "printedTotal": 195,
+    "total": 215,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "SIT",
+    "releaseDate": "2022/11/11",
+    "updatedAt": "2022/09/09 11:45:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/swsh12/symbol.png",
+      "logo": "https://images.pokemontcg.io/swsh12/logo.png"
+    }
+  },
+  "number": "56",
+  "artist": "GOSSAN",
+  "rarity": "Rare",
+  "flavorText": "It approaches its enemies at the speed of lightning, then tears them limb from limb with its sharp claws.",
+  "nationalPokedexNumbers": [
+    807
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "F",
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh12/56.png",
+    "large": "https://images.pokemontcg.io/swsh12/56_hires.png"
+  }
+}

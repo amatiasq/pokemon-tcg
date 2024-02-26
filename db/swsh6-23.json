@@ -1,0 +1,74 @@
+{
+  "id": "swsh6-23",
+  "name": "Larvesta",
+  "supertype": "Pokémon",
+  "subtypes": [
+    "Basic"
+  ],
+  "hp": "80",
+  "types": [
+    "Fire"
+  ],
+  "evolvesTo": [
+    "Volcarona"
+  ],
+  "attacks": [
+    {
+      "name": "Flame Charge",
+      "cost": [
+        "Fire"
+      ],
+      "convertedEnergyCost": 1,
+      "damage": "10",
+      "text": "Search your deck for a Fire Energy card and attach it to this Pokémon. Then, shuffle your deck."
+    }
+  ],
+  "weaknesses": [
+    {
+      "type": "Water",
+      "value": "×2"
+    }
+  ],
+  "retreatCost": [
+    "Colorless",
+    "Colorless",
+    "Colorless"
+  ],
+  "convertedRetreatCost": 3,
+  "set": {
+    "id": "swsh6",
+    "name": "Chilling Reign",
+    "series": "Sword & Shield",
+    "printedTotal": 198,
+    "total": 233,
+    "legalities": {
+      "unlimited": "Legal",
+      "standard": "Legal",
+      "expanded": "Legal"
+    },
+    "ptcgoCode": "CRE",
+    "releaseDate": "2021/06/18",
+    "updatedAt": "2021/06/18 12:12:00",
+    "images": {
+      "symbol": "https://images.pokemontcg.io/swsh6/symbol.png",
+      "logo": "https://images.pokemontcg.io/swsh6/logo.png"
+    }
+  },
+  "number": "23",
+  "artist": "Misa Tsutsui",
+  "rarity": "Common",
+  "flavorText": "It protects itself with flame. Long years ago, people believed Larvesta had a nest on the sun.",
+  "nationalPokedexNumbers": [
+    636
+  ],
+  "legalities": {
+    "unlimited": "Legal",
+    "standard": "Legal",
+    "expanded": "Legal"
+  },
+  "regulationMark": "E",
+  "images": {
+    "small": "https://images.pokemontcg.io/swsh6/23.png",
+    "large": "https://images.pokemontcg.io/swsh6/23_hires.png"
+  }
+}
