@@ -380,7 +380,6 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXP: ${JWT_EXPIRY}
     volumes:
-      - ./supabase/migrations:/docker-entrypoint-initdb.d/migrations:Z
       - ./supabase/volumes/db/realtime.sql:/docker-entrypoint-initdb.d/migrations/99-realtime.sql:Z
       # Must be superuser to create event trigger
       - ./supabase/volumes/db/webhooks.sql:/docker-entrypoint-initdb.d/init-scripts/98-webhooks.sql:Z
@@ -392,6 +391,9 @@ services:
       - ./supabase/volumes/db/data:/var/lib/postgresql/data:Z
       # Changes required for Analytics support
       - ./supabase/volumes/db/logs.sql:/docker-entrypoint-initdb.d/migrations/99-logs.sql:Z
+      # Custom migrations
+      # - ./supabase/volumes/db/run-migrations.sh:/docker-entrypoint-initdb.d/z-run-migrations.sh:Z
+      # - ./supabase/migrations:/docker-entrypoint-initdb.d/user-migrations:Z
 
   # vector:
   #   container_name: pokedeck-vector
