@@ -25,9 +25,5 @@ dist-ssr
 .env
 .cache
 
-
-volumes/db/data
-volumes/storage
-.env
-test.http
-docker-compose.override.yml
+supabase/volumes/db/data
+supabase/volumes/storage

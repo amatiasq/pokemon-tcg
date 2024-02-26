@@ -4,7 +4,7 @@
 #   Stop:           docker compose down
 #   Destroy:        docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml down -v --remove-orphans
 
-name: app-template
+name: pokedeck
 version: "3.8"
 services:
 
@@ -20,7 +20,7 @@ services:
   #     - PORT=3000
 
   studio:
-    container_name: supabase-studio
+    container_name: pokedeck-studio
     image: supabase/studio:20240205-b145c86
     restart: unless-stopped
     healthcheck:
@@ -58,7 +58,7 @@ services:
       # NEXT_ANALYTICS_BACKEND_PROVIDER: bigquery
 
   kong:
-    container_name: supabase-kong
+    container_name: pokedeck-kong
     image: kong:2.8.1
     restart: unless-stopped
     # https://unix.stackexchange.com/a/294837
@@ -83,10 +83,10 @@ services:
       DASHBOARD_PASSWORD: ${DASHBOARD_PASSWORD}
     volumes:
       # https://github.com/supabase/supabase/issues/12661
-      - ./volumes/api/kong.yml:/home/kong/temp.yml:ro
+      - ./supabase/volumes/api/kong.yml:/home/kong/temp.yml:ro
 
   auth:
-    container_name: supabase-auth
+    container_name: pokedeck-auth
     image: supabase/gotrue:v2.132.3
     depends_on:
       db:
@@ -145,7 +145,7 @@ services:
       GOTRUE_SMS_AUTOCONFIRM: ${ENABLE_PHONE_AUTOCONFIRM}
 
   rest:
-    container_name: supabase-rest
+    container_name: pokedeck-rest
     image: postgrest/postgrest:v12.0.1
     depends_on:
       db:
@@ -166,7 +166,7 @@ services:
 
   realtime:
     # This container name looks inconsistent but is correct because realtime constructs tenant id by parsing the subdomain
-    container_name: realtime-dev.supabase-realtime
+    container_name: pokedeck-realtime
     image: supabase/realtime:v2.25.50
     depends_on:
       db:
@@ -207,7 +207,7 @@ services:
 
   # To use S3 backed storage: docker compose -f docker-compose.yml -f docker-compose.s3.yml up
   storage:
-    container_name: supabase-storage
+    container_name: pokedeck-storage
     image: supabase/storage-api:v0.46.4
     depends_on:
       db:
@@ -247,10 +247,10 @@ services:
       ENABLE_IMAGE_TRANSFORMATION: "true"
       IMGPROXY_URL: http://imgproxy:5001
     volumes:
-      - ./volumes/storage:/var/lib/storage:z
+      - ./supabase/volumes/storage:/var/lib/storage:z
 
   imgproxy:
-    container_name: supabase-imgproxy
+    container_name: pokedeck-imgproxy
     image: darthsim/imgproxy:v3.8.0
     healthcheck:
       test: [ "CMD", "imgproxy", "health" ]
@@ -263,10 +263,10 @@ services:
       IMGPROXY_USE_ETAG: "true"
       IMGPROXY_ENABLE_WEBP_DETECTION: ${IMGPROXY_ENABLE_WEBP_DETECTION}
     volumes:
-      - ./volumes/storage:/var/lib/storage:z
+      - ./supabase/volumes/storage:/var/lib/storage:z
 
   meta:
-    container_name: supabase-meta
+    container_name: pokedeck-meta
     image: supabase/postgres-meta:v0.77.2
     depends_on:
       db:
@@ -284,7 +284,7 @@ services:
       PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD}
 
   functions:
-    container_name: supabase-edge-functions
+    container_name: pokedeck-edge-functions
     image: supabase/edge-runtime:v1.36.1
     restart: unless-stopped
     depends_on:
@@ -299,14 +299,14 @@ services:
       # TODO: Allow configuring VERIFY_JWT per function. This PR might help: https://github.com/supabase/cli/pull/786
       VERIFY_JWT: "${FUNCTIONS_VERIFY_JWT}"
     volumes:
-      - ./volumes/functions:/home/deno/functions:Z
+      - ./supabase/volumes/functions:/home/deno/functions:Z
     command:
       - start
       - --main-service
       - /home/deno/functions/main
 
   analytics:
-    container_name: supabase-analytics
+    container_name: pokedeck-analytics
     image: supabase/logflare:1.4.0
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:4000/health" ]
@@ -349,16 +349,16 @@ services:
 
   # Comment out everything below this point if you are using an external Postgres database
   db:
-    container_name: supabase-db
+    container_name: pokedeck-db
     image: supabase/postgres:15.1.0.147
     healthcheck:
       test: pg_isready -U postgres -h localhost
       interval: 5s
       timeout: 5s
       retries: 10
-    depends_on:
-      vector:
-        condition: service_healthy
+    # depends_on:
+    #   vector:
+    #     condition: service_healthy
     command:
       - postgres
       - -c
@@ -380,37 +380,38 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXP: ${JWT_EXPIRY}
     volumes:
-      - ./volumes/db/realtime.sql:/docker-entrypoint-initdb.d/migrations/99-realtime.sql:Z
+      - ./supabase/migrations:/docker-entrypoint-initdb.d/migrations:Z
+      - ./supabase/volumes/db/realtime.sql:/docker-entrypoint-initdb.d/migrations/99-realtime.sql:Z
       # Must be superuser to create event trigger
-      - ./volumes/db/webhooks.sql:/docker-entrypoint-initdb.d/init-scripts/98-webhooks.sql:Z
+      - ./supabase/volumes/db/webhooks.sql:/docker-entrypoint-initdb.d/init-scripts/98-webhooks.sql:Z
       # Must be superuser to alter reserved role
-      - ./volumes/db/roles.sql:/docker-entrypoint-initdb.d/init-scripts/99-roles.sql:Z
+      - ./supabase/volumes/db/roles.sql:/docker-entrypoint-initdb.d/init-scripts/99-roles.sql:Z
       # Initialize the database settings with JWT_SECRET and JWT_EXP
-      - ./volumes/db/jwt.sql:/docker-entrypoint-initdb.d/init-scripts/99-jwt.sql:Z
+      - ./supabase/volumes/db/jwt.sql:/docker-entrypoint-initdb.d/init-scripts/99-jwt.sql:Z
       # PGDATA directory is persisted between restarts
-      - ./volumes/db/data:/var/lib/postgresql/data:Z
+      - ./supabase/volumes/db/data:/var/lib/postgresql/data:Z
       # Changes required for Analytics support
-      - ./volumes/db/logs.sql:/docker-entrypoint-initdb.d/migrations/99-logs.sql:Z
+      - ./supabase/volumes/db/logs.sql:/docker-entrypoint-initdb.d/migrations/99-logs.sql:Z
 
-  vector:
-    container_name: supabase-vector
-    image: timberio/vector:0.28.1-alpine
-    healthcheck:
-      test:
-        [
+  # vector:
+  #   container_name: pokedeck-vector
+  #   image: timberio/vector:0.28.1-alpine
+  #   healthcheck:
+  #     test:
+  #       [
 
-          "CMD",
-          "wget",
-          "--no-verbose",
-          "--tries=1",
-          "--spider",
-          "http://vector:9001/health"
-        ]
-      timeout: 5s
-      interval: 5s
-      retries: 3
-    volumes:
-      - ./volumes/logs/vector.yml:/etc/vector/vector.yml:ro
-      - ${DOCKER_SOCKET_LOCATION}:/var/run/docker.sock:ro
+  #         "CMD",
+  #         "wget",
+  #         "--no-verbose",
+  #         "--tries=1",
+  #         "--spider",
+  #         "http://vector:9001/health"
+  #       ]
+  #     timeout: 5s
+  #     interval: 5s
+  #     retries: 3
+  #   volumes:
+  #     - ./supabase/volumes/logs/vector.yml:/etc/vector/vector.yml:ro
+  #     - ${DOCKER_SOCKET_LOCATION}:/var/run/docker.sock:ro
 
-    command: [ "--config", "etc/vector/vector.yml" ]
+  #   command: [ "--config", "etc/vector/vector.yml" ]

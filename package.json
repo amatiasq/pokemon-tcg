@@ -9,6 +9,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "supabase": "docker compose up",
+    "db": "scripts/db.sh",
+    "migration": "scripts/create-migration.sh",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
