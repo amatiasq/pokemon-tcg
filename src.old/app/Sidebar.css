@@ -1,0 +1,81 @@
+aside {
+  > hamburger-button {
+    display: none;
+  }
+
+  > nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    width: min(80dvw, 200px);
+    height: 100dvh;
+    box-sizing: border-box;
+    padding: 128px 32px 64px;
+
+    color: var(--neutral-light);
+    background-color: var(--neutral-dark);
+    box-shadow: 0 0px 25px 0px #000, 0 8px 10px -6px #000;
+
+    > * {
+      grid-column: 2;
+      cursor: pointer;
+    }
+  }
+
+  & summary {
+    list-style: none;
+  }
+
+  & a {
+    display: flex;
+    align-items: center;
+    color: var(--neutral-light);
+  }
+
+  & .deck-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em;
+  }
+}
+
+@media (max-width: 960px) {
+  aside > hamburger-button {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    top: 32px;
+    left: 32px;
+    --color: white;
+
+    &[active] {
+      --opacity: 1;
+    }
+  }
+
+  aside > nav {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    transition: left 0.2s ease-out;
+
+    &:has(+ hamburger-button[active]) {
+      left: 0;
+    }
+  }
+}
+
+body:has(> main:empty) {
+  & aside > nav {
+    left: 0;
+    width: 100dvw;
+  }
+
+  & aside > hamburger-button {
+    display: none;
+  }
+}

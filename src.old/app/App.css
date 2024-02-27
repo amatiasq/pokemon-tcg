@@ -1,0 +1,10 @@
+body {
+  display: flex;
+}
+
+main {
+  width: 100dvw;
+  height: 100dvh;
+  overflow-x: auto;
+  padding: 0 var(--spacing-2);
+}

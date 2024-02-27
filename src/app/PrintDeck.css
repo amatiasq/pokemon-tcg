@@ -1,0 +1,63 @@
+.printable {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 100px;
+  width: 670px;
+
+  & table {
+    & th {
+      text-align: left;
+    }
+
+    & th,
+    & td {
+      padding: 0 0.5rem;
+    }
+
+    & td:first-child {
+      text-transform: capitalize;
+    }
+  }
+
+  & ul {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+
+    & li {
+      list-style: none;
+      width: 6em;
+      width: 5em;
+      width: 4em;
+    }
+  }
+}
+
+@media print {
+  * {
+    overflow: hidden;
+  }
+
+  aside {
+    display: none;
+  }
+
+  h2,h3{
+    color:black;
+    text-align:center;
+  }
+
+  .printable {
+    margin-top: 2em;
+    font-size: 0.9em;
+
+    & th:first-child,
+    & td:first-child {
+      display: none;
+    }
+
+    * {
+      color: black !important;
+    }
+  }
+}

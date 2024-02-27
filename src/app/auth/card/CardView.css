@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+
+  /* Card proportions */
+  aspect-ratio: 63 / 88;
+  border-radius: 5% / 3.5%;
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+
+  --color1: #efb2fb;
+  --color2: #acc6f8;
+
+  &:not(.is-large) {
+    max-height: 50dvh;
+  }
+}
+
+.card img {
+  /* The image should grow as big as possible */
+  height: 100dvh;
+  width: 100dvw;
+  /* But never more than it's parent */
+  max-width: 100%;
+  max-height: 100%;
+}

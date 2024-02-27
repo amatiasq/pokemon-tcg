@@ -1,0 +1,104 @@
+.deck-builder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-around;
+  }
+
+  & li {
+    list-style: none;
+    width: 10rem;
+  }
+
+  & textarea {
+    width: 100dvw;
+    margin: 1em 0;
+    padding: 2em;
+    font-size: 1.5em;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: none;
+    overflow: hidden;
+    resize: none;
+  }
+}
+
+.card-selector :is(.amount, .id) {
+  /* We're going to replace this */
+  display: none;
+}
+
+.card-selector .used-amount {
+  position: absolute;
+  right: var(--padding);
+  bottom: var(--padding);
+}
+
+.card-selector .used-amount {
+  display: none;
+}
+
+.card-selector .input {
+  position: absolute;
+  left: var(--padding);
+  right: var(--padding);
+  bottom: var(--padding);
+
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border-radius: 1em;
+}
+
+.card-selector .input button {
+  align-self: stretch;
+  padding: 0 0.6em;
+  background-color: transparent;
+}
+
+.card-selector .input span {
+  padding: 0 0.5em;
+}
+
+.card-selector .input input {
+  width: 2em;
+  flex: 1;
+  padding: 0.5em;
+  padding-left: 0;
+  text-align: right;
+  border: none;
+  font-size: 1em;
+}
+
+@media (min-width: 768px) {
+  .card-selector:not(:hover):not(:has(.input :focus)) .used-amount {
+    display: block;
+  }
+
+  .card-selector:not(:hover) .input:not(:has(:focus)) {
+    display: none;
+  }
+}
+
+/*
+ * Disable arrows in number input
+ */
+
+/* Chrome, Safari, Edge, Opera */
+.card-selector input::-webkit-outer-spin-button,
+.card-selector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.card-selector input[type='number'] {
+  -moz-appearance: textfield;
+}

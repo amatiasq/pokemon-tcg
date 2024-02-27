@@ -1,0 +1,37 @@
+.card-data {
+  --padding: 5px;
+
+  position: relative;
+  display: flex;
+
+  & > :not(.card) {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: var(--spacing-half) var(--spacing);
+    border-radius: 1em;
+  }
+
+  & .id {
+    left: var(--padding);
+    bottom: var(--padding);
+  }
+
+  &:not(:hover) .id {
+    visibility: hidden;
+  }
+
+  & .emojis {
+    top: var(--padding);
+    right: var(--padding);
+  }
+  & .emojis:empty {
+    visibility: hidden;
+  }
+
+  & .amount {
+    bottom: var(--padding);
+    right: var(--padding);
+    border-radius: 100%;
+  }
+}
