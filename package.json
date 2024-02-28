@@ -16,6 +16,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@amatiasq/scheduler": "^3.0.0",
     "@solidjs/router": "^0.9.1",
     "@storybook/manager-api": "^7.6.17",
     "@storybook/theming": "^7.6.17",

@@ -9,6 +9,7 @@ import { CardSearch } from './components/CardSearch';
 export function App() {
   return (
     <Router>
+      <h1>Card Search</h1>
       <Sidebar />
 
       <main>
@@ -19,7 +20,12 @@ export function App() {
           {/* <AuthRoute path="/build" component={DeckBuilder} /> */}
           <Route path="/login" component={Login} />
           <Route path="/filters" component={() => <p>TODO</p>} />
-          <AuthRoute path="/" component={CardSearch} />
+          <AuthRoute
+            path="/"
+            component={() => (
+              <CardSearch onSelect={(x) => console.log(x.name)} />
+            )}
+          />
           {/* <Route path="/filters" component={() => <p>TODO</p>} /> */}
         </Routes>
       </main>

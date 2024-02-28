@@ -1,24 +1,25 @@
-import { ApiCard } from 'types:Card';
 // import { CardEffect } from './CardEffect';
-import { Show, createEffect, createSignal } from 'solid-js';
+import { Show, createSignal } from 'solid-js';
+import { Card } from '../../db/Card';
 import './CardView.css';
 
 // const hasEffects = `${document.location}`.includes('effects');
 // const MaybeEffects = hasEffects ? CardEffect : 'div';
-export function CardView(props: { card: ApiCard; large?: boolean }) {
-  createEffect(() => {
-    console.log(props.card.images);
-  });
-
+export function CardView(props: {
+  card: Card;
+  large?: boolean;
+  onClick?: () => void;
+}) {
   return (
     <div
       class={`card ${props.large ? 'is-large' : ''}`}
       data-id={props.card.id}
+      onClick={props.onClick}
     >
-      <Show when={props.large} fallback={<img src={props.card.images.small} />}>
+      <Show when={props.large} fallback={<img src={props.card.img_thumb} />}>
         <ScaledImage
-          small={props.card.images.small}
-          large={props.card.images.large}
+          small={props.card.img_thumb}
+          large={props.card.img_large}
         />
       </Show>
     </div>

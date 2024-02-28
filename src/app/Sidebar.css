@@ -50,8 +50,8 @@ aside {
     display: block;
     position: fixed;
     z-index: 2;
-    top: 32px;
-    left: 32px;
+    top: 24px;
+    left: 24px;
     --color: white;
 
     &[active] {
