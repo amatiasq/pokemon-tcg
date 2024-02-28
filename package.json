@@ -8,7 +8,7 @@
     "vite": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "supabase": "docker compose up",
+    "supabase": "docker compose up -d",
     "cli": "./scripts/supabase-local.sh",
     "apply": "./scripts/supabase-local.sh migration up",
     "migration": "./scripts/create-migration.sh",
@@ -16,7 +16,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@solidjs/router": "^0.12.4",
+    "@solidjs/router": "^0.9.1",
     "@storybook/manager-api": "^7.6.17",
     "@storybook/theming": "^7.6.17",
     "@supabase/supabase-js": "^2.39.7",
