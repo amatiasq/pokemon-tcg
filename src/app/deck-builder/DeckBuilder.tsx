@@ -1,13 +1,14 @@
-import { For, Show, createMemo } from "solid-js";
-import { DeckFilters, filterCards } from "../filters/DeckFilters";
-import "./DeckBuilder.css";
-import { DeckBuilderCard } from "./DeckBuilderCard";
-import { SelectableCard, allCards, newDeckCards } from "./deck-builder-store";
+import { For, Show, createMemo } from 'solid-js';
+import { DeckFilters, filterCards } from '../filters/DeckFilters';
+import './DeckBuilder.css';
+import { DeckBuilderCard } from './DeckBuilderCard';
 
-const count = (list: SelectableCard[]) =>
-  list.reduce((acc, card) => acc + (card.selected ?? 0), 0);
+// const count = (list: SelectableCard[]) =>
+//   list.reduce((acc, card) => acc + (card.selected ?? 0), 0);
 
 export function DeckBuilder() {
+  const [cards, setCards] = createSignal<SelectableCard[]>([]);
+
   const total = createMemo(() => count(newDeckCards()));
   const usedIds = createMemo(() => newDeckCards().map((x) => x.id));
   const filtered = createMemo(() => filterCards(newDeckCards()));

@@ -2,7 +2,7 @@ import { Route, Router, Routes } from '@solidjs/router';
 import './App.css';
 import { Sidebar } from './Sidebar';
 import { AuthRoute } from './auth/AuthRoute';
-import { FocusedCard } from './auth/focused-card/FocusedCard';
+import { FocusedCard } from './focused-card/FocusedCard';
 
 export function App() {
   return (
@@ -15,6 +15,7 @@ export function App() {
           {/* <Route path="/deck/:deckName" component={SingleDeck} /> */}
           {/* <Route path="/deck/:deckName/print" component={PrintSimpleDeck} /> */}
           {/* <AuthRoute path="/build" component={DeckBuilder} /> */}
+          <Route path="/login" component={Login} />
           <AuthRoute path="/" component={SearchCards} />
           <Route path="/filters" component={() => <p>TODO</p>} />
         </Routes>
