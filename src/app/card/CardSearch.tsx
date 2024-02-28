@@ -39,6 +39,7 @@ export function CardSearch(props: { onSelect: (...results: Card[]) => void }) {
             cards={results()}
             onSelect={(...card) => {
               setActive(false);
+              input.value = '';
               props.onSelect(...card);
             }}
           />
@@ -60,7 +61,5 @@ export function CardSearch(props: { onSelect: (...results: Card[]) => void }) {
       setError(null);
       setResults(data);
     }
-
-    console.log({ value, data, error });
   }
 }
