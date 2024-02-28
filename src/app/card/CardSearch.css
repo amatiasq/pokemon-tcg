@@ -37,10 +37,4 @@
     color: red;
     margin: 0;
   }
-
-  .results {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
 }

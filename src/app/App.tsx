@@ -4,7 +4,7 @@ import { Sidebar } from './Sidebar';
 import { AuthRoute } from './auth/AuthRoute';
 // import { FocusedCard } from './focused-card/FocusedCard';
 import { Login } from './auth/Login';
-import { CardSearch } from './components/CardSearch';
+import { DeckBuilder } from './deck-builder/DeckBuilder';
 
 export function App() {
   return (
@@ -20,12 +20,7 @@ export function App() {
           {/* <AuthRoute path="/build" component={DeckBuilder} /> */}
           <Route path="/login" component={Login} />
           <Route path="/filters" component={() => <p>TODO</p>} />
-          <AuthRoute
-            path="/"
-            component={() => (
-              <CardSearch onSelect={(x) => console.log(x.name)} />
-            )}
-          />
+          <AuthRoute path="/" component={DeckBuilder} />
           {/* <Route path="/filters" component={() => <p>TODO</p>} /> */}
         </Routes>
       </main>

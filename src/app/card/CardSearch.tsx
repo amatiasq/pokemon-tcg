@@ -1,9 +1,9 @@
 import { Scheduler } from '@amatiasq/scheduler';
 import { PostgrestError } from '@supabase/supabase-js';
-import { For, Show, createSignal } from 'solid-js';
+import { Show, createSignal } from 'solid-js';
 import { Card } from '../../db/Card';
 import { supabase } from '../../supabase';
-import { CardView } from '../card/CardView';
+import { CardGrid } from './CardGrid';
 import './CardSearch.css';
 
 export function CardSearch(props: { onSelect: (...results: Card[]) => void }) {
@@ -35,19 +35,13 @@ export function CardSearch(props: { onSelect: (...results: Card[]) => void }) {
 
         <Show when={results().length && !error()}>
           <div class="count">{results().length} results</div>
-          <div class="results">
-            <For each={results()}>
-              {(card) => (
-                <CardView
-                  card={card}
-                  onClick={() => {
-                    setActive(false);
-                    props.onSelect(card);
-                  }}
-                />
-              )}
-            </For>
-          </div>
+          <CardGrid
+            cards={results()}
+            onSelect={(...card) => {
+              setActive(false);
+              props.onSelect(...card);
+            }}
+          />
         </Show>
       </div>
     </div>
